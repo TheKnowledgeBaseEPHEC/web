@@ -74,10 +74,10 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=127.0.0.1;dbname=ci',
+	'dsn'	=> 'mysql:host=theknowledgebase.be;dbname=bdd_youri',
 	'hostname' => '',
 	'username' => 'youri',
-	'password' => 'password',
+	'password' => 'aorisetn2oien334a-0-0_)_qwfp',
 	'database' => '',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
