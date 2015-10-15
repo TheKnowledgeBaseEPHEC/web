@@ -502,5 +502,33 @@ body {
 
 #footer {
     padding: 50px 0;
+}
 
+/* typeahead demo */
+span.twitter-typeahead {
+    width: 100%;
+}
+.input-group span.twitter-typeahead {
+    display: block !important;
+}
+.input-group span.twitter-typeahead .tt-dropdown-menu {
+    top: 32px !important;
+}
+.input-group.input-group-lg span.twitter-typeahead .tt-dropdown-menu {
+    top: 44px !important;
+}
+.input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
+    top: 28px !important;
+}
+
+/* search bar in index */
+.search-btn {
+    border-top-left-radius: 300px!important;
+    border-bottom-left-radius: 300px!important;
+    border-right: 3px solid #f05f40;
+}
+
+.search-input {
+    border-top-right-radius: 300px!important;
+    border-bottom-right-radius: 300px!important;
 }
