@@ -25,8 +25,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/creative.css" type="text/css">
 
+    <!-- select2 css -->
+    <link rel="stylesheet" href="/js/select2-3.5.4/select2.css" type="text/css">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

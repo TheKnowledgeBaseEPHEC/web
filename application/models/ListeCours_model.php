@@ -15,7 +15,7 @@ class Listecours_model extends CI_Model
 
     public function get_data()
     {
-        $query = $this->db->get('uni');
+        $query = $this->db->get('Ecole');
 
         return $query->result();
     }
