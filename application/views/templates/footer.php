@@ -8,7 +8,7 @@
 <script src="/js/jquery.easing.min.js"></script>
 <script src="/js/jquery.fittext.js"></script>
 <script src="/js/wow.min.js"></script>
-<script src="/js/select2-3.5.4/select2.min.js"></script>
+<script src="/js/select2-3.5.4/select2.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/creative.js"></script>

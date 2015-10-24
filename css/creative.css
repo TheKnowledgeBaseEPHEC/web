@@ -11,7 +11,7 @@ body {
 }
 
 body {
-    font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
 hr {
@@ -531,4 +531,54 @@ span.twitter-typeahead {
 .search-input {
     border-top-right-radius: 300px!important;
     border-bottom-right-radius: 300px!important;
+}
+
+/* select 2 search */
+[class^='select2'] {
+    border: 0!important;
+    font-family:  'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+.select2-chosen {
+    font-size: 25px;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+    color: #fff!important;
+    background-color: #f05f40!important;
+    height: 40px;
+    border-radius: 300px!important;
+    padding: 13px 16px 16px 30px!important;
+}
+
+.select2-container-multi .select2-choices {
+    height: 50px!important;
+}
+
+.select2-container .select2-choices .select2-search-field input,
+.select2-container .select2-choice, .select2-container .select2-choices {
+    border-top-left-radius: 300px!important;
+    border-bottom-left-radius: 300px!important;
+}
+
+.btn-primary {
+    border: 3px solid #fff!important;
+}
+
+a.closebtn {
+    color: #fff;
+}
+
+.select2-search input, .select2-search-choice-close, .select2-container .select2-choice abbr, .select2-container .select2-choice .select2-arrow b
+, .select2-search-choice-close {
+    background-image: none!important;
+}
+
+.select2-drop-active {
+    border: none!important;
+}
+
+.select2-results .select2-highlighted {
+    background: #f05f40!important;
+    color: #fff!important;
 }

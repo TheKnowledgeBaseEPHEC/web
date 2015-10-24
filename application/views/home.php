@@ -13,30 +13,22 @@
 <section class="bg-primary" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
+            <div class="col-lg-4 col-lg-offset-4 text-center">
                 <h2 class="section-heading">Trouvez la solution!</h2>
                 <hr class="light">
                 <p class="text-faded">Nous proposons une liste de cours disponibles dans de nombreuses universités et
                     hautes écoles en Belgique donnés par des anciens élèves du cours ayant une bonne compréhension de la
                     matière.</p>
 
-                <!--<div id="scrollable-dropdown-menu">
-                    <div class="input-group-btn">
-                        <button class="search-btn btn btn-default btn-xl" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                        <input class="search-input btn btn-xl search form-control select2-hidden-accessible" type="text" placeholder="Cherchez un cours">
+                    <div class="input-group select2-bootstrap-append">
+                            <input type="hidden" class="search form-control select2-multiple" placeholder="" multiple>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-xl" type="button" data-select2-open="multi-append">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+				            </span>
                     </div>
-                </div>-->
-                <div class="form-group">
-                    <div class="select2-container select2-container-multi form-control" id="s2id_multiple"><ul class="select2-choices">
-                            <li class="select2-search-field">
-                                <label for="s2id_autogen2" class="select2-offscreen">Select2 multi select</label>
-                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2 select2-input select2-default" id="s2id_autogen2" style="width: 1218px;" placeholder="" aria-activedescendant="select2-result-label-486">
-                            </li>
-                        </ul>
-                    </div
-                </div>
+
             </div>
         </div>
     </div>
@@ -129,12 +121,15 @@
 <script>
     window.onload = function () {
         $(".search").select2({
+            placeholder: 'Chercher un cours...',
+            width: '100%',
+            allowClear: true,
+            multiple: true,
+            theme: "classic",
             ajax: {
                 url: 'http://localhost/cours/data',
                 dataType: 'json',
                 type: "GET",
-                quietMillis: 50,
-                allowClear: false,
                 data: function (term) {
                     return {
                         term: term
