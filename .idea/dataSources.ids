@@ -7,13 +7,132 @@
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <schema name="" catalog="bdd_youri"/>
-    <table name="uni" schema="" catalog="bdd_youri" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ncours" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="img" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="id"/>
+    <table name="Activation" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idActivation" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="DateActiv" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="ExpActiv" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="User_idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idActivation,User_idUser"/>
+      <foreign-key name="fk_Activation_User1" columns="User_idUser" ref-table="User" ref-schema="" ref-catalog="bdd_youri" ref-columns="idUser" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Activation_User1_idx" unique="false" columns="User_idUser"/>
+    </table>
+    <table name="Cours" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idCours" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idTutore" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="IntituleCours" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Tuteur_idTuteur" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Fac_Ecole_idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idCours,Tuteur_idTuteur,Fac_Ecole_idEcole"/>
+      <foreign-key name="fk_Cours_Tuteur1" columns="Tuteur_idTuteur" ref-table="Tuteur" ref-schema="" ref-catalog="bdd_youri" ref-columns="idTuteur" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_Cours_Fac1" columns="Fac_Ecole_idEcole" ref-table="Fac" ref-schema="" ref-catalog="bdd_youri" ref-columns="Ecole_idEcole" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Cours_Fac1_idx" unique="false" columns="Fac_Ecole_idEcole"/>
+      <index name="fk_Cours_Tuteur1_idx" unique="false" columns="Tuteur_idTuteur"/>
+    </table>
+    <table name="Ecole" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NomEcole" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Image" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AdEmail" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idEcole"/>
+      <exported-key name="fk_Fac_Ecole1" table="Fac" schema="" catalog="bdd_youri" columns="Ecole_idEcole"/>
+    </table>
+    <table name="Fac" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idFac" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NomFac" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Image" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Ecole_idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idFac,Ecole_idEcole"/>
+      <foreign-key name="fk_Fac_Ecole1" columns="Ecole_idEcole" ref-table="Ecole" ref-schema="" ref-catalog="bdd_youri" ref-columns="idEcole" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_Cours_Fac1" table="Cours" schema="" catalog="bdd_youri" columns="Fac_Ecole_idEcole"/>
+      <index name="fk_Fac_Ecole1_idx" unique="false" columns="Ecole_idEcole"/>
+    </table>
+    <table name="Message" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idMessage" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="User_idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="SujetMessage" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ContenuMessage" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DateMessage" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="idMessage,User_idUser"/>
+      <foreign-key name="fk_Message_User1" columns="User_idUser" ref-table="User" ref-schema="" ref-catalog="bdd_youri" ref-columns="idUser" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Message_User1_idx" unique="false" columns="User_idUser"/>
+    </table>
+    <table name="Rating" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idRating" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Description" sqlType="VARCHAR" precision="300" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idTuteur" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idTutore" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Sceance_idSceance" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idRating,Sceance_idSceance"/>
+      <foreign-key name="fk_Rating_Sceance1" columns="Sceance_idSceance" ref-table="Sceance" ref-schema="" ref-catalog="bdd_youri" ref-columns="idSceance" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Rating_Sceance1_idx" unique="false" columns="Sceance_idSceance"/>
+    </table>
+    <table name="Sceance" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idSceance" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idTuteur" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Duree" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Tutore_idTutore" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idSceance,Tutore_idTutore"/>
+      <foreign-key name="fk_Sceance_Tutore1" columns="Tutore_idTutore" ref-table="Tutore" ref-schema="" ref-catalog="bdd_youri" ref-columns="idTutore" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_Rating_Sceance1" table="Rating" schema="" catalog="bdd_youri" columns="Sceance_idSceance"/>
+      <exported-key name="fk_Transaction_Sceance1" table="Transaction" schema="" catalog="bdd_youri" columns="Sceance_idSceance,Sceance_Tutore_idTutore"/>
+      <index name="fk_Sceance_Tutore1_idx" unique="false" columns="Tutore_idTutore"/>
+    </table>
+    <table name="Transaction" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idTransaction" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Prix" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="Sceance_idSceance" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Sceance_Tutore_idTutore" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idTransaction,Sceance_idSceance,Sceance_Tutore_idTutore"/>
+      <foreign-key name="fk_Transaction_Sceance1" columns="Sceance_idSceance,Sceance_Tutore_idTutore" ref-table="Sceance" ref-schema="" ref-catalog="bdd_youri" ref-columns="idSceance,Tutore_idTutore" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Transaction_Sceance1_idx" unique="false" columns="Sceance_idSceance,Sceance_Tutore_idTutore"/>
+    </table>
+    <table name="Tuteur" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idTuteur" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Nom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Prenom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AdMail" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="User_idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idTuteur,User_idUser"/>
+      <foreign-key name="fk_Tuteur_User1" columns="User_idUser" ref-table="User" ref-schema="" ref-catalog="bdd_youri" ref-columns="idUser" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_Cours_Tuteur1" table="Cours" schema="" catalog="bdd_youri" columns="Tuteur_idTuteur"/>
+      <index name="fk_Tuteur_User1_idx" unique="false" columns="User_idUser"/>
+    </table>
+    <table name="Tutore" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idTutore" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Nom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Prenom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AdMail" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="User_idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idTutore,User_idUser"/>
+      <foreign-key name="fk_Tutore_User1" columns="User_idUser" ref-table="User" ref-schema="" ref-catalog="bdd_youri" ref-columns="idUser" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_Sceance_Tutore1" table="Sceance" schema="" catalog="bdd_youri" columns="Tutore_idTutore"/>
+      <index name="fk_Tutore_User1_idx" unique="false" columns="User_idUser"/>
+    </table>
+    <table name="User" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Nom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Prenom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AdresseMail" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ConfirmAdMail" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Password" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ConfirmPasswd" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Tuteur" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="Tutoré" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="idUser"/>
+      <exported-key name="fk_Activation_User1" table="Activation" schema="" catalog="bdd_youri" columns="User_idUser"/>
+      <exported-key name="fk_Message_User1" table="Message" schema="" catalog="bdd_youri" columns="User_idUser"/>
+      <exported-key name="fk_Tuteur_User1" table="Tuteur" schema="" catalog="bdd_youri" columns="User_idUser"/>
+      <exported-key name="fk_Tutore_User1" table="Tutore" schema="" catalog="bdd_youri" columns="User_idUser"/>
+      <exported-key name="fk_Verification_User1" table="Verification" schema="" catalog="bdd_youri" columns="User_idUser"/>
+    </table>
+    <table name="Verification" schema="" catalog="bdd_youri" type="TABLE">
+      <column name="idVerification" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Nom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Prenom" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="User_idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idVerification,User_idUser"/>
+      <foreign-key name="fk_Verification_User1" columns="User_idUser" ref-table="User" ref-schema="" ref-catalog="bdd_youri" ref-columns="idUser" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Verification_User1_idx" unique="false" columns="User_idUser"/>
     </table>
   </data-source>
 </component>

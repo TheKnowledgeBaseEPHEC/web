@@ -20,13 +20,22 @@
                     hautes écoles en Belgique donnés par des anciens élèves du cours ayant une bonne compréhension de la
                     matière.</p>
 
-                <div id="scrollable-dropdown-menu">
+                <!--<div id="scrollable-dropdown-menu">
                     <div class="input-group-btn">
                         <button class="search-btn btn btn-default btn-xl" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
-                        <input class="search-input btn btn-xl search" type="text" placeholder="Cherchez un cours">
+                        <input class="search-input btn btn-xl search form-control select2-hidden-accessible" type="text" placeholder="Cherchez un cours">
                     </div>
+                </div>-->
+                <div class="form-group">
+                    <div class="select2-container select2-container-multi form-control" id="s2id_multiple"><ul class="select2-choices">
+                            <li class="select2-search-field">
+                                <label for="s2id_autogen2" class="select2-offscreen">Select2 multi select</label>
+                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2 select2-input select2-default" id="s2id_autogen2" style="width: 1218px;" placeholder="" aria-activedescendant="select2-result-label-486">
+                            </li>
+                        </ul>
+                    </div
                 </div>
             </div>
         </div>
@@ -119,81 +128,31 @@
 
 <script>
     window.onload = function () {
-        function formatRepo(repo) {
-            if (repo.loading) return repo.text;
-
-            var markup = '<img src="' + repo.owner.avatar_url + '" style="max-width: 100%" />' +
-                repo.full_name +
-                repo.forks_count +
-                repo.stargazers_count;
-
-            if (repo.description) {
-                markup += repo.description;
-            }
-            return markup;
-        }
-
-        function formatRepoSelection(repo) {
-            return repo.full_name || repo.text;
-        }
-
-        function formatRepo(repo) {
-            if (repo.loading) return repo.text;
-
-            var markup = '<div class="clearfix">' +
-                '<div class="col-sm-1">' +
-                '<img src="' + repo.owner.avatar_url + '" style="max-width: 100%" />' +
-                '</div>' +
-                '<div clas="col-sm-10">' +
-                '<div class="clearfix">' +
-                '<div class="col-sm-6">' + repo.full_name + '</div>' +
-                '<div class="col-sm-3"><i class="fa fa-code-fork"></i> ' + repo.forks_count + '</div>' +
-                '<div class="col-sm-2"><i class="fa fa-star"></i> ' + repo.stargazers_count + '</div>' +
-                '</div>';
-
-            if (repo.description) {
-                markup += '<div>' + repo.description + '</div>';
-            }
-
-            markup += '</div></div>';
-
-            return markup;
-        }
-
-        function formatRepoSelection(repo) {
-            return repo.full_name || repo.text;
-        }
-
-        $(document).ready(function () {
-            $(".search").select2({
-                ajax: {
-                    url: "https://api.github.com/search/repositories",
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            q: params.term, // search term
-                            page: params.page
-                        };
-                    },
-                    processResults: function (data, page) {
-                        // parse the results into the format expected by Select2.
-                        // since we are using custom formatting functions we do not need to
-                        // alter the remote JSON data
-                        return {
-                            results: data.items
-                        };
-                    },
-                    cache: true
+        $(".search").select2({
+            ajax: {
+                url: 'http://localhost/cours/data',
+                dataType: 'json',
+                type: "GET",
+                quietMillis: 50,
+                allowClear: false,
+                data: function (term) {
+                    return {
+                        term: term
+                    };
                 },
-                escapeMarkup: function (markup) {
-                    return markup;
-                }, // let our custom formatter work
-                minimumInputLength: 1,
-                templateResult: formatRepo, // omitted for brevity, see the source of this page
-                templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-
-            });
+                results: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                id: item.idEcole,
+                                text: item.NomEcole,
+                                image: item.Image,
+                                email: item.AdEmail
+                            }
+                        })
+                    };
+                }
+            }
         });
     }
 </script>

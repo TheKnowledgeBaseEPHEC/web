@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="146261282">
+  <component name="DataSourceManagerImpl" format="xml" hash="907250014">
     <data-source source="LOCAL" name="MySQL - bdd_youri@theknowledgebase.be" uuid="145fe6cf-d690-41ec-9c1f-6f90079efa88">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -15,7 +15,7 @@
       </driver-properties>
       <libraries>
         <library>
-          <url>file://$USER_HOME$/Downloads/mysql-connector-java-5.1.34-bin.jar</url>
+          <url>file://$USER_HOME$/PhpstormProjects/mysql-connector-java-5.1.34-bin.jar</url>
         </library>
       </libraries>
     </data-source>

@@ -1,5 +1,13 @@
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1>Knowledge Base</h1>
+        </div>
+    </div>
+</header>
+
 <section class="bg-primary" id="error">
     <div class="container">
-        <p class="text-faded">User not found.</p>
+        <p class="404 text-faded">User not found.</p>
     </div>
 </section>

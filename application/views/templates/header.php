@@ -27,6 +27,7 @@
 
     <!-- select2 css -->
     <link rel="stylesheet" href="/js/select2-3.5.4/select2.css" type="text/css">
+    <link rel="stylesheet" href="/css/select2-bootstrap.min.css" type="text/css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/favicon.png" />

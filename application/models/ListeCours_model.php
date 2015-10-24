@@ -5,7 +5,7 @@
  * Date: 11/10/15
  * Time: 21:05
  */
-class Listecours_model extends CI_Model
+class ListeCours_model extends CI_Model
 {
     public function __construct()
     {

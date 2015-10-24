@@ -14,7 +14,7 @@ class ListeCours extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->model('listecours_model', 'mod');
+        $this->load->model('ListeCours_model', 'mod');
     }
 
     public function index()
@@ -28,9 +28,7 @@ class ListeCours extends CI_Controller {
 
     public function get()
     {
-        $data = $this->mod->get_data();
-
         header('Content-Type: application/json');
-        echo json_encode($data);
+        print json_encode($this->mod->get_data(), JSON_PRETTY_PRINT);
     }
 }
