@@ -3,7 +3,7 @@
         <div class="header-content-inner">
             <h1>Knowledge Base</h1>
 
-            <h2>trouvez des tutorats !</h2>
+            <h2>trouvez des tutorats</h2>
             <hr>
             <a href="#about" class="btn btn-primary btn-xl page-scroll">Plus d'informations</a>
         </div>
@@ -21,7 +21,7 @@
                     matière.</p>
 
                     <div class="input-group select2-bootstrap-append">
-                            <input type="hidden" class="search form-control select2-multiple" placeholder="" multiple>
+                            <input type="hidden" class="search form-control" placeholder="" multiple>
                             <span class="input-group-btn">
                                 <button class="btn btn-default btn-xl" type="button" data-select2-open="multi-append">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -121,13 +121,13 @@
 <script>
     window.onload = function () {
         $(".search").select2({
-            placeholder: 'Chercher un cours...',
+            placeholder: 'Cherchez votre université',
             width: '100%',
             allowClear: true,
-            multiple: true,
+            multiple: false,
             theme: "classic",
             ajax: {
-                url: 'http://localhost/cours/data',
+                url: window.location.href + '/fac/data',
                 dataType: 'json',
                 type: "GET",
                 data: function (term) {
@@ -142,7 +142,8 @@
                                 id: item.idEcole,
                                 text: item.NomEcole,
                                 image: item.Image,
-                                email: item.AdEmail
+                                email: item.AdEmail,
+                                slug: item.slug
                             }
                         })
                     };

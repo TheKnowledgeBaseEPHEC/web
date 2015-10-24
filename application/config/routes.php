@@ -51,8 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['about'] = 'about';
 
-$route['cours'] = 'ListeCours';
-$route['cours/data'] = 'ListeCours/get';
+$route['fac'] = 'Fac';
+$route['fac/(:any)'] = 'Fac/view/$1';
+$route['fac/data'] = 'Fac/get';
 
 $route['contact'] = 'contact';
 

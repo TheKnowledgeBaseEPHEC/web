@@ -15,7 +15,6 @@ class Profile_model extends CI_Model
 
     public function get_data($user_id = NULL)
     {
-        //if ($user_id = NULL)
         if ($user_id != NULL)
             $query = $this->db->get_where('User', array('idUser' => $user_id));
         else

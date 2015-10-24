@@ -63,7 +63,7 @@
                     <a class="page-scroll" href="/about">A propos</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="/cours">Cours</a>
+                    <a class="page-scroll" href="/fac">Facultés</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/contact">Contact</a>
