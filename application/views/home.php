@@ -23,8 +23,8 @@
                     <div class="input-group select2-bootstrap-append">
                             <input type="hidden" class="search form-control" placeholder="" multiple>
                             <span class="input-group-btn">
-                                <button class="btn btn-default btn-xl" type="button" data-select2-open="multi-append">
-                                    <span class="glyphicon glyphicon-search"></span>
+                                <button class="btn btn-default btn-xl search-button" type="button" data-select2-open="multi-append">
+                                    <i class="fa fa-search"></i>
                                 </button>
 				            </span>
                     </div>
@@ -149,6 +149,10 @@
                     };
                 }
             }
+        });
+        $(".search-button").on('click',function(e){
+            var result = window.location.href + 'fac/' + $('.search').select2('data').slug;
+            window.location.href = result;
         });
     }
 </script>
