@@ -150,6 +150,8 @@
                 }
             }
         });
+
+        /* Submit search */
         $(".search-button").on('click',function(e){
             var result = window.location.href + 'fac/' + $('.search').select2('data').slug;
             window.location.href = result;

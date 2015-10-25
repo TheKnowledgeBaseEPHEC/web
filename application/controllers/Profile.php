@@ -27,8 +27,8 @@ class Profile extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function view($user_id = NULL) {
-        $data['user_data'] = $this->mod->get_data($user_id);
+    public function view($slug = NULL) {
+        $data['user_data'] = $this->mod->get_data($slug);
 
         if (empty($data['user_data']))
         {

@@ -13,10 +13,10 @@ class Profile_model extends CI_Model
         $this->load->database();
     }
 
-    public function get_data($user_id = NULL)
+    public function get_data($slug = NULL)
     {
-        if ($user_id != NULL)
-            $query = $this->db->get_where('User', array('idUser' => $user_id));
+        if ($slug != NULL)
+            $query = $this->db->get_where('User', array('slug' => $slug));
         else
             $query = $this->db->get('User');
 
