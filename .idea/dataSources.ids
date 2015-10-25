@@ -20,13 +20,11 @@
       <column name="idCours" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="idTutore" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="IntituleCours" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Tuteur_idTuteur" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Fac_Ecole_idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="idCours,Tuteur_idTuteur,Fac_Ecole_idEcole"/>
-      <foreign-key name="fk_Cours_Tuteur1" columns="Tuteur_idTuteur" ref-table="Tuteur" ref-schema="" ref-catalog="bdd_youri" ref-columns="idTuteur" update-rule="3" delete-rule="3" deferrability="2"/>
+      <column name="slug" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idCours,Fac_Ecole_idEcole"/>
       <foreign-key name="fk_Cours_Fac1" columns="Fac_Ecole_idEcole" ref-table="Fac" ref-schema="" ref-catalog="bdd_youri" ref-columns="Ecole_idEcole" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_Cours_Fac1_idx" unique="false" columns="Fac_Ecole_idEcole"/>
-      <index name="fk_Cours_Tuteur1_idx" unique="false" columns="Tuteur_idTuteur"/>
     </table>
     <table name="Ecole" schema="" catalog="bdd_youri" type="TABLE">
       <column name="idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -95,7 +93,6 @@
       <column name="User_idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="idTuteur,User_idUser"/>
       <foreign-key name="fk_Tuteur_User1" columns="User_idUser" ref-table="User" ref-schema="" ref-catalog="bdd_youri" ref-columns="idUser" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_Cours_Tuteur1" table="Cours" schema="" catalog="bdd_youri" columns="Tuteur_idTuteur"/>
       <index name="fk_Tuteur_User1_idx" unique="false" columns="User_idUser"/>
     </table>
     <table name="Tutore" schema="" catalog="bdd_youri" type="TABLE">
@@ -119,6 +116,7 @@
       <column name="ConfirmPasswd" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
       <column name="Tuteur" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="Tutoré" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="slug" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idUser"/>
       <exported-key name="fk_Activation_User1" table="Activation" schema="" catalog="bdd_youri" columns="User_idUser"/>
       <exported-key name="fk_Message_User1" table="Message" schema="" catalog="bdd_youri" columns="User_idUser"/>

@@ -23,4 +23,15 @@ class Fac_model extends CI_Model
             return $query->result();
         }
     }
+
+    public function get_cours($slug = null)
+    {
+        if ($slug != null) {
+            $query = $this->db->get_where('Cours', array('slug' => $slug));
+            return $query->row();
+        } else {
+            $query = $this->db->get('Cours');
+            return $query->result();
+        }
+    }
 }

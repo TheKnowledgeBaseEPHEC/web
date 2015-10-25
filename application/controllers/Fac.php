@@ -14,12 +14,13 @@ class Fac extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->model('Fac_model', 'mod');
+        $this->load->library('Helpers', 'helpers');
+        $this->load->model('Fac_model', 'fac');
     }
 
     public function index()
     {
-        $data['ecoles_data'] = $this->mod->get_data();
+        $data['ecoles_data'] = $this->fac->get_data();
 
         $this->load->view('templates/header');
         $this->load->view('fac', $data);
@@ -29,15 +30,16 @@ class Fac extends CI_Controller {
     public function get()
     {
         header('Content-Type: application/json');
-        print json_encode($this->mod->get_data(), JSON_PRETTY_PRINT);
+        print json_encode($this->fac->get_data(), JSON_PRETTY_PRINT);
     }
 
     public function view($slug = null)
     {
-        $data['fac_data'] = $this->mod->get_data($slug);
+        $data['fac_data'] = $this->fac->get_data($slug);
 
         if (empty($data['fac_data'])) {
-            $this->ecole_not_found();
+            $this->helpers->not_found('Fac');
+            print 'test...';
             return;
         }
 
@@ -46,10 +48,16 @@ class Fac extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    // XXX
-    public function ecole_not_found() {
+    public function cours($slug = null) {
+        $data['cours_data'] = $this->fac->get_cours($slug);
+
+        if (empty($data['fac_data'])) {
+            $this->helpers->not_found('Cours');
+            return;
+        }
+
         $this->load->view('templates/header');
-        $this->load->view('errors/user_not_found');
+        $this->load->view('cours', data);
         $this->load->view('templates/footer');
     }
 }

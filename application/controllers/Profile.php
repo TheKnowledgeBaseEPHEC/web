@@ -15,12 +15,12 @@ class Profile extends CI_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->helper('url_helper');
-        $this->load->model('profile_model', 'mod');
+        $this->load->model('profile_model', 'profile');
     }
 
     public function index()
     {
-        $data['user_data'] = $this->mod->get_data();
+        $data['user_data'] = $this->profile->get_data();
 
         $this->load->view('templates/header');
         $this->load->view('profile', $data);
@@ -28,7 +28,7 @@ class Profile extends CI_Controller {
     }
 
     public function view($slug = NULL) {
-        $data['user_data'] = $this->mod->get_data($slug);
+        $data['user_data'] = $this->profile->get_data($slug);
 
         if (empty($data['user_data']))
         {
