@@ -13,7 +13,7 @@ class Fac_model extends CI_Model
         $this->load->database();
     }
 
-    public function get_data($slug = null)
+    public function get_fac($slug = null)
     {
         if ($slug != null) {
             $query = $this->db->get_where('Ecole', array('slug' => $slug));

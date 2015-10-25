@@ -15,6 +15,7 @@ class Profile extends CI_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->helper('url_helper');
+        $this->load->helpers('common_helper');
         $this->load->model('profile_model', 'profile');
     }
 
@@ -32,7 +33,7 @@ class Profile extends CI_Controller {
 
         if (empty($data['user_data']))
         {
-            $this->user_not_found();
+            not_found('Utilisateur');
             return;
         }
 

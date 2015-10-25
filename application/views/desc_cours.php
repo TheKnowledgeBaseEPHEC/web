@@ -3,7 +3,7 @@
         <div class="header-content-inner">
             <a class="page-scroll white-link" href="#univ">
                 <h1>
-                    Cours
+                    <?php print $cours_data->IntituleCours ?>
                 </h1>
             </a>
         </div>
@@ -15,12 +15,9 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 text-center">
                 <?php
-                foreach ($cours_data as $cours) {
-                    print '<div class="row">';
-                    print $cours->IntituleCours;
-                    print '</div>';
-                    print '<hr class="light">';
-                }
+                print '<div class="row">';
+                print $cours_data->idCours;
+                print '</div>';
                 ?>
             </div>
         </div>

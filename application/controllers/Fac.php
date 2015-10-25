@@ -14,13 +14,13 @@ class Fac extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->library('Helpers', 'helpers');
+        $this->load->helpers('common_helper');
         $this->load->model('Fac_model', 'fac');
     }
 
     public function index()
     {
-        $data['ecoles_data'] = $this->fac->get_data();
+        $data['ecoles_data'] = $this->fac->get_fac();
 
         $this->load->view('templates/header');
         $this->load->view('fac', $data);
@@ -30,34 +30,38 @@ class Fac extends CI_Controller {
     public function get()
     {
         header('Content-Type: application/json');
-        print json_encode($this->fac->get_data(), JSON_PRETTY_PRINT);
+        print json_encode($this->fac->get_fac(), JSON_PRETTY_PRINT);
     }
 
     public function view($slug = null)
     {
-        $data['fac_data'] = $this->fac->get_data($slug);
+        $data['fac_data'] = $this->fac->get_fac($slug);
 
         if (empty($data['fac_data'])) {
-            $this->helpers->not_found('Fac');
-            print 'test...';
+            not_found('Faculté');
             return;
         }
 
         $this->load->view('templates/header');
-        $this->load->view('cours', $data);
+        $this->load->view('desc_fac', $data);
         $this->load->view('templates/footer');
     }
 
     public function cours($slug = null) {
         $data['cours_data'] = $this->fac->get_cours($slug);
 
-        if (empty($data['fac_data'])) {
-            $this->helpers->not_found('Cours');
-            return;
+        $this->load->view('templates/header');
+
+        if ($slug == null) {
+            $this->load->view('cours', $data);
+        } else {
+            if (empty($data['cours_data'])) {
+                not_found('Cours');
+                return;
+            }
+            $this->load->view('desc_cours', $data);
         }
 
-        $this->load->view('templates/header');
-        $this->load->view('cours', data);
         $this->load->view('templates/footer');
     }
 }

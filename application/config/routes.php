@@ -54,10 +54,12 @@ $route['about'] = 'about';
 $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
 $route['fac/data'] = 'Fac/get';
+$route['cours'] = 'Fac/cours';
+$route['cours/(:any)'] = 'Fac/cours/$1';
 
 $route['contact'] = 'contact';
 
-$route['profile'] = 'profile';
-$route['profile/(:any)'] = 'profile/view/$1';
+$route['profil'] = 'profile';
+$route['profil/(:any)'] = 'profile/view/$1';
 
 $route['default_controller'] = 'home';
