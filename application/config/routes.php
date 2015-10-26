@@ -62,4 +62,5 @@ $route['contact'] = 'contact';
 $route['profil'] = 'profile';
 $route['profil/(:any)'] = 'profile/view/$1';
 
+$route['data'] = 'Home/data';
 $route['default_controller'] = 'home';

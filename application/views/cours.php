@@ -23,17 +23,18 @@
                 ksort($arr, SORT_STRING);
 
                 $i = 0;
+                $c = count($arr);
                 foreach ($arr as $facs) {
                     print '<h2><i class="fa fa-graduation-cap"></i> ' . $facs[$i]->NomEcole . '</h2>';
                     print '<ul class="list-group">';
                     foreach ($facs as $cours) {
-                        print '<li class="list-group-item cours-' . $cours->idCours . '">';
+                        print '<li class="list-group-item">';
                         print '<a href="/' . uri_string() . '/' . $cours->slug . '">' . $cours->IntituleCours . '</a>';
                         print '</li>';
                         $i++;
                     }
                     print '</ul>';
-                    if ($i <= count($arr)) {
+                    if ($i <= $c) {
                         print '<hr class="light">';
                     }
                 }

@@ -17,7 +17,7 @@
 
 <footer class="bg-dark" id="footer">
     <div class="container text-center">
-        <p>2015 Website by The KnowledgeBase team at EPHEC.</p>
+        <p>2015 EPHEC Knowledgebase Team <i class="fa fa-copyright"></i>.</p>
     </div>
 </footer>
 </html
