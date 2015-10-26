@@ -8,33 +8,33 @@
 <section class="bg-primary" id="inscription">
     <div class="container">
         <div class="row">
+            <head>
+                <title>My Form</title>
+            </head>
+            <body>
 
-            <?php
-            echo form_open('form/valid_form');
-            echo form_label('inscription', 'inscription');
-            ?>
+            <?php echo validation_errors(); ?>
 
-            <h5>Nom d'utilisateur</h5>
+            <?php echo form_open('form'); ?>
+
+            <h5>Username</h5>
             <input type="text" name="username" value="" size="50" />
 
-            <h5>Mot de passe</h5>
+            <h5>Password</h5>
             <input type="text" name="password" value="" size="50" />
 
-            <h5>Confirmation du mot de passe</h5>
+            <h5>Password Confirm</h5>
             <input type="text" name="passconf" value="" size="50" />
 
-            <h5>Adresse email</h5>
+            <h5>Email Address</h5>
             <input type="text" name="email" value="" size="50" />
 
-            <p></p><div><input type="submit" value="Submit" /></div></p>
+            <div><input type="submit" value="Submit" /></div>
 
             </form>
-            <?php
-            print '<div class="row">';
-            //print 'User : ' . $user_data->Prenom . ' ' . $user_data->Nom;
-            var_dump($user_data);
-            print '</div>';
-            ?>
+
+            </body>
+        </div>
         </div>
     </div>
 </section>

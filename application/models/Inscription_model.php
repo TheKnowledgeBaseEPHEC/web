@@ -27,4 +27,14 @@ class Inscription_model extends CI_Model
              echo $row->Nom;
          }*/
     }
+    public function userLogin ($email, $mdp){
+        return $this->db->select('email_user,mdp_user')
+            ->from($this->user)
+            ->where('Nom', $email)
+            ->where('Prenom', $mdp)
+            ->get()
+            ->result();
+    }
+
+
 }

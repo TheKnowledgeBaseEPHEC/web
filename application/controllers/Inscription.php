@@ -1,33 +1,35 @@
 <?php
 
-class Inscription extends CI_Controller
-{
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->database();
-        $this->load->helper('url_helper');
-        $this->load->model('Inscription_model', 'inscription');
-    }
+class Inscription extends CI_Controller {
 
     public function index()
     {
-        $data['user_data'] = $this->inscription->get_data($slug);
-
-        if (empty($data['user_data']))
-        {
-            $this->user_not_found();
-            return;
-        }
-
         $this->load->view('templates/header');
-        $this->load->view('inscription', $data);
+        $this->load->view('inscription');
         $this->load->view('templates/footer');
+
+
     }
-
-    public function user_not_found() {
+    public function view (){
         $this->load->view('templates/header');
-        $this->load->view('errors/user_not_found');
+        $this->load->helper(array('form', 'url'));
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required',
+            array('required' => 'You must provide a %s.')
+        );
+        $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('successInscription');
+        }
+        else {
+            $this->load->view('formsuccess');
+        }
         $this->load->view('templates/footer');
+
     }
 }
