@@ -61,6 +61,7 @@
 </section>
 
 <script>
+    /* Smooth scrolling to divs and top */
     window.onload = function () {
         $('a[href^="#"]').on('click',function (e) {
             e.preventDefault();
@@ -69,7 +70,7 @@
             var $target = $(target);
 
             $('html, body').stop().animate({
-                'scroll-top': $target.offset().top
+                'scroll-top': $target.offset().top - '60'
             }, 900, 'swing', function () {
                 window.location.hash = target;
             });
