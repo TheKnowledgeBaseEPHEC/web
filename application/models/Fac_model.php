@@ -30,7 +30,7 @@ class Fac_model extends CI_Model
             $query = $this->db->get_Where('Cours', array('slug' => $slug));
             return $query->row();
         } else {
-            $this->db->select('C.*, E.NomEcole, E.idEcole');
+            $this->db->select('C.*, E.NomEcole, E.idEcole, E.slug as eslug');
             $this->db->from('Cours as C, Ecole as E');
             $this->db->where('E.idEcole = C.Fac_Ecole_idEcole');
             $query = $this->db->get();

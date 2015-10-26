@@ -49,23 +49,23 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-user-plus wow bounceIn text-primary"></i>
+                    <i class="fa fa-5x fa-user-plus wow bounceIn text-primary"></i>
 
                     <p class="text-muted nbusers">Déjà x utilisateurs!</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-graduation-cap wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                    <i class="fa fa-5x fa-graduation-cap wow bounceIn text-primary" data-wow-delay=".1s"></i>
 
-                    <p class="text-muted nbcours">x Cours dans y facultés disponibles!</p>
+                    <p class="text-muted nbcours">x cours dans y facultés disponibles!</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                    <i class="fa fa-5x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
 
-                    <p class="text-muted">Par l'équipe KnowledgeBase de l'EPHEC!</p>
+                    <p class="text-muted love">Par l'équipe KnowledgeBase de l'EPHEC!</p>
                 </div>
             </div>
         </div>
@@ -111,10 +111,10 @@
             url: window.location.href + '/data',
             dataType: 'json',
             success: function (data) {
-                $('.nbusers').contents().filter(function() {
+                $('.nbusers').contents().filter(function () {
                     this.textContent = this.textContent.replace('x', data[0].nbusers);
                 });
-                $('.nbcours').contents().filter(function() {
+                $('.nbcours').contents().filter(function () {
                     this.textContent = this.textContent.replace('x', data[0].nbfacs);
                     this.textContent = this.textContent.replace('y', data[0].nbcours);
                 })
@@ -123,7 +123,7 @@
 
         /* Submit search */
         $(".search-button").on('click', function (e) {
-            var result = window.location.href + 'fac/' + $('.search').select2('data').slug;
+            var result = window.location.href + 'cours#' + $('.search').select2('data').slug;
             window.location.href = result;
         });
     }

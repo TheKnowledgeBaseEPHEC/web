@@ -629,3 +629,7 @@ ul.list-group li a:hover, ul.list-group li a:focus {
     text-decoration: none;
     color: #eb3812;
 }
+
+p.text-muted.nbusers, p.text-muted.nbcours, p.text-muted.love {
+    margin-top: 30px;
+}

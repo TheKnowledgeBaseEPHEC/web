@@ -22,9 +22,25 @@
                 }
                 ksort($arr, SORT_STRING);
 
+                /* Fac list with links */
+                $i = 0;
+                print '<ul class="list-group">';
+                foreach ($arr as $item) {
+                    print '<li class="list-group-item">';
+                    print '<a class="scroll-link white-link" href="#' . $item[$i]->eslug . '">'. $item[$i]->NomEcole . '</a>';
+                    print '</li>';
+                    foreach ($item as $subitem) {
+                        $i++;
+                    }
+                }
+                print '</ul>';
+                print '<hr class="light">';
+
+                /* Cours grouped by Facs */
                 $i = 0;
                 $c = count($arr);
                 foreach ($arr as $facs) {
+                    print '<div id="' . $facs[$i]->eslug . '" class="page-section">';
                     print '<h2><i class="fa fa-graduation-cap"></i> ' . $facs[$i]->NomEcole . '</h2>';
                     print '<ul class="list-group">';
                     foreach ($facs as $cours) {
@@ -34,12 +50,35 @@
                         $i++;
                     }
                     print '</ul>';
-                    if ($i <= $c) {
-                        print '<hr class="light">';
-                    }
+                    print '</div>';
+                    print '<hr class="light">';
                 }
+                print '<a class="btn btn-primary btn-xl scroll-top">Remonter</a>';
                 ?>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    window.onload = function () {
+        $('a[href^="#"]').on('click',function (e) {
+            e.preventDefault();
+
+            var target = this.hash;
+            var $target = $(target);
+
+            $('html, body').stop().animate({
+                'scroll-top': $target.offset().top
+            }, 900, 'swing', function () {
+                window.location.hash = target;
+            });
+        });
+        $('.scroll-top').on('click', function() {
+            $("html, body").animate(
+                {
+                    scrollTop: 0
+                }, "slow");
+        });
+    }
+</script>
