@@ -76,8 +76,8 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> 'mysql:host=theknowledgebase.be;dbname=bdd_youri',
 	'hostname' => '',
-	'username' => 'youri',
-	'password' => 'aorisetn2oien334a-0-0_)_qwfp',
+	'username' => 'tkb',
+	'password' => 'tkbpwd',
 	'database' => '',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',

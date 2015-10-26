@@ -24,7 +24,7 @@
 
                 $i = 0;
                 foreach ($arr as $facs) {
-                    print '<h2>' . $facs[$i]->NomEcole . '</h2>';
+                    print '<h2><i class="fa fa-graduation-cap"></i> ' . $facs[$i]->NomEcole . '</h2>';
                     print '<ul class="list-group">';
                     foreach ($facs as $cours) {
                         print '<li class="list-group-item cours-' . $cours->idCours . '">';
@@ -33,7 +33,9 @@
                         $i++;
                     }
                     print '</ul>';
-                    print '<hr class="light">';
+                    if ($i <= count($arr)) {
+                        print '<hr class="light">';
+                    }
                 }
                 ?>
             </div>
