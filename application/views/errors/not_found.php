@@ -8,6 +8,6 @@
 
 <section class="bg-primary" id="error">
     <div class="container">
-        <p class="404 text-faded"><?php print $message ?> non existant.</p>
+        <p class="404 text-faded"><?php print $message ?></p>
     </div>
 </section>

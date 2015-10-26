@@ -14,6 +14,7 @@ class Fac extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
+        $this->load->helper('url_helper');
         $this->load->helpers('common_helper');
         $this->load->model('Fac_model', 'fac');
     }
@@ -38,7 +39,7 @@ class Fac extends CI_Controller {
         $data['fac_data'] = $this->fac->get_fac($slug);
 
         if (empty($data['fac_data'])) {
-            not_found('Faculté');
+            not_found($this->lang->line('fac_not_found'));
             return;
         }
 
@@ -52,13 +53,18 @@ class Fac extends CI_Controller {
 
         $this->load->view('templates/header');
 
+        if (empty($data['cours_data'])) {
+            if ($slug == null) {
+                not_found($this->lang->line('no_cours'));
+            } else {
+                not_found($this->lang->line('cours_not_found'));
+            }
+            return;
+        }
+
         if ($slug == null) {
             $this->load->view('cours', $data);
         } else {
-            if (empty($data['cours_data'])) {
-                not_found('Cours');
-                return;
-            }
             $this->load->view('desc_cours', $data);
         }
 

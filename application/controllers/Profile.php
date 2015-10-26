@@ -33,18 +33,12 @@ class Profile extends CI_Controller {
 
         if (empty($data['user_data']))
         {
-            not_found('Utilisateur');
+            not_found($this->lang->line('user_not_found'));
             return;
         }
 
         $this->load->view('templates/header');
         $this->load->view('profile', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function user_not_found() {
-        $this->load->view('templates/header');
-        $this->load->view('errors/user_not_found');
         $this->load->view('templates/footer');
     }
 }

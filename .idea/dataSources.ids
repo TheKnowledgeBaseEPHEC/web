@@ -20,10 +20,9 @@
       <column name="idCours" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="idTutore" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="IntituleCours" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Fac_Ecole_idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Fac_Ecole_idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="slug" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idCours,Fac_Ecole_idEcole"/>
-      <foreign-key name="fk_Cours_Fac1" columns="Fac_Ecole_idEcole" ref-table="Fac" ref-schema="" ref-catalog="bdd_youri" ref-columns="Ecole_idEcole" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_Cours_Fac1_idx" unique="false" columns="Fac_Ecole_idEcole"/>
     </table>
     <table name="Ecole" schema="" catalog="bdd_youri" type="TABLE">
@@ -42,7 +41,6 @@
       <column name="Ecole_idEcole" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="idFac,Ecole_idEcole"/>
       <foreign-key name="fk_Fac_Ecole1" columns="Ecole_idEcole" ref-table="Ecole" ref-schema="" ref-catalog="bdd_youri" ref-columns="idEcole" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_Cours_Fac1" table="Cours" schema="" catalog="bdd_youri" columns="Fac_Ecole_idEcole"/>
       <index name="fk_Fac_Ecole1_idx" unique="false" columns="Ecole_idEcole"/>
     </table>
     <table name="Message" schema="" catalog="bdd_youri" type="TABLE">
