@@ -51,6 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['about'] = 'about';
 
+$route['testform'] = 'Testform';
+$route['testsubmit'] = 'Testform/submit';
+
 $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
 $route['fac/data'] = 'Fac/get';

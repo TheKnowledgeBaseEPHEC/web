@@ -115,8 +115,8 @@
                     this.textContent = this.textContent.replace('x', data[0].nbusers);
                 });
                 $('.nbcours').contents().filter(function () {
-                    this.textContent = this.textContent.replace('x', data[0].nbfacs);
-                    this.textContent = this.textContent.replace('y', data[0].nbcours);
+                    this.textContent = this.textContent.replace('x', data[0].nbcours);
+                    this.textContent = this.textContent.replace('y', data[0].nbfacs);
                 })
             }
         });

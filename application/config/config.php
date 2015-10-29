@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'youri.theknowledgebase.be';
+$config['base_url'] = 'http://youri.theknowledgebase.be';
 
 /*
 |--------------------------------------------------------------------------
