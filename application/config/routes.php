@@ -51,7 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['about'] = 'about';
 $route['inscription'] = 'Inscription';
-$route['youri.theknowledgebase.be/form'] = 'Inscription/view';
+$route['submit'] = 'Inscription/registration/';
+$route['login'] = 'Inscription/login';
+$route['inscrlogin'] = 'Profil/login';
 
 $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
