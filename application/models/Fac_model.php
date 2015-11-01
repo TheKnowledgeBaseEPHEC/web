@@ -24,6 +24,14 @@ class Fac_model extends CI_Model
         }
     }
 
+    public function search_fac($term = null) {
+        if ($term != null) {
+            $this->db->like('NomEcole', $term);
+            $query = $this->db->get('Ecole');
+            return $query->result();
+        }
+    }
+
     public function get_cours($slug = null)
     {
         if ($slug != null) {

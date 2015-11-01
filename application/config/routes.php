@@ -60,7 +60,7 @@ $route['testsubmit'] = 'Testform/submit';
 
 $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
-$route['fac/data'] = 'Fac/get';
+$route['facdata'] = 'Fac/get';
 $route['cours'] = 'Fac/cours';
 $route['cours/(:any)'] = 'Fac/cours/$1';
 

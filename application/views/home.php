@@ -82,12 +82,13 @@
             multiple: false,
             theme: "classic",
             ajax: {
-                url: window.location.href + '/fac/data',
+                url: window.location.href + 'facdata',
                 dataType: 'json',
                 type: "GET",
+                delay: 250,
                 data: function (term) {
                     return {
-                        term: term
+                        q: term
                     };
                 },
                 results: function (data) {
@@ -103,12 +104,13 @@
                         })
                     };
                 }
-            }
+            },
+            cache: true
         });
 
         /* Fill from misc data */
         $.ajax({
-            url: window.location.href + '/data',
+            url: window.location.href + 'data',
             dataType: 'json',
             success: function (data) {
                 $('.nbusers').contents().filter(function () {

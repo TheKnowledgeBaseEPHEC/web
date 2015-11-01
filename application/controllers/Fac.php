@@ -30,8 +30,13 @@ class Fac extends CI_Controller {
 
     public function get()
     {
+        $q = $this->input->get('q', TRUE);
         header('Content-Type: application/json');
-        print json_encode($this->fac->get_fac(), JSON_PRETTY_PRINT);
+        if (isset($q) && strlen($q)) {
+            print json_encode($this->fac->search_fac($q), JSON_PRETTY_PRINT);
+        } else {
+            print json_encode($this->fac->get_fac(), JSON_PRETTY_PRINT);
+        }
     }
 
     public function view($slug = null)
