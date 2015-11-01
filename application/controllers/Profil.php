@@ -6,10 +6,11 @@ class Profil extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('url');
+        $this->load->helper('form');
     }
     public function index(){
         $this->load->view('templates/header');
-        $this->load->view("profil.php");
+        $this->load->view("profil");
         $this->load->view('templates/footer');
     }
     public function login(){

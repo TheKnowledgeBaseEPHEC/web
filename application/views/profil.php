@@ -17,7 +17,7 @@
                 </div><!--<div id="content">-->
                 <div class="content">
                     <?php //print_r($this->input->post());?>
-                    <?php //echo $this->session->userdata('username'); ?>
+                    <p><b>Bienvenue sur votre profil </b><?php echo $this->session->userdata('username'); ?></p>
                 </div><!--<div class="content">-->
             </div>
         </div>

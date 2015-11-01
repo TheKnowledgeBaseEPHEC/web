@@ -51,20 +51,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['about'] = 'about';
 $route['inscription'] = 'Inscription';
-$route['submit'] = 'Inscription/registration/';
+//$route['submit'] = 'Inscription/registration/';
 $route['login'] = 'Inscription/login';
 $route['inscrlogin'] = 'Profil/login';
-
-$route['testform'] = 'Testform';
-$route['testsubmit'] = 'Testform/submit';
-
+$route['myform'] = 'Form';
+$route['submit'] = 'Inscription/registration';
+$route['thanks_user'] = 'Thanks_user/index';
 $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
 $route['fac/data'] = 'Fac/get';
-$route['cours'] = 'Fac/cours';
-$route['cours/(:any)'] = 'Fac/cours/$1';
+$route['thanks_user/inscrlogin'] = 'Inscription/login';
 
 $route['contact'] = 'contact';
 
-$route['data'] = 'Home/data';
+$route['profile'] = 'profile';
+$route['profile/(:any)'] = 'profile/view/$1';
+
 $route['default_controller'] = 'home';

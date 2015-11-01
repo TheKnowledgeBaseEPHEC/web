@@ -8,6 +8,8 @@ class Form extends CI_Controller {
         $this->load->helper(array('form', 'url'));
 
         $this->load->library('form_validation');
+        echo $this->input->post('username');
+        $this->form_validation->set_rules('username', 'Username', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -15,7 +17,8 @@ class Form extends CI_Controller {
         }
         else
         {
-            $this->load->view('formsuccess');
+            echo "success" ;
+            //$this->load->view('formsuccess');
         }
     }
 }
