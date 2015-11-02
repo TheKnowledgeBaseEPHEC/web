@@ -17,7 +17,8 @@
                 </div><!--<div id="content">-->
                 <div class="content">
                     <?php //print_r($this->input->post());?>
-                    <p><b>Bienvenue sur votre profil </b><?php echo $this->session->userdata('username'); ?></p>
+                    <p><b>Bienvenue sur votre profil </b><?php echo $this->session->userdata('user_data')['slug']; ?></p>
+                    <p></p><a class="btn btn-default formsubmit" href="/logout">Déloguer</a></p>
                 </div><!--<div class="content">-->
             </div>
         </div>

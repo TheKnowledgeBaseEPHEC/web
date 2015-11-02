@@ -1593,4 +1593,9 @@ class CI_Form_validation {
 		return $this;
 	}
 
+	// XXX should extend form validation
+	public function get_error_array() {
+		return $this->_error_array;
+	}
+
 }

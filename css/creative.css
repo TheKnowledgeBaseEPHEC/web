@@ -633,3 +633,28 @@ ul.list-group li a:hover, ul.list-group li a:focus {
 p.text-muted.nbusers, p.text-muted.nbcours, p.text-muted.love {
     margin-top: 30px;
 }
+
+/* large 100% width button */
+input.formsubmit {
+    width: 100%;
+    color: #fff;
+    background: #f05f40;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    transition: color .3s, background .3s;
+}
+
+input.formsubmit:hover, input.formsubmit:focus {
+    color: #f05f40;
+    background: #fff;
+}
+
+label.error {
+    font-size: 10px;
+    background-color: white;
+    padding: 3px 8px;
+    color: #f05f40;
+    border-radius: 4px;
+    margin-top: 7px;
+}

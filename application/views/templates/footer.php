@@ -9,6 +9,8 @@
 <script src="/js/jquery.fittext.js"></script>
 <script src="/js/wow.min.js"></script>
 <script src="/js/select2-3.5.4/select2.js"></script>
+<script src="/js/jquery.validate.min.js" ></script>
+
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/creative.js"></script>
@@ -20,4 +22,4 @@
         <p>2015 EPHEC Knowledgebase Team <i class="fa fa-copyright"></i>.</p>
     </div>
 </footer>
-</html
+</html>

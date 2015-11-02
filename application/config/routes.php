@@ -52,7 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['about'] = 'about';
 $route['inscription'] = 'Inscription';
 //$route['submit'] = 'Inscription/registration/';
-$route['login'] = 'Inscription/login';
+$route['login'] = 'Login';
+$route['logout'] = 'Login/logout';
+$route['profil'] = 'Profil';
 $route['inscrlogin'] = 'Profil/login';
 $route['myform'] = 'Form';
 $route['submit'] = 'Inscription/registration';
@@ -66,7 +68,6 @@ $route['thanks_user/inscrlogin'] = 'Inscription/login';
 
 $route['contact'] = 'contact';
 
-$route['profile'] = 'profile';
-$route['profile/(:any)'] = 'profile/view/$1';
+$route['data'] = 'Home/data';
 
 $route['default_controller'] = 'home';

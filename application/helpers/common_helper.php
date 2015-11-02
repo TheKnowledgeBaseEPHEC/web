@@ -12,3 +12,26 @@ if (!function_exists('not_found'))
         $ci->load->view('templates/footer');
     }
 }
+
+
+if (!function_exists('go_back'))
+{
+    function go_back() {
+        print '<script type="text/javascript">'
+            . 'history.go(-1);'
+            . '</script>';
+    }
+}
+
+if (!function_exists('logout'))
+{
+    /* Délogue et renvoie sur la page d'acceuil */
+    function logout() {
+        $CI =& get_instance();
+
+        $CI->session->unset_userdata('user_data');
+        $CI->session->sess_destroy();
+
+        redirect(base_url());
+    }
+}

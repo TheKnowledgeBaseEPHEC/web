@@ -9,19 +9,16 @@
 <section class="bg-primary" id="profile">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-4 col-lg-offset-4">
                 <div id="content">
                     <div class="signup_wrap">
                         <p>
                             <?php
                             print form_open('/login');
                             $data = array(
-                                'name' => 'username',
-                                'id' => 'username',
-                                'placeholder' => 'Nom Utilisateur',
-                                'maxlength' => '100',
-                                'size' => '50',
-                                'style' => 'width:50%',
+                                'name' => 'email',
+                                'id' => 'email',
+                                'placeholder' => 'Adresse email',
                                 'class' => 'form-control',
                             );
                             echo form_input ($data);
@@ -34,9 +31,6 @@
                                 'type' => 'password',
                                 'id' => 'password',
                                 'placeholder' => 'Mot de passe',
-                                'maxlength' => '100',
-                                'size' => '50',
-                                'style' => 'width:50%',
                                 'class' => 'form-control',
                             );
                             echo form_input ($data);
@@ -47,13 +41,12 @@
                             $button = array(
                                 'name' => 'submit',
                                 'value' => 'Valider',
-                                'class' => 'btn btn-default',
+                                'class' => 'formsubmit',
                             );
                             // print form_input($data);
                             print form_submit($button);
                             ?>
                         </p>
-
                     </div><!--<div class="signup_wrap">-->
                 </div><!--<div id="content">-->
                 <div class="content">

@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Profil extends CI_Controller
 {
     public function __construct()
@@ -8,13 +9,18 @@ class Profil extends CI_Controller
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->helper('form');
+        $this->load->helper('common');
     }
-    public function index(){
+
+    // TODO : Si le user est pas logué, montrer msg erreur
+    // voir le profil d'un autre
+    public function index() {
         $this->load->view('templates/header');
         $this->load->view("profil");
         $this->load->view('templates/footer');
     }
-    public function login(){
+
+    public function login() {
         $this->load->view('templates/header');
         $this->load->view("login.php");
         $this->load->view('templates/footer');
