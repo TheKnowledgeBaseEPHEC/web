@@ -19,9 +19,9 @@ class Login_model extends CI_Model
         if (!empty($row)) {
             // XXX ajouter plus
             $newdata = array(
-                'id' => $row->idUser,
-                'slug' => $row->slug,
-                'email' => $row->AdresseMail,
+                'id' => $row[0]->idUser,
+                'slug' => $row[0]->slug,
+                'email' => $row[0]->AdresseMail,
                 'logged_in' => TRUE,
             );
             $this->session->set_userdata('user_data', $newdata);
