@@ -15,7 +15,7 @@ class Login_model extends CI_Model
             ->where('AdresseMail', $email)
             ->where('Password', $password)
             ->get('User');
-        $row = $request->result()[0];
+        $row = $request->result();
         if (!empty($row)) {
             // XXX ajouter plus
             $newdata = array(

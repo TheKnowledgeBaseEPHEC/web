@@ -19,49 +19,57 @@
                                 'value' => 'Se connecter',
                                 'class' => 'btn btn-default formsubmit',
                             );
-                            echo form_submit ($button);
+                            echo form_submit($button);
                             echo '<hr class="light">';
                             echo form_close();
                             ?>
                         </p>
+
                         <p><?php
                             $attributes = array('id' => 'register');
                             print form_open('/submit', $attributes);
 
                             $validation_errors = $this->session->flashdata('validation_errors');
                             if (!empty($validation_errors)) {
-                                $validation_errors_count = count($validation_errors);
-                                $validation_errors_keys = array_keys($validation_errors);
+                                if (is_array($validation_errors)) {
+                                    $validation_errors_count = count($validation_errors);
+                                    $validation_errors_keys = array_keys($validation_errors);
 
-                                for ($i = 0; $i < $validation_errors_count; $i++) {
-                                    echo $validation_errors[$validation_errors_keys[$i]];
+                                    for ($i = 0; $i < $validation_errors_count; $i++) {
+                                        echo $validation_errors[$validation_errors_keys[$i]];
+                                        echo '<hr class="light">';
+                                    }
+                                } else {
+                                    echo $validation_errors;
                                     echo '<hr class="light">';
                                 }
                             }
 
-                            echo form_label ("Nom de famille", "nom");
+                            echo form_label("Nom de famille", "nom");
                             $data = array(
                                 'name' => 'nom',
                                 'id' => 'nom',
                                 'class' => 'form-control',
                                 'required' => 'required'
                             );
-                            echo form_input ($data);
+                            echo form_input($data);
                             ?>
                         </p>
+
                         <p><?php
-                            echo form_label ("Prenom", "prenom");
+                            echo form_label("Prenom", "prenom");
                             $data = array(
                                 'name' => 'prenom',
                                 'id' => 'prenom',
                                 'class' => 'form-control',
                                 'required' => 'required'
                             );
-                            echo form_input ($data);
+                            echo form_input($data);
                             ?>
                         </p>
+
                         <p><?php
-                            echo form_label ("Email", "email");
+                            echo form_label("Email", "email");
                             $data = array(
                                 'name' => 'email',
                                 'type' => 'email',
@@ -70,11 +78,12 @@
                                 'class' => 'form-control',
                                 'required' => 'required'
                             );
-                            echo form_input ($data);
+                            echo form_input($data);
                             ?>
                         </p>
+
                         <p><?php
-                            echo form_label ("Confirmation Email", "confirmEmail");
+                            echo form_label("Confirmation Email", "confirmEmail");
                             $data = array(
                                 'name' => 'confirmEmail',
                                 'type' => 'email',
@@ -82,11 +91,12 @@
                                 'class' => 'form-control',
                                 'required' => 'required'
                             );
-                            echo form_input ($data);
+                            echo form_input($data);
                             ?>
                         </p>
+
                         <p> <?php
-                            echo form_label ("Mot de passe", "mdp");
+                            echo form_label("Mot de passe", "mdp");
                             $data = array(
                                 'name' => 'password',
                                 'type' => 'password',
@@ -95,11 +105,12 @@
                                 'class' => 'form-control',
                                 'required' => 'required'
                             );
-                            echo form_input ($data);
+                            echo form_input($data);
                             ?>
                         </p>
+
                         <p> <?php
-                            echo form_label ("Confirmation de mot de passe", "vmdp");
+                            echo form_label("Confirmation de mot de passe", "vmdp");
                             $data = array(
                                 'name' => 'confirmPassword',
                                 'type' => 'password',
@@ -108,7 +119,7 @@
                                 'class' => 'form-control',
                                 'required' => 'required'
                             );
-                            echo form_input ($data);
+                            echo form_input($data);
                             ?>
                         </p>
 
@@ -123,14 +134,15 @@
                         echo form_submit($button);
                         echo form_close();
                         ?>
-                    </div><!--<div id="content">-->
+                    </div>
+                    <!--<div id="content">-->
                 </div>
             </div>
         </div>
 </section>
 
 <script>
-    window.onload = function() {
+    window.onload = function () {
         $(function () {
             $("#register").validate({
                 rules: {
@@ -195,8 +207,8 @@
                         equalTo: "Les addresses email diffèrent"
                     }
                 },
-                showErrors: function(errorMap, errorList) {
-                    for(var i = 0; errorList[i]; i++) {
+                showErrors: function (errorMap, errorList) {
+                    for (var i = 0; errorList[i]; i++) {
                         errorList[i].message = '<i class="fa fa-exclamation-triangle"></i>  ' + errorList[i].message
                     }
                     this.defaultShowErrors()
