@@ -643,6 +643,8 @@ input.formsubmit {
     border: 1px solid #fff;
     border-radius: 4px;
     transition: color .3s, background .3s;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 input.formsubmit:hover, input.formsubmit:focus {
@@ -658,3 +660,4 @@ label.error {
     border-radius: 4px;
     margin-top: 7px;
 }
+

@@ -12,47 +12,43 @@
             <div class="col-lg-4 col-lg-offset-4">
                 <div id="content">
                     <div class="signup_wrap">
-                        <p>
-                            <?php
-                            print form_open('/login');
-                            $data = array(
-                                'name' => 'email',
-                                'id' => 'email',
-                                'placeholder' => 'Adresse email',
-                                'class' => 'form-control',
-                            );
-                            echo form_input ($data);
-                            ?></p>
+                        <?php
 
-                        <p>
-                            <?php
-                            $data = array(
-                                'name' => 'password',
-                                'type' => 'password',
-                                'id' => 'password',
-                                'placeholder' => 'Mot de passe',
-                                'class' => 'form-control',
-                            );
-                            echo form_input ($data);
-                            ?>
-                        </p>
-                        <p>
-                            <?php
-                            $button = array(
-                                'name' => 'submit',
-                                'value' => 'Valider',
-                                'class' => 'formsubmit',
-                            );
-                            // print form_input($data);
-                            print form_submit($button);
-                            ?>
-                        </p>
-                    </div><!--<div class="signup_wrap">-->
-                </div><!--<div id="content">-->
-                <div class="content">
-                    <?php //print_r($this->input->post());?>
-                    <?php //echo $this->session->userdata('username'); ?>
-                </div><!--<div class="content">-->
+                        // XXX plus belles erreurs
+                        $error = $this->session->flashdata('login_error');
+                        if (!empty($error)) {
+                            echo "<label class='error'><i class='fa fa-exclamation-triangle'></i> $error</label>";
+                        }
+
+                        print '<p>' . form_open('/login');
+                        $data = array(
+                            'name' => 'email',
+                            'id' => 'email',
+                            'placeholder' => 'Adresse email',
+                            'class' => 'form-control',
+                        );
+
+                        print '</p><p>' . form_input($data);
+
+                        $data = array(
+                            'name' => 'password',
+                            'type' => 'password',
+                            'id' => 'password',
+                            'placeholder' => 'Mot de passe',
+                            'class' => 'form-control',
+                        );
+
+                        print '</p><p>' . form_input($data);
+
+                        $button = array(
+                            'name' => 'submit',
+                            'value' => 'Valider',
+                            'class' => 'formsubmit',
+                        );
+
+                        print  '</p>' .form_submit($button); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

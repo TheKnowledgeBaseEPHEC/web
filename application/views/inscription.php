@@ -13,7 +13,7 @@
                 <div id="content">
                     <div class="reg_form">
                         <p><?php
-                            print form_open('/inscrlogin');
+                            print form_open('/login');
                             $button = array(
                                 'name' => 'submit',
                                 'value' => 'Se connecter',

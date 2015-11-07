@@ -23,9 +23,9 @@ class Fac extends CI_Controller {
     {
         $data['ecoles_data'] = $this->fac->get_fac();
 
-        $this->load->view('templates/header');
+        $this->load->view('header');
         $this->load->view('fac', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('footer');
     }
 
     public function get()
@@ -48,15 +48,15 @@ class Fac extends CI_Controller {
             return;
         }
 
-        $this->load->view('templates/header');
+        $this->load->view('header');
         $this->load->view('desc_fac', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('footer');
     }
 
     public function cours($slug = null) {
         $data['cours_data'] = $this->fac->get_cours($slug);
 
-        $this->load->view('templates/header');
+        $this->load->view('header');
 
         if (empty($data['cours_data'])) {
             if ($slug == null) {
@@ -73,6 +73,6 @@ class Fac extends CI_Controller {
             $this->load->view('desc_cours', $data);
         }
 
-        $this->load->view('templates/footer');
+        $this->load->view('footer');
     }
 }

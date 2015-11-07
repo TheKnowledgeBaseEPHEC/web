@@ -13,16 +13,16 @@ class Profil extends CI_Controller
     }
 
     // TODO : Si le user est pas logué, montrer msg erreur
-    // voir le profil d'un autre
+    // TODO: voir le profil d'un autre
     public function index() {
-        $this->load->view('templates/header');
+        $this->load->view('header');
         $this->load->view("profil");
-        $this->load->view('templates/footer');
+        $this->load->view('footer');
     }
 
     public function login() {
-        $this->load->view('templates/header');
+        $this->load->view('header');
         $this->load->view("login.php");
-        $this->load->view('templates/footer');
+        $this->load->view('footer');
     }
 }

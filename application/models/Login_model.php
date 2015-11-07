@@ -11,23 +11,31 @@ class Login_model extends CI_Model
 
     public function login($email, $password)
     {
-        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug")
+        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug, Actif")
             ->where('AdresseMail', $email)
             ->where('Password', $password)
             ->get('User');
-        $row = $request->result();
+        $row = $request->row();
+
         if (!empty($row)) {
-            // XXX ajouter plus
-            $newdata = array(
-                'id' => $row[0]->idUser,
-                'slug' => $row[0]->slug,
-                'email' => $row[0]->AdresseMail,
-                'logged_in' => TRUE,
-            );
-            $this->session->set_userdata('user_data', $newdata);
-            return true;
+            if (!$row->Actif) {
+                $this->session->set_flashdata('login_error', $this->lang->line('not_activated'));
+                return false;
+            } else {
+                $newdata = array(
+                    'id' => $row->idUser,
+                    'slug' => $row->slug,
+                    'nom' => $row->Nom,
+                    'prenom' => $row->Prenom,
+                    'email' => $row->AdresseMail
+                );
+                $this->session->set_userdata('user_data', $newdata);
+                return true;
+            }
+        } else {
+            $this->session->set_flashdata('login_error', $this->lang->line('login_error'));
+            return false;
         }
-        return false;
     }
 }
 
