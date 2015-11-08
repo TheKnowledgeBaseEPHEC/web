@@ -11,6 +11,7 @@ class Inscription extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helpers('common');
+        $this->load->library('recaptcha');
         $this->load->database();
 
     }
@@ -18,14 +19,15 @@ class Inscription extends CI_Controller
     public function index()
     {
         if (!empty($this->session->userdata('user_data'))) {
-            // XXX montrer message vert
-            redirect(base_url());
-        } else {
-            $data['title'] = 'Inscription';
-            $this->load->view('header');
-            $this->load->view("inscription", $data);
-            $this->load->view('footer');
+            $this->session->set_flashdata('validation_errors', $this->lang->line('already_logged_in'));
         }
+        $data['title'] = 'Inscription';
+
+        $data['recaptcha_html'] = $this->recaptcha->getWidget();
+
+        $this->load->view('header');
+        $this->load->view("inscription", $data);
+        $this->load->view('footer');
     }
 
     /* Vérifie qu'un mot de passe ait bien majuscules, minuscules, numéro */
@@ -130,7 +132,7 @@ class Inscription extends CI_Controller
         if (!empty($activation_id)) {
             $result = $this->db->select('User_idUser, expiration')
                 ->where('cle', $activation_id)
-                ->where('expiration <=','DATE_ADD(NOW(),INTERVAL 1 WEEK )')
+                ->where('expiration <=', 'DATE_ADD(NOW(),INTERVAL 1 WEEK )')
                 ->get('Activation')
                 ->row();
             if (empty($result)) {
@@ -149,13 +151,15 @@ class Inscription extends CI_Controller
         }
     }
 
-    public function verification_success() {
+    public function verification_success()
+    {
         $this->load->view('header');
         $this->load->view('register_success');
         $this->load->view('footer');
     }
 
-    public function verification_failure($message) {
+    public function verification_failure($message)
+    {
         $data['message'] = $message;
 
         $this->load->view('header');

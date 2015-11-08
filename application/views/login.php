@@ -20,12 +20,13 @@
                             echo "<label class='error'><i class='fa fa-exclamation-triangle'></i> $error</label>";
                         }
 
-                        print '<p>' . form_open('/login');
+                        print '<p>' . form_open('/login', array('id' => 'login'));
                         $data = array(
                             'name' => 'email',
                             'id' => 'email',
                             'placeholder' => 'Adresse email',
                             'class' => 'form-control',
+                            'required' => 'required'
                         );
 
                         print '</p><p>' . form_input($data);
@@ -36,6 +37,7 @@
                             'id' => 'password',
                             'placeholder' => 'Mot de passe',
                             'class' => 'form-control',
+                            'required' => 'required'
                         );
 
                         print '</p><p>' . form_input($data);
@@ -53,3 +55,36 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.onload = function () {
+        $(function () {
+            $("#login").validate({
+                rules: {
+                    password: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    password: {
+                        required: "Veuillez entrer votre mot de passe",
+                    },
+                    email: {
+                        required: "Veuillez entrer une addresse email",
+                        email: "Veuillez entrer une addresse email valide"
+                    }
+                },
+                showErrors: function (errorMap, errorList) {
+                    for (var i = 0; errorList[i]; i++) {
+                        errorList[i].message = '<i class="fa fa-exclamation-triangle"></i>  ' + errorList[i].message
+                    }
+                    this.defaultShowErrors()
+                }
+            });
+        });
+    }
+</script>

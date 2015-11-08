@@ -22,3 +22,4 @@ $lang['access_not_authorized'] = "Accès non autorisé";
 $lang['activation_key_not_found'] = "Clé d'activation non existant ou expirée";
 $lang['failed_to_activate_user'] = "Un problème est survenu pendant l'activation de l'utilisateur, veuillez contacter un administrateur";
 $lang['register_email_subject'] = "Votre inscription sur knowledgebase.be";
+$lang['recaptcha_invalid'] = "La réponse du captcha est erronée";
