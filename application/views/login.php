@@ -48,7 +48,7 @@
                             'class' => 'formsubmit',
                         );
 
-                        print  '</p>' .form_submit($button); ?>
+                        print  '</p>' .form_submit($button); form_close() ?>
                     </div>
                 </div>
             </div>

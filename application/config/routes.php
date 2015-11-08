@@ -59,6 +59,8 @@ $route['login'] = 'Login';
 $route['logout'] = 'Login/logout';
 $route['userdata'] = 'User/get_data';
 $route['profil'] = 'Profil';
+$route['upload'] = "Profil/do_upload";
+
 $route['submit'] = 'Inscription/registration';
 
 $route['thanks_user'] = 'Thanks_user/index';
