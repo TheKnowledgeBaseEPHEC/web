@@ -20,10 +20,13 @@ class Login_model extends CI_Model
             // XXX ajouter plus
             $newdata = array(
                 'id' => $row[0]->idUser,
+                'nom' => $row[0]->Nom,
+                'prenom' => $row[0]->Prenom,
                 'slug' => $row[0]->slug,
                 'email' => $row[0]->AdresseMail,
                 'logged_in' => TRUE,
             );
+            $this->session->set_userdata('nom', $Nom);
             $this->session->set_userdata('user_data', $newdata);
             return true;
         }

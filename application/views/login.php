@@ -22,6 +22,7 @@
                                 'class' => 'form-control',
                             );
                             echo form_input ($data);
+                            echo form_close();
                             ?></p>
 
                         <p>
@@ -34,6 +35,7 @@
                                 'class' => 'form-control',
                             );
                             echo form_input ($data);
+                            echo form_close();
                             ?>
                         </p>
                         <p>
@@ -45,13 +47,12 @@
                             );
                             // print form_input($data);
                             print form_submit($button);
+                            echo form_close();
                             ?>
                         </p>
                     </div><!--<div class="signup_wrap">-->
                 </div><!--<div id="content">-->
                 <div class="content">
-                    <?php //print_r($this->input->post());?>
-                    <?php //echo $this->session->userdata('username'); ?>
                 </div><!--<div class="content">-->
             </div>
         </div>

@@ -26,8 +26,9 @@
                         </p>
 
                         <p><?php
-                            $attributes = array('id' => 'register');
-                            print form_open('/submit', $attributes);
+                            //$attributes = array('id' => 'register');
+                            //print form_open('/submit', $attributes);
+                            print form_open('/submit');
 
                             $validation_errors = $this->session->flashdata('validation_errors');
                             if (!empty($validation_errors)) {
@@ -127,6 +128,7 @@
                         $button = array(
                             'name' => 'submit',
                             'value' => 'Valider',
+                            'method' =>'post',
                             'class' => 'btn btn-default formsubmit',
                             'required' => 'required'
                         );

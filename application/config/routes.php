@@ -64,7 +64,11 @@ $route['fac/(:any)'] = 'Fac/view/$1';
 $route['facdata'] = 'Fac/get';
 $route['cours'] = 'Fac/cours';
 $route['cours/(:any)'] = 'Fac/cours/$1';
-$route['thanks_user/inscrlogin'] = 'Inscription/login';
+$route['inscrlogin'] = 'Login/index';
+$route['thanks_user/inscrlogin']='Login/index';
+$route['upload'] ="Profil/do_upload";
+$route['deconnexion'] = "Login/logout";
+$route['modifName'] ="Profil/modifName";
 
 $route['contact'] = 'contact';
 

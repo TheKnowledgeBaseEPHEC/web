@@ -24,6 +24,7 @@ class Inscription extends CI_Controller
             $this->load->view('templates/header');
             $this->load->view("inscription", $data);
             $this->load->view('templates/footer');
+
         }
     }
 
@@ -60,6 +61,9 @@ class Inscription extends CI_Controller
         $prenom = $this->input->post('prenom');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
+        echo $nom;
+        var_dump($_POST);
+        echo "salut";
 
         if ($this->form_validation->run() === FALSE) {
             /*
@@ -67,7 +71,7 @@ class Inscription extends CI_Controller
              *  Evite de devoir remplir tous les champs à nouveau.
              */
             $this->session->set_flashdata('validation_errors', $this->form_validation->get_error_array());
-            go_back();
+            //go_back();
         } else {
             $slug = $this->inscription->gen_slug($nom, $prenom);
 
