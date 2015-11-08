@@ -1,6 +1,4 @@
-<?= $user = $data['user']; ?>
-
-Cher <?= $user->nom ?> $user->prenom
+Cher <?= $user->nom ?> <?=$user->prenom ?>
 <br>
 veuillez cliquer sur le lien ci-dessous pour confirmer votre inscription sur
 <?=anchor()?>
@@ -9,4 +7,4 @@ veuillez cliquer sur le lien ci-dessous pour confirmer votre inscription sur
 <br>
 Merci,
 <br>
-L'équipe Theknowledgebase
+L'&eacute;quipe Theknowledgebase

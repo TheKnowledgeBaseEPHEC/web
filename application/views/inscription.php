@@ -11,20 +11,12 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
                 <div id="content">
-                    <div class="reg_form">
-                        <p><?php
-                            print form_open('/login');
-                            $button = array(
-                                'name' => 'submit',
-                                'value' => 'Se connecter',
-                                'class' => 'btn btn-default formsubmit',
-                            );
-                            echo form_submit($button);
-                            echo '<hr class="light">';
-                            echo form_close();
-                            ?>
-                        </p>
+                    <?php
+                        print anchor(base_url("login"), "se connecter", 'class="btn btn-block formsubmit"');
 
+                        print '<hr class="light">';
+                    ?>
+                    <div class="reg_form">
                         <p><?php
                             $attributes = array('id' => 'register');
                             print form_open('/submit', $attributes);
@@ -130,7 +122,6 @@
                             'class' => 'btn btn-default formsubmit',
                             'required' => 'required'
                         );
-                        // print form_input($data);
                         echo form_submit($button);
                         echo form_close();
                         ?>

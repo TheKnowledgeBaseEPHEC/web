@@ -68,11 +68,4 @@ class Inscription_model extends CI_Model
 
         return $key;
     }
-
-    /* Vérifie et active un nouvel utilisateur */
-    public function verify_activation_key($key) {
-        // XXX secret question ?
-        // clé expirée
-        // login auto
-    }
 }

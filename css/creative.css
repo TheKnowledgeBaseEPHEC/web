@@ -635,7 +635,7 @@ p.text-muted.nbusers, p.text-muted.nbcours, p.text-muted.love {
 }
 
 /* large 100% width button */
-input.formsubmit {
+input.formsubmit, a.formsubmit {
     width: 100%;
     color: #fff;
     background: #f05f40;
@@ -645,9 +645,10 @@ input.formsubmit {
     transition: color .3s, background .3s;
     font-weight: 700;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
-input.formsubmit:hover, input.formsubmit:focus {
+input.formsubmit:hover, input.formsubmit:focus, a.formsubmit:hover, a.formsubmit:focus {
     color: #f05f40;
     background: #fff;
 }
@@ -661,3 +662,15 @@ label.error {
     margin-top: 7px;
 }
 
+a.light {
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 2px;
+}
+
+a.light:hover, a.light:focus {
+    background-color: #fff;
+    color: #f05f40;
+    border-color: #f05f40;
+}
