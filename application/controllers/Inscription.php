@@ -59,6 +59,9 @@ class Inscription extends CI_Controller
             'password' => $this->input->post('password')
         );
 
+        $recaptcha = $this->input->post('g-recaptcha-response');
+        $recaptcha_response = $this->recaptcha->verifyResponse($recaptcha);
+
         if ($this->form_validation->run() === FALSE) {
             /*
              *  Mettre les erreurs dans une variable flash (vidée au refresh) et revient en arrière.
@@ -67,6 +70,11 @@ class Inscription extends CI_Controller
             $this->session->set_flashdata('validation_errors', $this->form_validation->get_error_array());
             go_back();
         } else {
+            if (!$recaptcha_response['success']) {
+                $this->session->set_flashdata('validation_errors', $this->lang->line('recaptcha_invalid'));
+                go_back();
+                die();
+            }
             $user->slug = $this->inscription->gen_slug($user);
 
             /* Vérifie si le slug/email existent pas déjà */

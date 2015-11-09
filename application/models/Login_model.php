@@ -11,7 +11,7 @@ class Login_model extends CI_Model
 
     public function login($email, $password)
     {
-        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug, Actif")
+        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug, Actif, ImagePath")
             ->where('AdresseMail', $email)
             ->where('Password', $password)
             ->get('User');

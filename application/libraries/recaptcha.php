@@ -119,7 +119,7 @@ class Recaptcha
     {
         $default = array(
             'render' => 'onload',
-            'hl' => $this->_language,
+            'hl' => 'fr',
         );
 
         $result = array_merge($default, $parameters);

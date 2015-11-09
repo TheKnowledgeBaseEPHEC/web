@@ -11,6 +11,7 @@
 <script src="/js/select2-3.5.4/select2.js"></script>
 <script src="/js/jquery.validate.min.js" ></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='/js/jquery-ui.min.js'></script>
 
 
 <!-- Custom Theme JavaScript -->

@@ -8,6 +8,7 @@ class Profil extends CI_Controller
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->helper('form');
+        $this->load->helper('html');
         $this->load->model('Profil_model');
         $this->load->database();
 
@@ -80,9 +81,12 @@ class Profil extends CI_Controller
         );
 
         $this->load->library('image_lib', $config);
+
         $this->image_lib->initialize($config);
+
         if (!$this->image_lib->resize()) {
-            echo $this->image_lib->display_errors();
+            $this->session->set_flashdata('upload_error',  $this->image_lib->display_errors());
+            return false;
         }
 
         $avatarUser = '/uploads/' . $name_file . '.' . $extension;

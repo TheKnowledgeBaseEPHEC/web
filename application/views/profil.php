@@ -38,9 +38,6 @@
                         <tr>
                             <td>Image d'avatar</td>
                             <td><?php
-                                $this->load->model('Profil_model');
-                                $idUser = $this->session->userdata('user_id');
-                                $this->load->helper('html');
                                 $image_properties = array (
                                     'src' => $this->session->userdata('user_avatar'),
                                     'alt' => 'erreur de chargement',
@@ -55,8 +52,6 @@
                         </tr>
                     </table>
                 </div>
-                <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-                <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
                 <div id="tabs">
                     <ul>
                         <li>
@@ -152,11 +147,6 @@
                         ?>
                     </div>
                 </div>
-                <script>
-                    $('#tabs')
-                        .tabs()
-                        .addClass('ui-tabs-vertical ui-helper-clearfix');
-                </script>
                 <p><?php
                     print form_open('/deconnexion');
                     $button = array(
@@ -173,3 +163,11 @@
     </div>
     </div>
 </section>
+
+<script>
+    window.onload = function() {
+        $('#tabs')
+            .tabs()
+            .addClass('ui-tabs-vertical ui-helper-clearfix');
+    }
+</script>
