@@ -23,7 +23,7 @@ class Inscription extends CI_Controller
         }
         $data['title'] = 'Inscription';
 
-        $data['recaptcha_html'] = $this->recaptcha->getWidget();
+        $data['recaptcha_html'] = $this->recaptcha->render();
 
         $this->load->view('header');
         $this->load->view("inscription", $data);

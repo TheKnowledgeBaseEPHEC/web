@@ -147,18 +147,12 @@
                         ?>
                     </div>
                 </div>
-                <p><?php
-                    print form_open('/deconnexion');
-                    $button = array(
-                        'name' => 'deconnexion',
-                        'value' => 'Deconnexion',
-                        'class' => 'formsubmit',
-                    );
-                    print form_submit($button);
-                    echo form_close();
+                <p>
+                    <?php
+                        print anchor(base_url("logout"), "se déconnecter", 'class="btn formsubmit"');
                     ?>
                 </p>
-            </div><!--<div class="content">-->
+            </div>
         </div>
     </div>
     </div>
