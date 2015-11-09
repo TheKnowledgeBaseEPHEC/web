@@ -61,6 +61,6 @@ class Login extends CI_Controller
 
     public function is_logged_in()
     {
-        return (!empty($this->session->userdata('user_data')));
+        return ($this->session->userdata('logged_in') === 1);
     }
 }

@@ -27,14 +27,4 @@ class Profil_model extends CI_Model
         $this->db->where('idUser', $idUser);
         $this->db->update('User', $data);
     }
-
-    function recupPImg($idUser){
-        $query = $this->db->select("ImagePath")
-            ->where('idUser', $idUser)
-            ->get('User');
-        foreach ($query->result() as $row)
-        {
-            return $row->ImagePath;
-        }
-    }
 }

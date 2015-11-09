@@ -22,14 +22,14 @@ class Login_model extends CI_Model
                 $this->session->set_flashdata('login_error', $this->lang->line('not_activated'));
                 return false;
             } else {
-                $newdata = array(
-                    'id' => $row->idUser,
-                    'slug' => $row->slug,
-                    'nom' => $row->Nom,
-                    'prenom' => $row->Prenom,
-                    'email' => $row->AdresseMail
-                );
-                $this->session->set_userdata('user_data', $newdata);
+                $this->session->set_userdata('logged_in', 1);
+                $this->session->set_userdata('user_id', $row->idUser);
+                $this->session->set_userdata('user_slug', $row->slug);
+                $this->session->set_userdata('user_nom', $row->Nom);
+                $this->session->set_userdata('user_prenom', $row->Prenom);
+                $this->session->set_userdata('user_email', $row->AdresseMail);
+                $this->session->set_userdata('user_avatar', $row->ImagePath);
+
                 return true;
             }
         } else {

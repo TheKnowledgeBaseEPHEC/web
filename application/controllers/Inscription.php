@@ -18,7 +18,7 @@ class Inscription extends CI_Controller
 
     public function index()
     {
-        if (!empty($this->session->userdata('user_data'))) {
+        if (!empty($this->session->userdata('logged_in'))) {
             $this->session->set_flashdata('validation_errors', $this->lang->line('already_logged_in'));
         }
         $data['title'] = 'Inscription';

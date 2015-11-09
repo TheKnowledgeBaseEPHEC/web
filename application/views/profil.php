@@ -15,28 +15,42 @@
                     </div><!--<div class="signup_wrap">-->
                 </div><!--<div id="content">-->
                 <div class="container">
+                    <?php
+                        $error = $this->session->flashdata('upload_error');
+                        if (!empty($error)) {
+                        echo "<label class='error'><i class='fa fa-exclamation-triangle'></i> $error</label>";
+                    }
+                    ?>
                     <table class="table">
                         <tr>
                             <td>Nom</td>
-                            <td><?php echo $this->session->userdata('user_data')['nom']; ?></td>
+                            <td><?php echo $this->session->userdata('user_nom'); ?></td>
                         </tr>
                         <tr>
                             <td>Prenom</td>
-                            <td><?php echo $this->session->userdata('user_data')['prenom']; ?></td>
+                            <td><?php echo $this->session->userdata('user_prenom'); ?></td>
                         </tr>
                         <tr>
                             <td>Adresse Email</td>
-                            <td><?php echo $this->session->userdata('user_data')['email']; ?></td>
+                            <td><?php echo $this->session->userdata('user_email'); ?></td>
 
                         </tr>
                         <tr>
                             <td>Image d'avatar</td>
                             <td><?php
                                 $this->load->model('Profil_model');
-                                $idUser = $this->session->userdata('user_data')['id'];
-                                $imagePath = $this->Profil_model->recupPImg($idUser);
+                                $idUser = $this->session->userdata('user_id');
                                 $this->load->helper('html');
-                                echo img($imagePath);
+                                $image_properties = array (
+                                    'src' => $this->session->userdata('user_avatar'),
+                                    'alt' => 'erreur de chargement',
+                                    'class' => 'post_image',
+                                    'width' => '200',
+                                    'height' => '200',
+                                    'title' => 'photo avatar',
+                                    'rel' =>'lightbox',
+                                );
+                                echo img($image_properties);
                                 ?></td>
                         </tr>
                     </table>
@@ -75,7 +89,6 @@
                             'class' => 'formsubmit',
                         );
                         print form_submit($button);
-                        echo form_close();
                         ?>
                     </div>
                     <div id="b">
@@ -94,8 +107,7 @@
                             'value' => 'Modifier',
                             'class' => 'formsubmit',
                         );
-                        print form_submit($button);
-                        echo form_close();
+                        print form_submit($button) . form_close();
                         ?>
                     </div>
                     <div id="c">
@@ -114,26 +126,28 @@
                             'value' => 'Modifier',
                             'class' => 'formsubmit',
                         );
-                        print form_submit($button);
-                        echo form_close();
+                        print form_submit($button) . form_close();
                         ?>
                     </div>
                     <div id="d">
-                        <?php echo form_open_multipart('/upload');?>
-                        <?php
+                        <?php echo form_open_multipart('/profil');
+
                         $data = array(
                             'name' => 'userfile',
                             'type' => 'file',
                             'id' => 'userfile',
+                            'class' => 'form-control',
+                            'required' => 'required'
                         );
-                        echo form_input ($data);
+                        echo form_input($data);
 
                         $button = array(
-                            'name' => 'submit',
+                            'name' => 'avatar_submit',
                             'value' => 'Upload',
                             'class' => 'formsubmit',
                         );
-                        print form_submit($button);
+
+                        echo form_submit($button);
                         echo form_close();
                         ?>
                     </div>
@@ -154,8 +168,6 @@
                     echo form_close();
                     ?>
                 </p>
-                </body>
-                </html>
             </div><!--<div class="content">-->
         </div>
     </div>

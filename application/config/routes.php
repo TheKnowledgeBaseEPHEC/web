@@ -57,7 +57,6 @@ $route['activation/(:any)'] = 'Inscription/verify/$1';
 
 $route['login'] = 'Login';
 $route['logout'] = 'Login/logout';
-$route['userdata'] = 'User/get_data';
 $route['profil'] = 'Profil';
 $route['upload'] = "Profil/do_upload";
 
