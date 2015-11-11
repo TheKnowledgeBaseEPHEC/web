@@ -24,3 +24,6 @@ $lang['failed_to_activate_user'] = "Un problème est survenu pendant l'activatio
 $lang['register_email_subject'] = "Votre inscription sur knowledgebase.be";
 $lang['recaptcha_invalid'] = "La réponse du captcha est erronée";
 $lang['avatar_upload_failed'] = "Un problème est survenu lors du changement de l'avatar";
+$lang['modif_pwd_failed'] = "L'ancien mot de passe ne correspond pas";
+$lang['profil_failed'] = "Veuillez vous connecter pour accéder au profil";
+$lang['question_failed'] ="Veuillez renseigner le champ répose secrète";
