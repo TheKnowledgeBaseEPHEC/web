@@ -11,24 +11,15 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
                 <div id="content">
+                    <?php
+                        print anchor(base_url("login"), "se connecter", 'class="btn btn-block formsubmit"');
+
+                        print '<hr class="light">';
+                    ?>
                     <div class="reg_form">
                         <p><?php
-                            print form_open('/inscrlogin');
-                            $button = array(
-                                'name' => 'submit',
-                                'value' => 'Se connecter',
-                                'class' => 'btn btn-default formsubmit',
-                            );
-                            echo form_submit($button);
-                            echo '<hr class="light">';
-                            echo form_close();
-                            ?>
-                        </p>
-
-                        <p><?php
-                            //$attributes = array('id' => 'register');
-                            //print form_open('/submit', $attributes);
-                            print form_open('/submit');
+                            $attributes = array('id' => 'register');
+                            print form_open('/submit', $attributes);
 
                             $validation_errors = $this->session->flashdata('validation_errors');
                             if (!empty($validation_errors)) {
@@ -37,11 +28,13 @@
                                     $validation_errors_keys = array_keys($validation_errors);
 
                                     for ($i = 0; $i < $validation_errors_count; $i++) {
-                                        echo $validation_errors[$validation_errors_keys[$i]];
+                                        echo '<label class="error"><i class="fa fa-exclamation-triangle"></i>';
+                                        echo $validation_errors[$validation_errors_keys[$i]] . '</label>';
                                         echo '<hr class="light">';
                                     }
                                 } else {
-                                    echo $validation_errors;
+                                    echo '<label class="error"><i class="fa fa-exclamation-triangle"></i>';
+                                    echo $validation_errors . '</label>';
                                     echo '<hr class="light">';
                                 }
                             }
@@ -123,16 +116,16 @@
                             echo form_input($data);
                             ?>
                         </p>
-
                         <?php
+
+                        echo '<p>' . $recaptcha_html . '</p>';
+
                         $button = array(
                             'name' => 'submit',
                             'value' => 'Valider',
-                            'method' =>'post',
                             'class' => 'btn btn-default formsubmit',
                             'required' => 'required'
                         );
-                        // print form_input($data);
                         echo form_submit($button);
                         echo form_close();
                         ?>

@@ -11,26 +11,32 @@ class Login_model extends CI_Model
 
     public function login($email, $password)
     {
-        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug")
+        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug, Actif, ImagePath")
             ->where('AdresseMail', $email)
             ->where('Password', $password)
             ->get('User');
-        $row = $request->result();
+        $row = $request->row();
+
         if (!empty($row)) {
-            // XXX ajouter plus
-            $newdata = array(
-                'id' => $row[0]->idUser,
-                'nom' => $row[0]->Nom,
-                'prenom' => $row[0]->Prenom,
-                'slug' => $row[0]->slug,
-                'email' => $row[0]->AdresseMail,
-                'logged_in' => TRUE,
-            );
-            $this->session->set_userdata('nom', $Nom);
-            $this->session->set_userdata('user_data', $newdata);
-            return true;
+            if (!$row->Actif) {
+                $this->session->set_flashdata('login_error', $this->lang->line('not_activated'));
+                return false;
+            } else {
+                $this->session->set_userdata('logged_in', 1);
+                $this->session->set_userdata('user_id', $row->idUser);
+                $this->session->set_userdata('user_slug', $row->slug);
+                $this->session->set_userdata('user_nom', $row->Nom);
+                $this->session->set_userdata('user_prenom', $row->Prenom);
+                $this->session->set_userdata('user_email', $row->AdresseMail);
+                $this->session->set_userdata('user_avatar', $row->ImagePath);
+                $this->session->set_userdata('user_SQuestion', $row->SecretQ);
+
+                return true;
+            }
+        } else {
+            $this->session->set_flashdata('login_error', $this->lang->line('login_error'));
+            return false;
         }
-        return false;
     }
 }
 

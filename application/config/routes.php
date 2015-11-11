@@ -50,28 +50,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['about'] = 'about';
+
 $route['inscription'] = 'Inscription';
-//$route['submit'] = 'Inscription/registration/';
+
+$route['activation/(:any)'] = 'Inscription/verify/$1';
+
 $route['login'] = 'Login';
 $route['logout'] = 'Login/logout';
 $route['profil'] = 'Profil';
-$route['inscrlogin'] = 'Profil/login';
-$route['myform'] = 'Form';
+$route['upload'] = "Profil/do_upload";
+
+
 $route['submit'] = 'Inscription/registration';
+
 $route['thanks_user'] = 'Thanks_user/index';
+
 $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
 $route['facdata'] = 'Fac/get';
 $route['cours'] = 'Fac/cours';
 $route['cours/(:any)'] = 'Fac/cours/$1';
-$route['inscrlogin'] = 'Login/index';
-$route['thanks_user/inscrlogin']='Login/index';
-$route['upload'] ="Profil/do_upload";
-$route['deconnexion'] = "Login/logout";
-$route['modifName'] ="Profil/modifName";
 
 $route['contact'] = 'contact';
 
 $route['data'] = 'Home/data';
 
 $route['default_controller'] = 'home';
+
+$route['404_override'] = 'Errors/page_404';
