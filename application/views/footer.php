@@ -12,6 +12,7 @@
 <script src="/js/jquery.validate.min.js" ></script>
 <script src='https://www.google.com/recaptcha/api.js?hl=fr'></script>
 <script src='/js/jquery-ui.min.js'></script>
+<script src='/js/bootstrap-select.js'></script>
 
 
 <!-- Custom Theme JavaScript -->

@@ -727,3 +727,30 @@ a.light:hover, a.light:focus {
     position: relative;
     left: -1px;
 }
+
+
+.table-curved {
+    border-color: #fff;
+    width: 100%;
+}
+
+.table-curved td {
+    padding: 10px;
+    border-top: 1px solid white;
+}
+
+.table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border: solid #fff 1px;
+    border-radius: 4px;
+}
+
+td.toptd {
+    border: 0;
+}
+
+.table-curved td:first-child {
+    border-right: 1px solid white;
+}
