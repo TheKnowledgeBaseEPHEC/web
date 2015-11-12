@@ -23,6 +23,7 @@
 <footer class="bg-dark" id="footer">
     <div class="container text-center">
         <p>2015 EPHEC Knowledgebase Team <i class="fa fa-copyright"></i>.</p>
+        <a href="/logout">Logout</a>
     </div>
 </footer>
 </html>

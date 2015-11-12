@@ -678,8 +678,10 @@ a.light:hover, a.light:focus {
 
 /* Jquery UI */
 .ui-tabs.ui-tabs-vertical {
-    padding: 0;
-    width: 42em;
+    padding: 0px;
+    width: 100%;
+    border: 1px solid #f05f40;
+    border-radius: 4px;
 }
 .ui-tabs.ui-tabs-vertical .ui-widget-header {
     border: none;
@@ -687,9 +689,8 @@ a.light:hover, a.light:focus {
 .ui-tabs.ui-tabs-vertical .ui-tabs-nav {
     float: left;
     width: 10em;
-    background: #CCC;
     border-radius: 4px 0 0 4px;
-    border-right: 1px solid gray;
+    border-right: 1px solid #f05f40;
 }
 .ui-tabs.ui-tabs-vertical .ui-tabs-nav li {
     clear: left;

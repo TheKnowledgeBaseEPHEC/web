@@ -17,7 +17,7 @@ class Profil extends CI_Controller
 
     public function index($slug = null)
     {
-        if (empty($this->session->userdata('user_id')))
+        if (!$this->logged_in())
         {
             $this->session->set_flashdata('login_error', $this->lang->line('no_access'));
             $this->login();
@@ -49,14 +49,21 @@ class Profil extends CI_Controller
 
         if ($slug != null && strlen($slug)) {
             $udata = $this->Profil_model->getUserData($slug);
-            $userinfo = (object)array (
-                'nom' => $udata->Nom,
-                'prenom' => $udata->Prenom,
-                'email' => $udata->AdresseMail,
-                'avatar' => $udata->ImagePath,
-                'SQuestion' => null,
-                'id' => $udata->idUser
-            );
+            if ($udata != null) {
+                $userinfo = (object)array(
+                    'nom' => $udata->Nom,
+                    'prenom' => $udata->Prenom,
+                    'email' => $udata->AdresseMail,
+                    'avatar' => $udata->ImagePath,
+                    'SQuestion' => null,
+                    'id' => $udata->idUser
+                );
+            } else {
+                $this->load->view('header');
+                $this->load->view('404');
+                $this->load->view('footer');
+                return;
+            }
         } else {
             $userinfo = (object)array (
                 'nom' => $this->session->userdata('user_nom'),
@@ -72,6 +79,9 @@ class Profil extends CI_Controller
         $data['user'] = $userinfo;
         $this->load->view('header');
         $this->load->view("profil", $data);
+        if ($this->logged_in() && $slug === null) {
+            $this->load->view('edit_profil');
+        }
         $this->load->view('footer');
     }
 
@@ -222,5 +232,9 @@ class Profil extends CI_Controller
         $this->session->set_userdata('user_avatar', $avatarUser);
 
         return true;
+    }
+
+    public function logged_in() {
+        return !empty($this->session->userdata('user_id'));
     }
 }

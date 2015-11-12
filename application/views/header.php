@@ -66,6 +66,9 @@
                     <a class="page-scroll" href="/cours">Cours</a>
                 </li>
                 <li>
+                    <a class="page-scroll" href="/profil">profil</a>
+                </li>
+                <li>
                     <a class="page-scroll" href="/inscription">inscription</a>
                 </li>
             </ul>
