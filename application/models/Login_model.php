@@ -29,7 +29,6 @@ class Login_model extends CI_Model
                 $this->session->set_userdata('user_prenom', $row->Prenom);
                 $this->session->set_userdata('user_email', $row->AdresseMail);
                 $this->session->set_userdata('user_avatar', $row->ImagePath);
-                $this->session->set_userdata('user_SQuestion', $row->SecretQ);
 
                 return true;
             }

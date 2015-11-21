@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/creative.css" type="text/css">
+    <link rel="stylesheet" href="/css/local.css" type="text/css">
 
     <!-- select2 css -->
     <link rel="stylesheet" href="/js/select2-3.5.4/select2.css" type="text/css">
@@ -66,7 +66,10 @@
                     <a class="page-scroll" href="/cours">Cours</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="/contact">Contact</a>
+                    <a class="page-scroll" href="/profil">profil</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/inscription">inscription</a>
                 </li>
             </ul>
         </div>

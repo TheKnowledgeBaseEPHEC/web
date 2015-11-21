@@ -12,17 +12,17 @@ class Profil extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helpers('common');
         $this->load->database();
+        $this->load->model('Demande_model');
 
     }
 
-    public function index()
+    public function index($slug = null)
     {
-        if (empty($idUser = $this->session->userdata('user_id')))
+        if (!$this->logged_in())
         {
-            $this->session->set_flashdata('validation_errors', $this->lang->line('profil_failed'));
-            $this->load->view('header');
-            $this->load->view("inscription");
-            $this->load->view('footer');
+            $this->session->set_flashdata('login_error', $this->lang->line('no_access'));
+            $this->login();
+            return;
         }
         if (!empty($this->input->post('avatar_submit'))) {
             $this->do_upload();
@@ -48,9 +48,57 @@ class Profil extends CI_Controller
             $this->modifPwd();
         }
 
+        if ($slug != null && strlen($slug)) {
+            $udata = $this->Profil_model->getUserData($slug);
+            if ($udata != null) {
+                $userinfo = (object)array(
+                    'nom' => $udata->Nom,
+                    'prenom' => $udata->Prenom,
+                    'email' => $udata->AdresseMail,
+                    'avatar' => $udata->ImagePath,
+                    'SQuestion' => null,
+                    'id' => $udata->idUser
+                );
+            } else {
+                $this->load->view('header');
+                $this->load->view('404');
+                $this->load->view('footer');
+                return;
+            }
+        } else {
+            $userinfo = (object)array (
+                'nom' => $this->session->userdata('user_nom'),
+                'prenom' => $this->session->userdata('user_prenom'),
+                'email' => $this->session->userdata('user_email'),
+                'avatar' => $this->session->userdata('user_avatar'),
+                'SQuestion' => null,
+                'id' => $this->session->userdata('user_id')
+            );
+        }
+        $data['userslug'] = $slug;
+        $data['user'] = $userinfo;
+        $data['sceancesDemandeur'] = $this->Demande_model->getSeanceDemandeur($this->session->userdata('user_id'));
+        $data['sceancesDemander'] = $this->Demande_model->getSeanceDemander($this->session->userdata('user_id'));
         $this->load->view('header');
-        $this->load->view("profil");
+        $this->load->view("profil", $data);
+        if ($this->logged_in() && $slug === null) {
+            $this->load->view('edit_profil');
+        }
+
+        if (!empty($this->input->post('interet_submit'))) {
+            if ($this->logged_in()) {
+                $userDemandeur = $this->session->userdata('user_id');
+                $userDemander =  $this->Demande_model->recupIdUser($slug);
+                $this->Demande_model->insertSceance($userDemandeur, $userDemander);
+            }
+        }
         $this->load->view('footer');
+    } //end index
+
+    public function view($slug = null) {
+        if ($slug != null) {
+            $this->index($slug);
+        }
     }
 
     public function login()
@@ -60,7 +108,7 @@ class Profil extends CI_Controller
         $this->load->view('footer');
     }
 
-    function modifName()
+    public function modifName()
     {
 
         $this->form_validation->set_rules('name', 'Nom de famille', 'trim|required|min_length[2]');
@@ -194,5 +242,9 @@ class Profil extends CI_Controller
         $this->session->set_userdata('user_avatar', $avatarUser);
 
         return true;
+    }
+
+    public function logged_in() {
+        return !empty($this->session->userdata('user_id'));
     }
 }

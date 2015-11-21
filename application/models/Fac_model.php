@@ -45,4 +45,14 @@ class Fac_model extends CI_Model
             return $query->result();
         }
     }
+
+    public function interet()
+    {
+        $data = array(
+            'cle' => $key,
+            'User_idUser' => $user->id
+        );
+        $this->db->set('expiration', 'now() + interval 1 week', FALSE);
+        $this->db->insert('Activation', $data);
+    }
 }

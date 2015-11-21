@@ -10,7 +10,9 @@
 <script src="/js/wow.min.js"></script>
 <script src="/js/select2-3.5.4/select2.js"></script>
 <script src="/js/jquery.validate.min.js" ></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?hl=fr'></script>
+<script src='/js/jquery-ui.min.js'></script>
+<script src='/js/bootstrap-select.js'></script>
 
 
 <!-- Custom Theme JavaScript -->
@@ -21,6 +23,7 @@
 <footer class="bg-dark" id="footer">
     <div class="container text-center">
         <p>2015 EPHEC Knowledgebase Team <i class="fa fa-copyright"></i>.</p>
+        <a href="/logout">Logout</a>
     </div>
 </footer>
 </html>
