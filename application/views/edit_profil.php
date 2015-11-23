@@ -1,7 +1,7 @@
 <section class="bg-primary">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
+            <div class="col-md-6 col-md-offset-3 text-center post__article">
                 <?php
                     $this->load->model('Profil_model');
                     $this->load->helpers('html');
@@ -187,3 +187,24 @@
             </div>
         </div>
 </section>
+
+
+<script>
+    window.onload = function() {
+        $('.post__article').scrollNav({
+            fixedMargin: 60,
+            scrollOffset: 80,
+            headlineText: 'Navigation',
+            arrowKeys: true,
+            sections: 'label',
+            sectionElem: 'label',
+            showTopLink: false,
+        });
+
+        var $item = $('.scroll-nav__item');
+        $.each($item, function(){
+            $text = $(this).find('a').html().toLowerCase();
+            $(this).addClass($text);
+        });
+    }
+</script>

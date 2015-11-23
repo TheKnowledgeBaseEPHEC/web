@@ -1,6 +1,6 @@
 <section class="bg-primary" id="profile">
     <div class="container">
-        <div class="row">
+        <div class="row post__article">
             <div class="col-md-6 col-md-offset-3">
                 <?php
                 $validation_errors = $this->session->flashdata('validation_errors');
@@ -26,6 +26,7 @@
                 }
                 ?>
                 <p>
+                <h2>Profil</h2>
                 <table class="table-curved">
                     <tr>
                         <td class="toptd">Nom</td>
@@ -225,3 +226,22 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.onload = function() {
+        $('.post__article').scrollNav({
+            fixedMargin: 60,
+            scrollOffset: 80,
+            headlineText: 'Navigation',
+            arrowKeys: true,
+            sectionElem: 'div',
+            showTopLink: false,
+        });
+
+        var $item = $('.scroll-nav__item');
+        $.each($item, function(){
+            $text = $(this).find('a').html().toLowerCase();
+            $(this).addClass($text);
+        });
+    }
+</script>

@@ -840,3 +840,33 @@ td.toptd {
 .table-curved td:first-child {
     border-right: 1px solid white;
 }
+
+/* ScrollNav */
+.scroll-nav__wrapper {
+    width: 230px;
+    position: fixed;
+    color: #fff;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.scroll-nav__wrapper a {
+    color: white;
+    text-decoration: none;
+}
+
+.scroll-nav__item.active {
+    -webkit-transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -o-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+    padding-left: 0.5em;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .scroll-nav__wrapper {
+        display: none;
+    }
+}
