@@ -61,7 +61,7 @@
                 </table>
                 </p>
                 <p>
-                <?= print anchor(base_url("editionprofil"), "Éditez votre profil", 'class="btn btn-block formsubmit"'); ?>
+                <?php print anchor(base_url("editionprofil"), "Éditez votre profil", 'class="btn btn-block formsubmit"'); ?>
                 </p>
 
                 <hr class="light">
