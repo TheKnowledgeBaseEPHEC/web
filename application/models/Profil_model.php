@@ -8,6 +8,10 @@ class Profil_model extends CI_Model
         parent::__construct();
     }
 
+    /*
+     * TODO : Mdp oublié
+     */
+
     public function modifyName($idUser, $newName){
         $data = array(
             'Nom' => $newName,
@@ -24,6 +28,8 @@ class Profil_model extends CI_Model
         $this->db->update('User', $data);
         $this->session->set_userdata('user_prenom', $newFirstName);
     }
+
+    // XXX activation ????
     public function modifyEmail($idUser, $newEmail){
         $data = array(
             'AdresseMail' => $newEmail,
@@ -41,6 +47,7 @@ class Profil_model extends CI_Model
         $passwordDb = $row->Password;
         return $passwordDb;
     }
+
     public function modifyPwd($idUser, $newPassword){
             $data = array(
                 'Password' => $newPassword,

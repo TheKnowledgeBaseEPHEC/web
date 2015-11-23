@@ -104,6 +104,28 @@ class Inscription extends CI_Controller
     /* Envoi de l'email d'activation */
     public function sendmail($user)
     {
+        if (empty($user)) {
+            die();
+        }
+
+        /* Si on veut envoyer un mail pour les utilisateurs mobiles */
+        if (!is_object($user)) {
+            $this->load->model('Profil_model');
+            $this->load->model('Inscription_model');
+            $this->load->helper('email');
+            $slug = $user;
+            $udata = (object)$this->Profil_model->getUserData($slug);
+            if ($udata != null) {
+                $user = (object)array(
+                    'nom' => $udata->Nom,
+                    'prenom' => $udata->Prenom,
+                    'email' => $udata->AdresseMail,
+                    'id' => $udata->idUser
+                );
+                $user->activation_key = $this->Inscription_model->create_activation_key($user);
+            }
+        }
+
         date_default_timezone_set('Europe/Brussels');
 
         $config = Array(

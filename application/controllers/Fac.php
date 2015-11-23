@@ -150,8 +150,8 @@ class Fac extends CI_Controller {
                     'userId' => $this->session->userdata('user_id'),
                 );
                 $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-                $this->form_validation->set_rules('IntituleCours', 'Intitulé du cours', 'required|min_length[1]');
-                $this->form_validation->set_rules('Fac_Ecole_idEcole', 'École', 'required|min_length[1]');
+                $this->form_validation->set_rules('IntituleCours', 'IntitulÃ© du cours', 'required|min_length[1]');
+                $this->form_validation->set_rules('Fac_Ecole_idEcole', 'Ã©cole', 'required|min_length[1]');
                 $this->form_validation->set_rules('idUser', 'User ID', 'required|min_length[1]');
                 if ($this->form_validation->run() == FALSE) {
                     $data['ecole_data'] = $this->fac->get_fac();

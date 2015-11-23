@@ -25,6 +25,7 @@
                     echo "<label class='error'><i class='fa fa-exclamation-triangle'></i> $error</label>";
                 }
                 ?>
+                <p>
                 <table class="table-curved">
                     <tr>
                         <td class="toptd">Nom</td>
@@ -57,6 +58,11 @@
                             ?></td>
                     </tr>
                 </table>
+                </p>
+                <p>
+                <?= print anchor(base_url("editionprofil"), "Éditez votre profil", 'class="btn btn-block formsubmit"'); ?>
+                </p>
+
                 <hr class="light">
 
                 <p><table class="table-tuto">
@@ -215,9 +221,6 @@
                 <?php  }
                 ?>
                 </table></p>
-
-
-
             </div>
         </div>
     </div>

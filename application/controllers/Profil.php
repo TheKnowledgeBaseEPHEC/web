@@ -18,36 +18,6 @@ class Profil extends CI_Controller
 
     public function index($slug = null)
     {
-        if (!$this->logged_in())
-        {
-            $this->session->set_flashdata('login_error', $this->lang->line('no_access'));
-            $this->login();
-            return;
-        }
-        if (!empty($this->input->post('avatar_submit'))) {
-            $this->do_upload();
-        }
-
-        if (!empty($this->input->post('repScr'))) {
-            $this->QstSecr();
-        }
-
-        if (!empty($this->input->post('name_submit'))) {
-            $this->modifName();
-        }
-
-        if (!empty($this->input->post('firstname_submit'))) {
-            $this->modifPrenom();
-        }
-
-        if (!empty($this->input->post('mail_submit'))) {
-            $this->modifMail();
-        }
-
-        if (!empty($this->input->post('pwd_submit'))) {
-            $this->modifPwd();
-        }
-
         if ($slug != null && strlen($slug)) {
             $udata = $this->Profil_model->getUserData($slug);
             if ($udata != null) {
@@ -89,7 +59,6 @@ class Profil extends CI_Controller
             $this->load->view("profil_header", $data);
             $this->load->view('profil_menu', $data);
             $this->load->view("profil", $data);
-            $this->load->view('edit_profil');
             $idUserRated = $this->session->userdata('user_id');
             $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
         } else {
@@ -101,6 +70,51 @@ class Profil extends CI_Controller
         }
         $this->load->view('footer');
     } //end index
+
+    public function edit_profile() {
+        $userinfo = (object)array (
+            'nom' => $this->session->userdata('user_nom'),
+            'prenom' => $this->session->userdata('user_prenom'),
+            'email' => $this->session->userdata('user_email'),
+            'avatar' => $this->session->userdata('user_avatar'),
+            'SQuestion' => null,
+            'id' => $this->session->userdata('user_id')
+        );
+
+        $data['user'] = $userinfo;
+        if (!$this->logged_in())
+        {
+            $this->session->set_flashdata('login_error', $this->lang->line('no_access'));
+            $this->login();
+            return;
+        }
+        if (!empty($this->input->post('avatar_submit'))) {
+            $this->do_upload();
+        }
+
+        if (!empty($this->input->post('repScr'))) {
+            $this->QstSecr();
+        }
+
+        if (!empty($this->input->post('name_submit'))) {
+            $this->modifName();
+        }
+
+        if (!empty($this->input->post('firstname_submit'))) {
+            $this->modifPrenom();
+        }
+
+        if (!empty($this->input->post('mail_submit'))) {
+            $this->modifMail();
+        }
+
+        if (!empty($this->input->post('pwd_submit'))) {
+            $this->modifPwd();
+        }
+        $this->load->view('header');
+        $this->load->view('edit_profil', $data);
+        $this->load->view('footer');
+    }
 
     public function view($slug = null) {
         if ($slug != null) {
@@ -125,9 +139,11 @@ class Profil extends CI_Controller
         else
         {
             $newName = $this->input->post('name');
+            $this->session->set_userdata('user_nom', $newName);
             $idUser = $this->session->userdata('user_id');
             $this->load->model('Profil_model');
             $this->Profil_model->modifyName($idUser, $newName);
+            $this->reload();
         }
 
     }
@@ -144,6 +160,7 @@ class Profil extends CI_Controller
             $idUser = $this->session->userdata('user_id');
             $this->load->model('Profil_model');
             $this->Profil_model->modifyFirstName($idUser, $newFirstName);
+            $this->reload();
         }
     }
 
@@ -253,5 +270,9 @@ class Profil extends CI_Controller
 
     public function logged_in() {
         return !empty($this->session->userdata('user_id'));
+    }
+
+    public function reload() {
+        redirect($this->uri->uri_string());
     }
 }

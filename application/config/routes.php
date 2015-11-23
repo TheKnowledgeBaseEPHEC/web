@@ -55,10 +55,14 @@ $route['inscription'] = 'Inscription';
 
 $route['activation/(:any)'] = 'Inscription/verify/$1';
 
+// helper pour l'application mobile
+$route['sendmail/(:any)'] = 'Inscription/sendmail/$1';
+
 $route['login'] = 'Login';
 $route['logout'] = 'Login/logout';
 $route['profil'] = 'Profil';
 $route['profil/(:any)'] = 'Profil/view/$1';
+$route['editionprofil'] = 'Profil/edit_profile';
 $route['upload'] = "Profil/do_upload";
 $route['confirmAide'] = 'ConfirmAide';
 $route['confirmAide/(:any)'] = 'ConfirmAide/view/$1';
