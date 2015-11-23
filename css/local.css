@@ -880,3 +880,7 @@ td.toptd {
     table-layout: fixed;
     word-wrap: break-word;
 }
+
+.table-tuto.table-curved td:first-child {
+    border-right: 0px;
+}
