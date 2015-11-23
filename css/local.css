@@ -43,6 +43,7 @@ h4,
 h5,
 h6 {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    text-align: center;
 }
 
 p {
@@ -646,6 +647,7 @@ input.formsubmit, a.formsubmit {
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
+    height: 34px;
 }
 
 input.formsubmit:hover, input.formsubmit:focus, a.formsubmit:hover, a.formsubmit:focus {
@@ -677,8 +679,10 @@ a.light:hover, a.light:focus {
 
 /* Jquery UI */
 .ui-tabs.ui-tabs-vertical {
-    padding: 0;
-    width: 42em;
+    padding: 0px;
+    width: 100%;
+    border: 1px solid #f05f40;
+    border-radius: 4px;
 }
 .ui-tabs.ui-tabs-vertical .ui-widget-header {
     border: none;
@@ -686,9 +690,8 @@ a.light:hover, a.light:focus {
 .ui-tabs.ui-tabs-vertical .ui-tabs-nav {
     float: left;
     width: 10em;
-    background: #CCC;
     border-radius: 4px 0 0 4px;
-    border-right: 1px solid gray;
+    border-right: 1px solid #f05f40;
 }
 .ui-tabs.ui-tabs-vertical .ui-tabs-nav li {
     clear: left;
@@ -725,4 +728,115 @@ a.light:hover, a.light:focus {
     border-radius: 0;
     position: relative;
     left: -1px;
+}
+
+.table-tuto {
+    border-color: #fff;
+    width: 100%;
+}
+
+.table-tuto h2{
+    text-align: center;
+}
+
+.table-tuto th{
+    text-align: center;
+    padding:10px;
+    background-color: white;
+    color: #f05f40;
+}
+
+.table-tuto td {
+    padding: 10px;
+    border-top: 1px solid white;
+    text-align: center;
+}
+
+.table-tuto a {
+    text-decoration: none;
+    color: white;
+}
+.table-tuto tr:hover a {
+    color: #f05f40;
+}
+.table-tuto tr:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #f05f40 ;
+    transition: color .3s, background .3s;
+
+}
+
+.table-tuto tr{
+    transition: color .3s, background .3s;
+
+}
+.table-tuto {
+    border-collapse: separate;
+}
+.table-tuto {
+    border: solid #fff 1px;
+    border-radius: 4px;
+}
+
+
+.table-tuto td:first-child {
+}
+
+.table-seances {
+    border-color: #fff;
+    width: 100%;
+}
+
+.table-seances th{
+    text-align: center;
+    padding:10px;
+    background-color: white;
+    color: #f05f40;
+}
+.table-seances td {
+    padding: 10px;
+    border-top: 1px solid white;
+    text-align: center;
+}
+
+.table-seances {
+    border-collapse: separate;
+}
+.table-seances {
+    border: solid #fff 1px;
+    border-radius: 4px;
+}
+
+.table-sceances td:first-child {
+    border-right: 1px solid white;
+}
+
+
+
+
+.table-curved {
+    border-color: #fff;
+    width: 100%;
+}
+
+.table-curved td {
+    padding: 10px;
+    border-top: 1px solid white;
+}
+
+.table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border: solid #fff 1px;
+    border-radius: 4px;
+}
+
+td.toptd {
+    border: 0;
+}
+
+.table-curved td:first-child {
+    border-right: 1px solid white;
 }

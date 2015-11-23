@@ -55,4 +55,21 @@ class Fac_model extends CI_Model
         $this->db->set('expiration', 'now() + interval 1 week', FALSE);
         $this->db->insert('Activation', $data);
     }
+
+    public function gen_slug($IntituleCours,$Fac_Ecole_idEcole)
+    {
+        return substr(strtolower($IntituleCours.$Fac_Ecole_idEcole), 0, 20);
+    }
+
+    public function add_cour($data)
+    {
+        $this->db->insert('Cours', $data);
+    }
+
+    public function get_ecole_name($Fac_Ecole_idEcole)
+    {
+        $query = $this->db->get_where('Ecole', array('idEcole' => $Fac_Ecole_idEcole));
+        $row = $query->row();
+        return $row->idEcole;
+    }
 }

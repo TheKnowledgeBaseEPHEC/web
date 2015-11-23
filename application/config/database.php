@@ -74,11 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'hostname' => 'localhost:3306',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'TheKnowledgeBase',
-	'dbdriver' => 'mysqli',
+	'dsn'	=> 'mysql:host=theknowledgebase.be;dbname=bdd_youri',
+	'hostname' => '',
+	'username' => 'tkb',
+	'password' => 'tkbpwd',
+	'database' => '',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

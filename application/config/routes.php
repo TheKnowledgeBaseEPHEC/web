@@ -73,8 +73,10 @@ $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
 $route['facdata'] = 'Fac/get';
 $route['cours'] = 'Fac/cours';
+$route['ajouter_cour'] = 'Fac/ajouter_cour';
 $route['cours/(:any)'] = 'Fac/cours/$1';
 
+$route['rating'] = 'Rating';
 $route['contact'] = 'contact';
 
 $route['data'] = 'Home/data';

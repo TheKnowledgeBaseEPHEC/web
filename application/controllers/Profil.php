@@ -18,6 +18,12 @@ class Profil extends CI_Controller
 
     public function index($slug = null)
     {
+        if (!$this->logged_in())
+        {
+            $this->session->set_flashdata('login_error', $this->lang->line('no_access'));
+            $this->login();
+            return;
+        }
         if (!empty($this->input->post('avatar_submit'))) {
             $this->do_upload();
         }

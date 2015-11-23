@@ -54,6 +54,8 @@
                     print '<hr class="light">';
                 }
                 print '<a class="btn btn-primary btn-xl scroll-top">Remonter</a>';
+                print '<a class="btn btn-success btn-xl scroll-top" href="ajouter_cour"><i class="glyphicon glyphicon-plus"></i> Ajouter un cours</a>';
+                ;
                 ?>
             </div>
         </div>
