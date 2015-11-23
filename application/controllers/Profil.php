@@ -77,21 +77,17 @@ class Profil extends CI_Controller
         }
         $data['userslug'] = $slug;
         $data['user'] = $userinfo;
-        $data['sceancesDemandeur'] = $this->Demande_model->getSeanceDemandeur($this->session->userdata('user_id'));
-        $data['sceancesDemander'] = $this->Demande_model->getSeanceDemander($this->session->userdata('user_id'));
+        $data['mesDemandes'] = $this->Demande_model->getMyDemandes($this->session->userdata('user_id'));
+        $data['mesPropositions'] = $this->Demande_model->getMyPropositions($this->session->userdata('user_id'));
+        $data['mesSeances'] = $this->Demande_model->getMySeances($this->session->userdata('user_id'));
+        $data['otherSeances'] = $this->Demande_model->getOtherSeances($this->session->userdata('user_id'));
+
         $this->load->view('header');
         $this->load->view("profil", $data);
         if ($this->logged_in() && $slug === null) {
             $this->load->view('edit_profil');
         }
 
-        if (!empty($this->input->post('interet_submit'))) {
-            if ($this->logged_in()) {
-                $userDemandeur = $this->session->userdata('user_id');
-                $userDemander =  $this->Demande_model->recupIdUser($slug);
-                $this->Demande_model->insertSceance($userDemandeur, $userDemander);
-            }
-        }
         $this->load->view('footer');
     } //end index
 

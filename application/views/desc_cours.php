@@ -15,9 +15,9 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 text-center">
                 <p><table class="table-tuto">
-                        <p><h2>Utilisateurs interessés</h2></p>
+                        <p><h2>J'ai besoin d'aide pour ce cours</h2></p>
                     <tr>
-                        <th>Slug</th>
+                        <th></th>
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Description</th>
@@ -27,8 +27,8 @@
                         <?php
                         foreach ($tutore as $item) {?>
                    <tr>
-                        <td><a href ='<?php echo base_url("/profil/$item->slug");?>'><?php print $item->slug;?></a></td>
-                        <td><?php print $item->Prenom;?></td>
+                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a></td>
+                        <td><?php print $item->Nom;?></td>
                         <td><?php print $item->Prenom;?></td>
                         <td><?php print $item->DescriptionI;?></td>
                         <td><?php print $item->DisponibilitesI;?></td>
@@ -40,9 +40,9 @@
                 <hr class="light">
 
                <p> <table class="table-tuto">
-                    <p><h2>Utilisateurs proposés</h2></p>
+                    <p><h2>Je propose mon aide pour ce cours</h2></p>
                 <tr>
-                    <th>Slug</th>
+                    <th></th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Description</th>
@@ -53,7 +53,7 @@
                 <?php
                 foreach ($tuteur as $tut) { ?>
                     <tr>
-                        <td><a href ='<?php echo base_url("/profil/$tut->slug");?>'><?php print $tut->slug;?></a></td>
+                        <td><a href ='<?php echo base_url("/confirmDemande/$tut->idProposition");?>'></a></td>
                         <td><?php print $tut->Nom;?></td>
                         <td><?php print $tut->Prenom;?></td>
                         <td><?php print $tut->DescriptionP;?></td>
@@ -72,13 +72,13 @@
                 print '<p>' . form_open('');
                 $button = array(
                     'name' => 'submitProposition',
-                    'value' => 'Se proposer',
+                    'value' => 'Proposer son aide pour ce cours',
                     'class' => 'formsubmit',
                 );
                 print  '</p>' . form_submit($button);
                 $button = array(
                     'name' => 'submitInteret',
-                    'value' => 'Interesse',
+                    'value' => 'Demander de l\'aide pour ce cours',
                     'class' => 'formsubmit',
                 );
                 print  '</p>' . form_submit($button);

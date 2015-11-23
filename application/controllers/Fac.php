@@ -123,12 +123,15 @@ class Fac extends CI_Controller {
             $this->load->view('cours', $data);
             return;
         } else {
-            $data['tutore'] = $this->Demande_model->getTutore();
-            $data['tuteur'] = $this->Demande_model->getTuteur();
+            $coursId = $this->Demande_model->recupIdCours($slug);
+            $data['tutore'] = $this->Demande_model->getTutore($coursId);
+            $data['tuteur'] = $this->Demande_model->getTuteur($coursId);
 
             }
             $this->load->view('desc_cours', $data);
             $this->load->view('footer');
         return;
+
         }
+
 }

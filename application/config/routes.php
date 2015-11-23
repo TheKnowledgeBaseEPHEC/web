@@ -58,8 +58,12 @@ $route['activation/(:any)'] = 'Inscription/verify/$1';
 $route['login'] = 'Login';
 $route['logout'] = 'Login/logout';
 $route['profil'] = 'Profil';
+$route['profil/(:any)'] = 'Profil/view/$1';
 $route['upload'] = "Profil/do_upload";
-
+$route['confirmAide'] = 'ConfirmAide';
+$route['confirmAide/(:any)'] = 'ConfirmAide/view/$1';
+$route['confirmDemande'] = 'ConfirmDemande';
+$route['confirmDemande/(:any)'] = 'ConfirmDemande/view/$1';
 
 $route['submit'] = 'Inscription/registration';
 
