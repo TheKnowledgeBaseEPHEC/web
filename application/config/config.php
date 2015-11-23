@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$config['base_url'] = 'https://sergen.theknowledgebase.be/';
+$config['base_url'] = 'https://theknowledgebase.be/';
 
 /*
 |--------------------------------------------------------------------------
