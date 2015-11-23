@@ -57,7 +57,6 @@ class Profil extends CI_Controller
 
         if ($this->logged_in() && $slug === null) {
             $this->load->view("profil_header", $data);
-            $this->load->view('profil_menu', $data);
             $this->load->view("profil", $data);
             $idUserRated = $this->session->userdata('user_id');
             $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
