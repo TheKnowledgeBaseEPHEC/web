@@ -1,115 +1,160 @@
-<?php
+<?php (! defined('BASEPATH')) and exit('No direct script access allowed');
 
 /**
- * CodeIgniter NO Captcha ReCAPTCHA a.k.a reCAPTCHA Version 2.0 library
+ * CodeIgniter Recaptcha library
  *
- * This library is based on official reCAPTCHA library for PHP
- * https://github.com/google/ReCAPTCHA
- *
+ * @package CodeIgniter
+ * @author  Bo-Yi Wu <appleboy.tw@gmail.com>
+ * @link    https://github.com/appleboy/CodeIgniter-reCAPTCHA
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+class Recaptcha
+{
+    /**
+     * ci instance object
+     *
+     */
+    private $_ci;
 
-class ReCaptcha {
+    /**
+     * reCAPTCHA site up, verify and api url.
+     *
+     */
+    const sign_up_url = 'https://www.google.com/recaptcha/admin';
+    const site_verify_url = 'https://www.google.com/recaptcha/api/siteverify';
+    const api_url = 'https://www.google.com/recaptcha/api.js';
 
-    private $signup_url = "https://www.google.com/recaptcha/admin";
-    private $_siteVerifyUrl = "https://www.google.com/recaptcha/api/siteverify?";
-    private $_secret, $_sitekey, $_lang;
-    private $_version = "php_1.0";
+    /**
+     * constructor
+     *
+     * @param string $config
+     */
+    public function __construct()
+    {
+        $this->_ci = & get_instance();
+        $this->_ci->load->config('recaptcha');
+        $this->_siteKey = $this->_ci->config->item('recaptcha_site_key');
+        $this->_secretKey = $this->_ci->config->item('recaptcha_secret_key');
+        $this->_language = $this->_ci->config->item('recaptcha_lang');
 
-    function __construct() {
-        $this->ci = & get_instance();
-        $this->ci->load->config('recaptcha', TRUE);
-        if ($this->ci->config->item('recaptcha_secretkey', 'recaptcha') == NULL || $this->ci->config->item('recaptcha_secretkey', 'recaptcha') == "") {
+        if (empty($this->_siteKey) or empty($this->_secretKey)) {
             die("To use reCAPTCHA you must get an API key from <a href='"
-                . $this->signup_url . "'>" . $this->signup_url . "</a>");
-        }
-        if ($this->ci->config->item('recaptcha_sitekey', 'recaptcha') == NULL || $this->ci->config->item('recaptcha_sitekey', 'recaptcha') == "") {
-            die("To use reCAPTCHA you must get an API key from <a href='"
-                . $this->signup_url . "'>" . $this->signup_url . "</a>");
-        }
-        $this->_secret = $this->ci->config->item('recaptcha_secretkey', 'recaptcha');
-        $this->_sitekey = $this->ci->config->item('recaptcha_sitekey', 'recaptcha');
-        if ($this->ci->config->item('lang', 'recaptcha') == NULL || $this->ci->config->item('lang', 'recaptcha') == "") {
-            $this->_lang = 'fr';
-        } else {
-            $this->_lang = $this->ci->config->item('lang', 'recaptcha');
+                .self::sign_up_url."'>".self::sign_up_url."</a>");
         }
     }
 
     /**
-     * Function to convert an array into query string
-     * @param array $data Array of params
-     * @return String query string of parameters
+     * Submits an HTTP GET to a reCAPTCHA server.
+     *
+     * @param array $data array of parameters to be sent.
+     *
+     * @return array response
      */
-    private function _encodeQS($data) {
-        $req = "";
-        foreach ($data as $key => $value) {
-            $req .= $key . '=' . urlencode(stripslashes($value)) . '&';
-        }
-        return substr($req, 0, strlen($req) - 1);
-    }
+    private function _submitHTTPGet($data)
+    {
+        $url = self::site_verify_url.'?'.http_build_query($data);
+        $response = file_get_contents($url);
 
-    /**
-     * HTTP GET to communicate with reCAPTCHA server
-     * @param string $path URL to GET
-     * @param array $data Array of params
-     * @return string JSON response from reCAPTCHA server
-     */
-    private function _submitHTTPGet($path, $data) {
-        $req = $this->_encodeQS($data);
-        $response = file_get_contents($path . $req);
         return $response;
     }
 
     /**
-     * Function for rendering reCAPTCHA widget into views
-     * Call this function in your view
-     * @return string embedded HTML
+     * Calls the reCAPTCHA siteverify API to verify whether the user passes
+     * CAPTCHA test.
+     *
+     * @param string $response response string from recaptcha verification.
+     * @param string $remoteIp IP address of end user.
+     *
+     * @return ReCaptchaResponse
      */
-    public function render() {
-        $return = '<div class="g-recaptcha" data-sitekey="' . $this->_sitekey . '"></div>
-            <script src="https://www.google.com/recaptcha/api.js?hl=' . $this->_lang . '" async defer></script>';
-        return $return;
-    }
+    public function verifyResponse($response, $remoteIp = null)
+    {
+        $remoteIp = (!empty($remoteIp)) ? $remoteIp : $this->_ci->input->ip_address();
 
-    /**
-     * Function for verifying user's input
-     * @param string $response User's input
-     * @param string $remoteIp Remote IP you wish to send to reCAPTCHA, if NULL $this->input->ip_address() will be called
-     * @return array Array of response
-     */
-    public function verifyResponse($response, $remoteIp = NULL) {
-        if ($response == null || strlen($response) == 0) {
-            // Empty user's input
-            $return = array(
-                'success' => FALSE,
-                'error_codes' => 'missing-input'
+        // Discard empty solution submissions
+        if (empty($response)) {
+            return array(
+                'success' => false,
+                'error-codes' => 'missing-input',
             );
         }
 
         $getResponse = $this->_submitHttpGet(
-            $this->_siteVerifyUrl, array(
-                'secret' => $this->_secret,
-                'remoteip' => (!is_null($remoteIp)) ? $remoteIp : $this->ci->input->ip_address(),
-                'v' => $this->_version,
-                'response' => $response
+            array(
+                'secret' => $this->_secretKey,
+                'remoteip' => $remoteIp,
+                'response' => $response,
             )
         );
-        $answers = json_decode($getResponse, TRUE);
 
-        if (trim($answers ['success']) == true) {
-            // Right captcha! 
-            $return = array(
-                'success' => TRUE,
-                'error_codes' => ''
-            );
+        // get reCAPTCHA server response
+        $responses = json_decode($getResponse, true);
+
+        if (isset($responses['success']) and $responses['success'] == true) {
+            $status = true;
         } else {
-            // Wrong captcha!
-            $return = array(
-                'success' => FALSE,
-                'error_codes' => $answers['error-codes']
-            );
+            $status = false;
+            $error = (isset($responses['error-codes'])) ? $responses['error-codes']
+                : 'invalid-input-response';
         }
-        return $return;
+
+        return array(
+            'success' => $status,
+            'error-codes' => (isset($error)) ? $error : null,
+        );
+    }
+
+    /**
+     * Render Script Tag
+     *
+     * onload: Optional.
+     * render: [explicit|onload] Optional.
+     * hl: Optional.
+     * see: https://developers.google.com/recaptcha/docs/display
+     *
+     * @param array parameters.
+     *
+     * @return scripts
+     */
+    public function getScriptTag(array $parameters = array())
+    {
+        $default = array(
+            'render' => 'onload',
+            'hl' => $this->_language,
+        );
+
+        $result = array_merge($default, $parameters);
+
+        $scripts = sprintf('<script type="text/javascript" src="%s?%s" async defer></script>',
+            self::api_url, http_build_query($result));
+
+        return $scripts;
+    }
+
+    /**
+     * render the reCAPTCHA widget
+     *
+     * data-theme: dark|light
+     * data-type: audio|image
+     *
+     * @param array parameters.
+     *
+     * @return scripts
+     */
+    public function getWidget(array $parameters = array())
+    {
+        $default = array(
+            'data-sitekey' => $this->_siteKey,
+            'data-theme' => 'light',
+            'data-type' => 'image',
+        );
+
+        $result = array_merge($default, $parameters);
+
+        $html = '';
+        foreach ($result as $key => $value) {
+            $html .= sprintf('%s="%s" ', $key, $value);
+        }
+
+        return '<div class="g-recaptcha" '.$html.'></div>';
     }
 }

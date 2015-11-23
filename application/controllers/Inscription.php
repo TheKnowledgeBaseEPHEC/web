@@ -11,7 +11,7 @@ class Inscription extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helpers('common');
-        $this->load->library('recaptcha');
+        $this->load->library('Recaptcha');
         $this->load->database();
 
     }

@@ -646,7 +646,6 @@ input.formsubmit, a.formsubmit {
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    height: 34px;
 }
 
 input.formsubmit:hover, input.formsubmit:focus, a.formsubmit:hover, a.formsubmit:focus {
@@ -678,10 +677,8 @@ a.light:hover, a.light:focus {
 
 /* Jquery UI */
 .ui-tabs.ui-tabs-vertical {
-    padding: 0px;
-    width: 100%;
-    border: 1px solid #f05f40;
-    border-radius: 4px;
+    padding: 0;
+    width: 42em;
 }
 .ui-tabs.ui-tabs-vertical .ui-widget-header {
     border: none;
@@ -689,8 +686,9 @@ a.light:hover, a.light:focus {
 .ui-tabs.ui-tabs-vertical .ui-tabs-nav {
     float: left;
     width: 10em;
+    background: #CCC;
     border-radius: 4px 0 0 4px;
-    border-right: 1px solid #f05f40;
+    border-right: 1px solid gray;
 }
 .ui-tabs.ui-tabs-vertical .ui-tabs-nav li {
     clear: left;
@@ -727,31 +725,4 @@ a.light:hover, a.light:focus {
     border-radius: 0;
     position: relative;
     left: -1px;
-}
-
-
-.table-curved {
-    border-color: #fff;
-    width: 100%;
-}
-
-.table-curved td {
-    padding: 10px;
-    border-top: 1px solid white;
-}
-
-.table-curved {
-    border-collapse: separate;
-}
-.table-curved {
-    border: solid #fff 1px;
-    border-radius: 4px;
-}
-
-td.toptd {
-    border: 0;
-}
-
-.table-curved td:first-child {
-    border-right: 1px solid white;
 }

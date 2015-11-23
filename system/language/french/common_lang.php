@@ -26,5 +26,4 @@ $lang['recaptcha_invalid'] = "La réponse du captcha est erronée";
 $lang['avatar_upload_failed'] = "Un problème est survenu lors du changement de l'avatar";
 $lang['modif_pwd_failed'] = "L'ancien mot de passe ne correspond pas";
 $lang['profil_failed'] = "Veuillez vous connecter pour accéder au profil";
-$lang['question_failed'] = "Veuillez renseigner le champ répose secrète";
-$lang['no_access'] = "Veuillez vous identifier pour avoir accès à cette page";
+$lang['question_failed'] ="Veuillez renseigner le champ répose secrète";

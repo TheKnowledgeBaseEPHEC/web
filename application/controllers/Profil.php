@@ -12,17 +12,12 @@ class Profil extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helpers('common');
         $this->load->database();
+        $this->load->model('Demande_model');
 
     }
 
     public function index($slug = null)
     {
-        if (!$this->logged_in())
-        {
-            $this->session->set_flashdata('login_error', $this->lang->line('no_access'));
-            $this->login();
-            return;
-        }
         if (!empty($this->input->post('avatar_submit'))) {
             $this->do_upload();
         }
@@ -74,16 +69,21 @@ class Profil extends CI_Controller
                 'id' => $this->session->userdata('user_id')
             );
         }
-
-
+        $data['userslug'] = $slug;
         $data['user'] = $userinfo;
+        $data['mesDemandes'] = $this->Demande_model->getMyDemandes($this->session->userdata('user_id'));
+        $data['mesPropositions'] = $this->Demande_model->getMyPropositions($this->session->userdata('user_id'));
+        $data['mesSeances'] = $this->Demande_model->getMySeances($this->session->userdata('user_id'));
+        $data['otherSeances'] = $this->Demande_model->getOtherSeances($this->session->userdata('user_id'));
+
         $this->load->view('header');
         $this->load->view("profil", $data);
         if ($this->logged_in() && $slug === null) {
             $this->load->view('edit_profil');
         }
+
         $this->load->view('footer');
-    }
+    } //end index
 
     public function view($slug = null) {
         if ($slug != null) {
