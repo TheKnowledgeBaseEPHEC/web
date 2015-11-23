@@ -50,7 +50,7 @@
                                 'src' => $user->avatar,
                                 'alt' => 'erreur de chargement',
                                 'class' => 'post_image',
-                                'width' => '200',
+                                'width' => '100%',
                                 'height' => '200',
                                 'title' => 'photo avatar',
                                 'rel' => 'lightbox',
@@ -66,10 +66,9 @@
 
                 <hr class="light">
 
-                <p><table class="table-tuto">
+                <p><table class="table-tuto table-curved">
                     <p><h2>Mes demandes d'aide</h2></p>
                 <tr>
-                    <th></th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Description</th>
@@ -79,8 +78,7 @@
                 <?php
                 foreach ($mesDemandes as $item) {?>
                     <tr>
-                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a></td>
-                        <td><?php print $item->Nom;?></td>
+                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a><?php print $item->Nom;?></a></td>
                         <td><?php print $item->Prenom;?></td>
                         <td><?php print $item->DescriptionI;?></td>
                         <td><?php print $item->DisponibilitesI;?></td>
@@ -91,10 +89,9 @@
                 </table></p>
                 <hr class="light">
 
-                <p><table class="table-tuto">
+                <p><table class="table-tuto table-curved">
                     <p><h2>Mes propositions d'aide</h2></p>
                 <tr>
-                    <th></th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Description</th>
@@ -105,8 +102,7 @@
                 <?php
                 foreach ($mesPropositions as $item) {?>
                     <tr>
-                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a></td>
-                        <td><?php print $item->Nom;?></td>
+                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a><?php print $item->Nom;?></a></td>
                         <td><?php print $item->Prenom;?></td>
                         <td><?php print $item->DescriptionP;?></td>
                         <td><?php print $item->Remuneration;?></td>
@@ -118,10 +114,9 @@
                 </table></p>
                 <hr class="light">
 
-                <p><table class="table-tuto">
+                <p><table class="table-tuto table-curved">
                     <p><h2>Mes scéances </h2></p>
                 <tr>
-                    <th></th>
                     <th>Avec</th>
                     <th>Cours</th>
                     <th>Pour être aidé</th>
@@ -133,8 +128,7 @@
                 <?php
                 foreach ($mesSeances as $item) { ?>
                 <tr>
-                    <td><a href='<?php echo base_url("/confirmAide/$item->idInteret"); ?>'></a></td>
-                    <td><?php print $item->NomDemander; ?></td>
+                    <td><a href='<?php echo base_url("/confirmAide/$item->idInteret"); ?>'><?php print $item->NomDemander; ?></a></td>
                     <td><?php print $item->idCours; ?></td>
                     <td><?php
                         if ($item->isDemandeAide == 0) {
@@ -171,10 +165,9 @@
                 </table></p>
                 <hr class="light">
 
-                <p><table class="table-tuto">
+                <p><table class="table-tuto table-curved">
                     <p><h2>Qui me demande? </h2></p>
                 <tr>
-                    <th></th>
                     <th>De</th>
                     <th>Cours</th>
                     <th>Je dois l'aider</th>

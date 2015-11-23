@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
 
-                <p><table class="table-tuto">
+                <p><table class="table-tuto table-curved">
                     <p><h2>Vous confirmez?</h2></p>
                 <tr>
                     <th>Nom</th>

@@ -69,6 +69,9 @@
                     <a class="page-scroll" href="/profil">profil</a>
                 </li>
                 <li>
+                    <a class="page-scroll" href="/login">Identification</a>
+                </li>
+                <li>
                     <a class="page-scroll" href="/inscription">inscription</a>
                 </li>
             </ul>

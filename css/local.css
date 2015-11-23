@@ -777,6 +777,7 @@ a.light:hover, a.light:focus {
 .table-tuto {
     border: solid #fff 1px;
     border-radius: 4px;
+    font-size: 10px;
 }
 
 
@@ -811,9 +812,6 @@ a.light:hover, a.light:focus {
 .table-sceances td:first-child {
     border-right: 1px solid white;
 }
-
-
-
 
 .table-curved {
     border-color: #fff;
@@ -869,4 +867,16 @@ td.toptd {
     .scroll-nav__wrapper {
         display: none;
     }
+}
+
+@media only screen and (max-width: 1000px) {
+    .scroll-nav__wrapper {
+        display: none;
+    }
+}
+
+.table-curved {
+    max-width: none;
+    table-layout: fixed;
+    word-wrap: break-word;
 }

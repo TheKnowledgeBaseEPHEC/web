@@ -206,5 +206,16 @@
             $text = $(this).find('a').html().toLowerCase();
             $(this).addClass($text);
         });
+
+        function scrollNavEvent() {
+            var $windowWidth = $(window).width();
+            if ($windowWidth < 1000) {
+                $('scroll-nav__item').hide();
+            } else {
+                $('scroll-nav__item').show();
+            }
+        }
+
+        $(window).on("resize", scrollNavEvent);
     }
 </script>

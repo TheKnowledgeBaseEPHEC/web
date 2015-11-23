@@ -14,10 +14,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 text-center">
-                <p><table class="table-tuto">
+                <p><table class="table-tuto table-curved">
                         <p><h2>J'ai besoin d'aide pour ce cours</h2></p>
                     <tr>
-                        <th></th>
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Description</th>
@@ -27,8 +26,7 @@
                         <?php
                         foreach ($tutore as $item) {?>
                    <tr>
-                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a></td>
-                        <td><?php print $item->Nom;?></td>
+                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a><?php print $item->Nom;?></a></td>
                         <td><?php print $item->Prenom;?></td>
                         <td><?php print $item->DescriptionI;?></td>
                         <td><?php print $item->DisponibilitesI;?></td>
@@ -39,10 +37,9 @@
                 </table></p>
                 <hr class="light">
 
-               <p> <table class="table-tuto">
+               <p> <table class="table-tuto table-curved">
                     <p><h2>Je propose mon aide pour ce cours</h2></p>
                 <tr>
-                    <th></th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Description</th>
@@ -53,14 +50,12 @@
                 <?php
                 foreach ($tuteur as $tut) { ?>
                     <tr>
-                        <td><a href ='<?php echo base_url("/confirmDemande/$tut->idProposition");?>'></a></td>
-                        <td><?php print $tut->Nom;?></td>
+                        <td><a href ='<?php echo base_url("/confirmDemande/$tut->idProposition");?>'><?php print $tut->Nom;?></a></td>
                         <td><?php print $tut->Prenom;?></td>
                         <td><?php print $tut->DescriptionP;?></td>
                         <td><?php print $tut->Remuneration;?></td>
                         <td><?php print $tut->DisponibilitesP;?></td>
                         <td><?php print $tut->Date;?></td>
-
                     </tr>
                     </p>
                     <?php  }
