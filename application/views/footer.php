@@ -13,6 +13,7 @@
 <script src='https://www.google.com/recaptcha/api.js?hl=fr'></script>
 <script src='/js/jquery-ui.min.js'></script>
 <script src='/js/bootstrap-select.js'></script>
+<script src="/js/jquery.scrollNav.min.js"></script>
 
 
 <!-- Custom Theme JavaScript -->
