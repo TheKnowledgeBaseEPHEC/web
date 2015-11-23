@@ -60,14 +60,19 @@ class Profil extends CI_Controller
             $this->load->view("profil", $data);
             $idUserRated = $this->session->userdata('user_id');
             $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
-        } else {
+        } else if ($this->logged_in()) {
             $this->load->view("profil_header", $data);
             $this->load->view("profil", $data);
             $idUserRated = $this->rating_model->getIdFromSlug($slug);
             $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
             $this->load->view('profil_ratings', $data);
+        } else {
+            $this->session->set_flashdata('login_error', $this->lang->line('access_not_authorized_please_login'));
+            $this->login();
         }
-        $this->load->view('footer');
+        if ($this->logged_in()) {
+            $this->load->view('footer');
+        }
     } //end index
 
     public function edit_profile() {

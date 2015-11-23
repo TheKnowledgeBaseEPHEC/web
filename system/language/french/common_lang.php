@@ -28,3 +28,4 @@ $lang['modif_pwd_failed'] = "L'ancien mot de passe ne correspond pas";
 $lang['profil_failed'] = "Veuillez vous connecter pour accéder au profil";
 $lang['question_failed'] = "Veuillez renseigner le champ répose secrète";
 $lang['no_access'] = "Veuillez vous identifier pour avoir accès à cette page";
+$lang['access_not_authorized_please_login'] = "Accès non autorisé, veuillez vous identifier";
