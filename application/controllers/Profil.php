@@ -84,10 +84,18 @@ class Profil extends CI_Controller
 
         $this->load->view('header');
         $this->load->view("profil", $data);
+        $this->load->model('rating_model');
+
         if ($this->logged_in() && $slug === null) {
             $this->load->view('edit_profil');
+            $idUserRated = $this->session->userdata('user_id');
+            $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
+            $this->load->view('profil_ratings', $data);
+        } else {
+            $idUserRated = $this->rating_model->getIdFromSlug($slug);
+            $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
+            $this->load->view('profil_ratings', $data);
         }
-
         $this->load->view('footer');
     } //end index
 
