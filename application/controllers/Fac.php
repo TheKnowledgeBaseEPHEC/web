@@ -129,6 +129,7 @@ class Fac extends CI_Controller {
         }
         if ($slug == null) {
             $this->load->view('cours', $data);
+            $this->load->view('footer');
             return;
         } else {
             $data['CoursInfo'] = $this->Demande_model->recupCours($slug);

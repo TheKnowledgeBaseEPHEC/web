@@ -179,8 +179,7 @@
                 <?php
                 foreach ($otherSeances as $item) { ?>
                     <tr>
-                        <td><a href='<?php echo base_url("/confirmAide/$item->idInteret"); ?>'></a></td>
-                        <td><?php print $item->NomDemandeur; ?></td>
+                        <td><a href='<?php echo base_url("/confirmAide/$item->idInteret"); ?>'><?php echo $item->NomDemander ?></a></td>
                         <td><?php print $item->idCours; ?></td>
                         <td><?php
                             if ($item->isDemandeAide == 0) {
