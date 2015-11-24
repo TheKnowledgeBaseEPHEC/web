@@ -11,7 +11,7 @@ class Login_model extends CI_Model
 
     public function login($email, $password)
     {
-        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug, Actif, ImagePath")
+        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug, Actif, ImagePath, status")
             ->where('AdresseMail', $email)
             ->where('Password', $password)
             ->get('User');
@@ -29,6 +29,7 @@ class Login_model extends CI_Model
                 $this->session->set_userdata('user_prenom', $row->Prenom);
                 $this->session->set_userdata('user_email', $row->AdresseMail);
                 $this->session->set_userdata('user_avatar', $row->ImagePath);
+                $this->session->set_userdata('user_status', $row->status);
 
                 return true;
             }

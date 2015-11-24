@@ -36,7 +36,7 @@ class Profil extends CI_Controller
                 return;
             }
         } else {
-            $userinfo = (object)array (
+            $userinfo = (object)array(
                 'nom' => $this->session->userdata('user_nom'),
                 'prenom' => $this->session->userdata('user_prenom'),
                 'email' => $this->session->userdata('user_email'),
@@ -75,8 +75,9 @@ class Profil extends CI_Controller
         }
     } //end index
 
-    public function edit_profile() {
-        $userinfo = (object)array (
+    public function edit_profile()
+    {
+        $userinfo = (object)array(
             'nom' => $this->session->userdata('user_nom'),
             'prenom' => $this->session->userdata('user_prenom'),
             'email' => $this->session->userdata('user_email'),
@@ -86,8 +87,7 @@ class Profil extends CI_Controller
         );
 
         $data['user'] = $userinfo;
-        if (!$this->logged_in())
-        {
+        if (!$this->logged_in()) {
             $this->session->set_flashdata('login_error', $this->lang->line('no_access'));
             $this->login();
             return;
@@ -120,7 +120,8 @@ class Profil extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function view($slug = null) {
+    public function view($slug = null)
+    {
         if ($slug != null) {
             $this->index($slug);
         }
@@ -137,11 +138,8 @@ class Profil extends CI_Controller
     {
 
         $this->form_validation->set_rules('name', 'Nom de famille', 'trim|required|min_length[2]');
-        if ($this->form_validation->run() == FALSE)
-        {
-        }
-        else
-        {
+        if ($this->form_validation->run() == FALSE) {
+        } else {
             $newName = $this->input->post('name');
             $this->session->set_userdata('user_nom', $newName);
             $idUser = $this->session->userdata('user_id');
@@ -155,11 +153,8 @@ class Profil extends CI_Controller
     function modifPrenom()
     {
         $this->form_validation->set_rules('prenom', 'Prenom', 'trim|required|min_length[2]');
-        if ($this->form_validation->run() == FALSE)
-        {
-        }
-        else
-        {
+        if ($this->form_validation->run() == FALSE) {
+        } else {
             $newFirstName = $this->input->post('prenom');
             $idUser = $this->session->userdata('user_id');
             $this->load->model('Profil_model');
@@ -172,10 +167,8 @@ class Profil extends CI_Controller
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('confirmMail', "Confirmation de votre email", 'trim|required|valid_email|matches[email]');
-        if ($this->form_validation->run() == FALSE)
-        {
-        }
-        else {
+        if ($this->form_validation->run() == FALSE) {
+        } else {
             $newMail = $this->input->post('email');
             $this->load->model('Profil_model');
             $idUser = $this->session->userdata('user_id');
@@ -187,10 +180,8 @@ class Profil extends CI_Controller
     {
         $this->form_validation->set_rules('newPwd', 'Mot de passe', 'trim|required|min_length[4]|max_length[64]');
         $this->form_validation->set_rules('confirmNewPwd', 'Confirmation de votre mot de passe', 'trim|required|matches[newPwd]');
-        if ($this->form_validation->run() == FALSE)
-        {
-        }
-        else {
+        if ($this->form_validation->run() == FALSE) {
+        } else {
             $oldPassword = hash('sha512', $this->input->post('oldPwd'));
             $idUser = $this->session->userdata('user_id');
             $this->load->model('Profil_model');
@@ -208,11 +199,9 @@ class Profil extends CI_Controller
     function QstSecr()
     {
         $this->form_validation->set_rules('repScr', 'Réponse secrète', '|required|');
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('validation_errors', $this->lang->line('question_failed'));
-        }
-        else {
+        } else {
             $secretQst = $this->input->post('Secret');
             $repscr = $this->input->post('repScr');
             $this->load->model('Profil_model');
@@ -272,11 +261,28 @@ class Profil extends CI_Controller
         return true;
     }
 
-    public function logged_in() {
+    public function logged_in()
+    {
         return !empty($this->session->userdata('user_id'));
     }
 
-    public function reload() {
+    public function reload()
+    {
         redirect($this->uri->uri_string());
+    }
+
+    /* Utilitaire pour l'admin panel */
+    public function data()
+    {
+        if ($this->logged_in()) {
+            $data = array(
+                "id" => $this->session->userdata('user_id'),
+                "nom" => $this->session->userdata('user_nom'),
+                "prenom" => $this->session->userdata('user_prenom'),
+                "status" => $this->session->userdata('user_status')
+            );
+            header('Content-Type: application/json');
+            print json_encode($data, JSON_PRETTY_PRINT);
+        }
     }
 }

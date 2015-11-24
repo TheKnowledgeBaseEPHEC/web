@@ -62,6 +62,7 @@ $route['login'] = 'Login';
 $route['logout'] = 'Login/logout';
 $route['profil'] = 'Profil';
 $route['profil/(:any)'] = 'Profil/view/$1';
+$route['profil/data'] = 'Profil/data';
 $route['editionprofil'] = 'Profil/edit_profile';
 $route['upload'] = "Profil/do_upload";
 $route['confirmAide'] = 'ConfirmAide';

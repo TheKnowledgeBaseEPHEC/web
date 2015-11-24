@@ -1,4 +1,4 @@
-<header>
+<header style="min-height: 30%">
     <div class="header-content">
         <div class="header-content-inner">
             <a class="page-scroll white-link" href="#univ">
@@ -13,7 +13,7 @@
 <section class="bg-primary" id="univ">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-lg-offset-4 text-center">
+            <div class="col-md-6 col-md-offset-3 text-center">
                 <p><table class="table-tuto table-curved">
                         <p><h2>J'ai besoin d'aide pour ce cours</h2></p>
                     <tr>
