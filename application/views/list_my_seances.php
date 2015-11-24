@@ -6,17 +6,14 @@
     </div>
 </header>
 
-<section class="" id="profile">
+<section class="bg-primary" id="profile">
     <div class="container">
         <div class="row">
-            <!--<div class="col-md-4"></div>
-            <div class="col-md-8">-->
-            <div>
+            <div class="col-md-6 col-md-offset-3 text-center">
                 <div id="content">
-                    <table class="table-tuto table-curved">
+                        <table class="table-tuto table-curved">
                         <thead>
                         <tr>
-                            <th>#</th>
                             <th>Temps écoulé lors de la séance</th>
                             <th>Professeur choisis</th>
                             <th>A payer</th>
@@ -29,10 +26,6 @@
                         <?php
                         $i = 1;
                         foreach($seances as $seance) {
-                            echo "<tr>
-                                    <th scope=row>";
-                            echo $i;
-                            echo "</th>";
                             echo "</th>
                                     <td>$seance->temps secondes</td>
                                     <td>$seance->NomDemander</td>
@@ -42,13 +35,13 @@
                             if (($seance->idRating) != 0){
                                 echo "<td>$seance->idRating</td>";
                             } else {
-                                echo "<td><button>Merci d'ajouter un commentaire</button></td>";
+                                echo "<td><a>Merci d'ajouter un commentaire</a></td>";
                             }
 
                             if (($seance->paymentStatus) != 0){
                                 echo "<td>$seance->paymentStatus</td>";
                             } else {
-                                echo "<td><button>Veuillez effectuer le paiement</button></td>";
+                                echo "<td><a>Veuillez effectuer le paiement</a></td>";
                             }
                             echo "
                                    </tr>";
