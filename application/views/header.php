@@ -21,6 +21,7 @@
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="/css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/pace-theme-flash.css" type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/local.css" type="text/css">

@@ -14,6 +14,7 @@
 <script src='/js/jquery-ui.min.js'></script>
 <script src='/js/bootstrap-select.js'></script>
 <script src="/js/jquery.scrollNav.min.js"></script>
+<script src="/js/pace.min.js"></script>
 
 
 <!-- Custom Theme JavaScript -->

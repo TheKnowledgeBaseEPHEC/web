@@ -72,6 +72,62 @@
     </div>
 </section>
 
+<section class="bg-primary" id="team">
+    <div class="container">
+        <div class="row">
+                <h2 class="section-heading">L'équipe</h2>
+                <hr class="light">
+                <div class="col-md-4 text-center">
+                    <div class="service-box">
+                        <div class="wow bounceIn circle-image">
+                            <img class="img-responsive center-block img-circle" src="/images/team/simon.png"/></a>
+                        </div>
+                        <h3>Simon</h3>
+                        <h4>Relations client</h4>
+                        <h4>Développeur web</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="service-box">
+                        <div class="wow bounceIn circle-image">
+                            <img class="img-responsive center-block img-circle" src="/images/team/sergen.jpg"/></a>
+                        </div>
+                        <h3>Sergen</h3>
+                        <h4>Développeur web</h4>
+                        <h4>Communications VOIP</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="service-box">
+                        <div class="wow bounceIn circle-image">
+                            <img class="img-responsive center-block img-circle" src="/images/team/youri.png"/></a>
+                        </div>
+                        <h3>Youri</h3>
+                        <h4>Développeur web</h4>
+                        <h4>Administration systèmes</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <div class="sercice-box">
+                        <div class="wow bounceIn circle-image">
+                            <img class="img-responsive center-block img-circle" src="/images/team/tristan.png"/></a>
+                        </div>
+                        <h3>Tristan</h3>
+                        <h4>Développeur mobile</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="service-box">
+                        <div class="wow bounceIn circle-image">
+                            <img class="img-responsive center-block img-circle" src="/images/team/jonathan.jpg"/></a>
+                        </div>
+                        <h3>Jonathan</h3>
+                        <h4>Développeur mobile</h4>
+                    </div>
+                </div>
+            </div>
+</section>
+
 <script>
     window.onload = function () {
         /* Load search box */
