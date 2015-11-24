@@ -285,4 +285,14 @@ class Profil extends CI_Controller
             print json_encode($data, JSON_PRETTY_PRINT);
         }
     }
+
+    public function DeleteDemandeAide($idDemandeA)
+    {
+        $this->Demande_model->DeleteDA($idDemandeA);
+    }
+
+    public function DeletePropositionAide($idDemandeA)
+    {
+        $this->Demande_model->DeletePA($idDemandeA);
+    }
 }

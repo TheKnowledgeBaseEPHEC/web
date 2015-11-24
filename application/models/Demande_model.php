@@ -14,14 +14,10 @@ class Demande_model extends CI_Model
         $this->load->database();
     }
 
-    public function recupIdCours($slug)
+    public function recupCours($slug)
     {
-        $request = $this->db->select("idCours")
-            ->where('slug', $slug)
-            ->get('Cours');
-        $row = $request->row();
-        $idCours = $row->idCours;
-        return $idCours;
+        $request = $this->db->select("*")->where('slug', $slug)->get('Cours');
+        return $request->result();
     }
 
     public function recupIdUser($slug)
@@ -34,7 +30,7 @@ class Demande_model extends CI_Model
         return $idUser;
     }
 
-    public function insertInfoP($descriptionP, $remuneration, $disponibilitesP, $userid, $coursid, $prenom, $nom, $slugUser){
+    public function insertInfoP($descriptionP, $remuneration, $disponibilitesP, $userid, $coursid, $prenom, $nom, $slugUser, $nomCours){
         $data = array(
             'idUser' => $userid ,
             'slug' =>  $slugUser,
@@ -44,12 +40,13 @@ class Demande_model extends CI_Model
             'DescriptionP' => $descriptionP,
             'Remuneration' => $remuneration,
             'DisponibilitesP' => $disponibilitesP,
+            'NomCours' => $nomCours
         );
         $this->db->set('Date', 'now()', FALSE);
         $this->db->insert('Proposition', $data);
     }
 
-    public function insertInfoI($descriptionI, $disponibilitesI, $userid, $coursid, $prenom, $nom, $slugUser){
+    public function insertInfoI($descriptionI, $disponibilitesI, $userid, $coursid, $prenom, $nom, $slugUser, $nomCours){
         $data = array(
             'idUser' => $userid ,
             'slug' =>  $slugUser,
@@ -58,6 +55,7 @@ class Demande_model extends CI_Model
             'idCours' => $coursid,
             'DescriptionI' => $descriptionI,
             'DisponibilitesI' => $disponibilitesI,
+            'NomCours' =>$nomCours
         );
         $this->db->set('Date', 'now()', FALSE);
         $this->db->insert('Interet', $data);
@@ -77,8 +75,8 @@ class Demande_model extends CI_Model
 
     public function getTutore($coursId)
     {
-       $request = $this->db->select ('*')->where('idCours', $coursId) ->get('Interet', 10);
-       return $request->result();
+        $request = $this->db->select ('*')->where('idCours', $coursId) ->get('Interet', 10);
+        return $request->result();
     }
 
     public function getTuteur($coursId)
@@ -96,10 +94,11 @@ class Demande_model extends CI_Model
             'NomDemander' => $prenomDemander,
             'confirmDemandeur' => 1,
             'confirmDemander' => 0,
-            'status' => 0,
+            'status' => 'NON_CONFIRMEE',
             'idCours' => $idCours,
             'isDemandeAide' => 0
         );
+        $this->db->set('startDate', 'now()', FALSE);
         $this->db->insert('Seance', $data);
     }
 
@@ -112,11 +111,18 @@ class Demande_model extends CI_Model
             'NomDemander' => $prenomDemander,
             'confirmDemandeur' => 1,
             'confirmDemander' => 0,
-            'status' => 0,
+            'status' => 'NON_CONFIRMEE',
             'idCours' => $idCours,
             'isDemandeAide' => 1
         );
+        $this->db->set('startDate', 'now()', FALSE);
         $this->db->insert('Seance', $data);
+    }
+
+    public function getCours($id)
+    {
+        $request = $this->db->select ('*') ->where('idUser', $id) ->get('Interet',10);
+        return $request->result();
     }
 
     public function getMyDemandes($id)
@@ -141,6 +147,33 @@ class Demande_model extends CI_Model
     {
         $request = $this->db->select ('*') ->where('idDemander', $id) ->get('Seance',10);
         return $request->result();
+    }
+
+    public function DeleteDA($idDA)
+    {
+        $this->db->delete('Interet', array('idInteret' => $idDA));
+    }
+
+    public function DeletePA($idPA)
+    {
+        echo "salut";
+        $this->db->delete('Proposition', array('idProposition' => $idPA));
+    }
+
+    public function recupNC($idCours)
+    {
+        $request = $this->db->select ('*') ->where('idCours', $idCours) ->get('Cours',10);
+        return $request->result();
+    }
+
+    public function confirmDemSc($idSeance)
+    {
+        $data = array(
+            'confirmDemander' => 1,
+            'status' => 'EN_COURS'
+        );
+        $this->db->where('idSeance', $idSeance);
+        $this->db->update('Seance', $data);
     }
 
 }
