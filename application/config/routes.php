@@ -65,12 +65,13 @@ $route['profil/(:any)'] = 'Profil/view/$1';
 $route['profil/data'] = 'Profil/data';
 $route['profil/seancesterminees'] = 'Profil/mes_seances_termines';
 $route['editionprofil'] = 'Profil/edit_profile';
+$route['mdpoublie'] = 'Profil/mdp_oublie';
 $route['upload'] = "Profil/do_upload";
 $route['confirmAide'] = 'ConfirmAide';
 $route['confirmAide/(:any)'] = 'ConfirmAide/view/$1';
 $route['confirmDemande'] = 'ConfirmDemande';
 $route['confirmDemande/(:any)'] = 'ConfirmDemande/view/$1';
-
+$route['ajouter_cour'] = 'Fac/ajouter_cour';
 $route['submit'] = 'Inscription/registration';
 
 $route['thanks_user'] = 'Thanks_user/index';

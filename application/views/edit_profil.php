@@ -160,29 +160,6 @@
                         print form_close();
                         ?>
                     </div>
-                    <div id="qsec">
-                        <?php
-                        print validation_errors();
-                        print form_open('/editionprofil');
-                        print '<p>';
-                        print form_label("Question secrète", "question secrète") . '</p><p>';
-
-                        echo '
-                        <p><select class="show-menu-arrow form-control" style="width: 100%">
-                            <option value="animal">Quel est le nom de votre premier animal de compagnie?</option>
-                            <option value="voiture">Quelle est la marque de votre première voiture?</option>
-                            <option value="ville">Quel est le nom de votre ville de naissance?</option>
-                        </select></p>';
-
-                        $button = array(
-                            'name' => 'submit',
-                            'value' => 'Modifier',
-                            'class' => 'formsubmit',
-                        );
-                        print form_submit($button) . '</p>';
-                        print form_close();
-                        ?>
-                    </div>
                 </div>
             </div>
         </div>

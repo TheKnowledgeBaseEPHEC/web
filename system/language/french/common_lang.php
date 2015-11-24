@@ -29,3 +29,6 @@ $lang['profil_failed'] = "Veuillez vous connecter pour accéder au profil";
 $lang['question_failed'] = "Veuillez renseigner le champ répose secrète";
 $lang['no_access'] = "Veuillez vous identifier pour avoir accès à cette page";
 $lang['access_not_authorized_please_login'] = "Accès non autorisé, veuillez vous identifier";
+$lang['mdp_reset_email_subject'] = "Nouveau mot de passe";
+$lang['email_reactivation_login'] = "Votre nouvelle adresse mail n'est pas encore active, veuillez cliquer le lien dans le mail envoyé après le changement d'email";
+$lang['email_update_email_subject'] = "Nouvelle adresse email";

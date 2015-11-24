@@ -171,7 +171,8 @@ class Inscription extends CI_Controller
             } else {
                 $this->db->where('cle', $activation_id)->delete('Activation');
                 $this->db->set('DateActivation', 'now()', FALSE);
-                $this->db->where('idUser', $result->User_idUser)->update('User', array('Actif' => 1));
+                $this->db->where('idUser', $result->User_idUser)
+                    ->update('User', array('Actif' => 1, 'status' => 'user'));
                 if ($this->db->affected_rows()) {
                     $this->verification_success();
                 } else {

@@ -11,7 +11,7 @@ class Login_model extends CI_Model
 
     public function login($email, $password)
     {
-        $request = $this->db->select("idUser, Nom, Prenom, AdresseMail, Tuteur, Tutoré, slug, Actif, ImagePath, status")
+        $request = $this->db->select()
             ->where('AdresseMail', $email)
             ->where('Password', $password)
             ->get('User');
@@ -22,6 +22,10 @@ class Login_model extends CI_Model
                 $this->session->set_flashdata('login_error', $this->lang->line('not_activated'));
                 return false;
             } else {
+                if ($row->status === "reactivation-email") {
+                    $this->session->set_flashdata('login_error', $this->lang->line('email_reactivation_login'));
+                    return false;
+                }
                 $this->session->set_userdata('logged_in', 1);
                 $this->session->set_userdata('user_id', $row->idUser);
                 $this->session->set_userdata('user_slug', $row->slug);
@@ -34,7 +38,9 @@ class Login_model extends CI_Model
                 return true;
             }
         } else {
-            $this->session->set_flashdata('login_error', $this->lang->line('login_error'));
+            $this->session->set_flashdata('login_error',
+                $this->lang->line('login_error') . anchor(base_url('mdpoublie'),
+                    'Réinitialiser votre mot de passe', 'class="btn btn-block formsubmit"'));
             return false;
         }
     }

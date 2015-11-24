@@ -173,6 +173,7 @@ class Profil extends CI_Controller
             $this->load->model('Profil_model');
             $idUser = $this->session->userdata('user_id');
             $this->Profil_model->modifyEmail($idUser, $newMail);
+            $this->reload();
         }
     }
 
@@ -316,5 +317,67 @@ class Profil extends CI_Controller
         $this->load->view("list_my_seances", $data);
         $this->load->view("footer");
 
+    }
+
+    public function mdp_oublie()
+    {
+        $this->load->view('header');
+        if ($this->input->get_post('mail_submit')) {
+            $this->load->model('Profil_model');
+            $this->load->model('Inscription_model');
+            $this->load->helper('email');
+            $udata = (object)$this->Profil_model->getUserDataFromEmail($this->input->get_post('email'));
+            if (isset($udata->idUser) && strlen($udata->idUser)) {
+                $user = (object)array(
+                    'nom' => $udata->Nom,
+                    'prenom' => $udata->Prenom,
+                    'email' => $udata->AdresseMail,
+                    'id' => $udata->idUser
+                );
+                $user->activation_key = $this->Inscription_model->create_activation_key($user);
+
+                date_default_timezone_set('Europe/Brussels');
+
+                $config = Array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'theknowledgebase2015',
+                    'smtp_pass' => 'aoien2i3n()_AAAarstoien%BX',
+                    'mailtype' => 'html',
+                    'charset' => 'iso-8859-1',
+                    'wordwrap' => TRUE
+                );
+                $this->load->library('email', $config);
+                $this->email->set_newline("\r\n");
+
+                $data['user'] = $user;
+
+                /* Nouveau mot de passe */
+                $data['newMdp'] = uniqid();
+                $this->Profil_model->modifyPwd($user->id, hash('sha512', $data['newMdp']));
+
+                $email_msg = $this->load->view('mdp_reset_email', $data, TRUE);
+                $subject = $this->lang->line('mdp_reset_email_subject');
+
+                $this->email->from('theknowledgebase2015@gmail.com', 'theknowledgebase.be');
+                $this->email->to($user->email);
+                $this->email->subject($subject);
+                $this->email->message($email_msg);
+
+                if (!$this->email->send()) {
+                    $this->email->print_debugger();
+                }
+
+                $this->load->view('mdp_oublie_sent');
+            } else {
+                $data['message'] = $this->lang->line('user_not_found');
+                $this->load->view('errors/not_found', $data);
+            }
+        } else {
+            $this->load->view('mdp_oublie');
+        }
+
+        $this->load->view('footer');
     }
 }
