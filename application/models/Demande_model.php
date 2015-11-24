@@ -176,4 +176,9 @@ class Demande_model extends CI_Model
         $this->db->update('Seance', $data);
     }
 
+    public function show_seances($id)
+    {
+        $request = $this->db->select ('*') ->where('idDemander', $id) ->where('status', 'FINIE') ->get('Seance',10);
+        return $request->result();
+    }
 }

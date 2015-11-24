@@ -80,9 +80,13 @@ class Fac extends CI_Controller {
         $this->load->view('header');
 
         if (!empty($this->input->post('submitP'))) {
-            $coursId = $this->Demande_model->recupIdCours($slug);
+            $data['CoursInfo'] = $this->Demande_model->recupCours($slug);
+            foreach ($data['CoursInfo'] as $item) {
+                $item->IntituleCours;
+                $item->idCours;
+            }
             if ($this->logged_in()) {
-                $this->Demande_model->insertInfoP($descriptionP, $remuneration, $disponibilitesP, $userid, $coursId, $prenom, $nom, $slugUser);
+                $this->Demande_model->insertInfoP($descriptionP, $remuneration, $disponibilitesP, $userid, $item->idCours, $prenom, $nom, $slugUser, $item->IntituleCours);
                 $this->load->view('home');
                 return;
             }else{
@@ -95,9 +99,13 @@ class Fac extends CI_Controller {
         }
 
         if (!empty($this->input->post('submitI'))) {
-            $coursId = $this->Demande_model->recupIdCours($slug);
+            $data['CoursInfo'] = $this->Demande_model->recupCours($slug);
+            foreach ($data['CoursInfo'] as $item) {
+                $item->IntituleCours;
+                $item->idCours;
+            }
             if ($this->logged_in()) {
-                $this->Demande_model->insertInfoI($descriptionI, $disponibilitesI, $userid, $coursId, $prenom, $nom, $slugUser);
+                $this->Demande_model->insertInfoI($descriptionI, $disponibilitesI, $userid, $item->idCours, $prenom, $nom, $slugUser, $item->IntituleCours);
                 $this->load->view('home');
                 return;
             } else {
@@ -121,64 +129,20 @@ class Fac extends CI_Controller {
         }
         if ($slug == null) {
             $this->load->view('cours', $data);
-            $this->load->view('footer');
             return;
         } else {
-            $coursId = $this->Demande_model->recupIdCours($slug);
-            $data['tutore'] = $this->Demande_model->getTutore($coursId);
-            $data['tuteur'] = $this->Demande_model->getTuteur($coursId);
-
+            $data['CoursInfo'] = $this->Demande_model->recupCours($slug);
+            foreach ($data['CoursInfo'] as $item) {
+                $item->idCours;
             }
-            $this->load->view('desc_cours', $data);
-            $this->load->view('footer');
+            $data['tutore'] = $this->Demande_model->getTutore($item->idCours);
+            $data['tuteur'] = $this->Demande_model->getTuteur($item->idCours);
+
+        }
+        $this->load->view('desc_cours', $data);
+        $this->load->view('footer');
         return;
 
-        }
+    }
 
-        public function ajouter_cour(){
-            $this->load->model('fac_model');
-            $this->load->library('form_validation');
-            $this->load->library('session');
-            $this->load->helper('url');
-            $this->load->helper('form');
-            $this->load->helpers('common');
-            $this->load->database();
-
-            $this->load->view('header');
-            if ($this->session->userdata('logged_in')) {
-                $data = array(
-                    'userId' => $this->session->userdata('user_id'),
-                );
-                $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-                $this->form_validation->set_rules('IntituleCours', 'Intitulé du cours', 'required|min_length[1]');
-                $this->form_validation->set_rules('Fac_Ecole_idEcole', 'école', 'required|min_length[1]');
-                $this->form_validation->set_rules('idUser', 'User ID', 'required|min_length[1]');
-                if ($this->form_validation->run() == FALSE) {
-                    $data['ecole_data'] = $this->fac->get_fac();
-                    $this->load->view('ajout_cour', $data);
-                } else {
-                    $IntituleCours = $this->input->post('IntituleCours');
-                    $Fac_Ecole_idEcole = $this->input->post('Fac_Ecole_idEcole');
-                    $Fac_Ecole_idEcole = $this->fac_model->get_ecole_name($Fac_Ecole_idEcole);
-                    $IntituleCours = preg_replace('/\s+/', '', $IntituleCours);
-                    $Fac_Ecole_idEcole = preg_replace('/\s+/', '', $Fac_Ecole_idEcole);;
-                    $slug = $this->fac_model->gen_slug($IntituleCours,$Fac_Ecole_idEcole);
-
-                    $data = array(
-                        'IntituleCours' => $this->input->post('IntituleCours'),
-                        'Fac_Ecole_idEcole' => $this->input->post('Fac_Ecole_idEcole'),
-                        'idUser' => $this->input->post('idUser'),
-                        'slug' => $slug,
-                    );
-                    $this->fac_model->add_cour($data);
-                    $data['message'] = 'Data Inserted Successfully';
-                    $this->load->view('cour_added');
-                    $this->output->set_header('refresh:3; cours');
-                }
-            } else {
-                $this->load->view('login');
-            }
-
-            $this->load->view('footer');
-        }
 }

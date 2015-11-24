@@ -295,4 +295,26 @@ class Profil extends CI_Controller
     {
         $this->Demande_model->DeletePA($idDemandeA);
     }
+
+    public function mes_ratings()
+    {
+        $this->load->model('rating_model');
+        $this->load->view("header");
+        $idUserRated = $this->session->userdata('user_id');
+        $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
+        //$data['average'] = $this->rating_model->get_avg_rating($idUserRated);
+        $this->load->view("list_my_ratings", $data);
+        $this->load->view("footer");
+    }
+
+    public function mes_seances_termines()
+    {
+        $this->load->model('rating_model');
+        $this->load->view("header");
+        $idUserRated = $this->session->userdata('user_id');
+        $data['seances'] = $this->Demande_model->show_seances($idUserRated);
+        $this->load->view("list_my_seances", $data);
+        $this->load->view("footer");
+
+    }
 }
