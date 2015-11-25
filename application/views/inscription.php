@@ -12,7 +12,7 @@
             <div class="col-lg-4 col-lg-offset-4">
                 <div id="content">
                     <?php
-                        print anchor(base_url("login"), "se connecter", 'class="btn btn-block formsubmit"');
+                        print anchor(base_url("connexion"), "se connecter", 'class="btn btn-block formsubmit"');
 
                         print '<hr class="light">';
                     ?>

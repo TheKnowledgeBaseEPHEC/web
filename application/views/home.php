@@ -75,57 +75,86 @@
 <section class="bg-primary" id="team">
     <div class="container">
         <div class="row">
-                <h2 class="section-heading">L'équipe</h2>
-                <hr class="light">
-                <div class="col-md-4 text-center">
-                    <div class="service-box">
-                        <div class="wow bounceIn circle-image">
-                            <img class="img-responsive center-block img-circle" src="/images/team/simon.png"/></a>
-                        </div>
-                        <h3>Simon</h3>
-                        <h4>Relations client</h4>
-                        <h4>Développeur web</h4>
+            <h2 class="section-heading">L'équipe</h2>
+            <hr class="light">
+            <div class="col-md-4 text-center">
+                <div class="service-box">
+                    <div class="wow bounceIn circle-image">
+                        <img class="img-responsive center-block img-circle" src="/images/team/simon.png"/></a>
                     </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="service-box">
-                        <div class="wow bounceIn circle-image">
-                            <img class="img-responsive center-block img-circle" src="/images/team/sergen.jpg"/></a>
-                        </div>
-                        <h3>Sergen</h3>
-                        <h4>Développeur web</h4>
-                        <h4>Communications VOIP</h4>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="service-box">
-                        <div class="wow bounceIn circle-image">
-                            <img class="img-responsive center-block img-circle" src="/images/team/youri.png"/></a>
-                        </div>
-                        <h3>Youri</h3>
-                        <h4>Développeur web</h4>
-                        <h4>Administration systèmes</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <div class="sercice-box">
-                        <div class="wow bounceIn circle-image">
-                            <img class="img-responsive center-block img-circle" src="/images/team/tristan.png"/></a>
-                        </div>
-                        <h3>Tristan</h3>
-                        <h4>Développeur mobile</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <div class="service-box">
-                        <div class="wow bounceIn circle-image">
-                            <img class="img-responsive center-block img-circle" src="/images/team/jonathan.jpg"/></a>
-                        </div>
-                        <h3>Jonathan</h3>
-                        <h4>Développeur mobile</h4>
-                    </div>
+                    <h3>Simon</h3>
+                    <h4>Relations client</h4>
+                    <h4>Développeur web</h4>
                 </div>
             </div>
+            <div class="col-md-4 text-center">
+                <div class="service-box">
+                    <div class="wow bounceIn circle-image">
+                        <img class="img-responsive center-block img-circle" src="/images/team/sergen.jpg"/></a>
+                    </div>
+                    <h3>Sergen</h3>
+                    <h4>Développeur web</h4>
+                    <h4>Communications VOIP</h4>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="service-box">
+                    <div class="wow bounceIn circle-image">
+                        <img class="img-responsive center-block img-circle" src="/images/team/youri.png"/></a>
+                    </div>
+                    <h3>Youri</h3>
+                    <h4>Développeur web</h4>
+                    <h4>Administration systèmes</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <div class="sercice-box">
+                    <div class="wow bounceIn circle-image">
+                        <img class="img-responsive center-block img-circle" src="/images/team/tristan.png"/></a>
+                    </div>
+                    <h3>Tristan</h3>
+                    <h4>Développeur mobile</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="service-box">
+                    <div class="wow bounceIn circle-image">
+                        <img class="img-responsive center-block img-circle" src="/images/team/jonathan.jpg"/></a>
+                    </div>
+                    <h3>Jonathan</h3>
+                    <h4>Développeur mobile</h4>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-twitter wow bounceIn text-primary"
+                   style="visibility: visible; animation-name: bounceIn;"></i>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-facebook wow bounceIn text-primary" data-wow-delay=".1s"
+                   style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;"></i>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-linkedin wow bounceIn text-primary" data-wow-delay=".2s"
+                   style="visibility: visible; animation-delay: 0.2s; animation-name: bounceIn;"></i>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-youtube wow bounceIn text-primary" data-wow-delay=".3s"
+                   style="visibility: visible; animation-delay: 0.3s; animation-name: bounceIn;"></i>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script>

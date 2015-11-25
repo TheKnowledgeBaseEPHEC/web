@@ -884,3 +884,42 @@ td.toptd {
 .table-tuto.table-curved td:first-child {
     border-right: 0px;
 }
+
+.btn-group-vertical.dark {
+    border-radius: 4px;
+}
+
+button.btn.btn-default.formsubmit-dark {
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #222;
+    color: white;
+    border: 1px solid white;
+    width: 100%;
+}
+
+button.btn-default.formsubmit-dark button:hover {
+    background-color: white;
+}
+
+button.btn.btn-default.formsubmit-dark a {
+    text-decoration: none;
+    color: white;
+}
+
+button.btn.btn-default.formsubmit-dark a:hover {
+    text-decoration: none;
+    color: #f05f40;
+}
+
+button.btn.btn-default.formsubmit-dark:hover {
+    background-color: white;
+}
+
+button.btn.btn-default.formsubmit-dark:hover a {
+    color: #f05f40;
+}
+
+.dark {
+    width: 100%;
+}

@@ -1,7 +1,7 @@
 <header style="min-height: 80%;">
     <div class="header-content">
         <div class="header-content-inner">
-            <a class="page-scroll white-link" href="#profile"><h1>Login</h1></a>
+            <a class="page-scroll white-link" href="#profile"><h1>Connexion</h1></a>
         </div>
         <div class="col-lg-4 col-lg-offset-4">
             <div id="content">
@@ -14,7 +14,7 @@
                         echo "<label class='error'><i class='fa fa-exclamation-triangle'></i> $error</label>";
                     }
 
-                    print '<p>' . form_open('/login', array('id' => 'login'));
+                    print '<p>' . form_open('/connexion', array('id' => 'login'));
                     $data = array(
                         'name' => 'email',
                         'id' => 'email',

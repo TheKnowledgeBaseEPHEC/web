@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['about'] = 'about';
+$route['apropos'] = 'about';
 
 $route['inscription'] = 'Inscription';
 
@@ -58,8 +58,8 @@ $route['activation/(:any)'] = 'Inscription/verify/$1';
 // helper pour l'application mobile
 $route['sendmail/(:any)'] = 'Inscription/sendmail/$1';
 
-$route['login'] = 'Login';
-$route['logout'] = 'Login/logout';
+$route['connexion'] = 'Login';
+$route['deconnexion'] = 'Login/logout';
 $route['profil'] = 'Profil';
 $route['profil/(:any)'] = 'Profil/view/$1';
 $route['profil/data'] = 'Profil/data';

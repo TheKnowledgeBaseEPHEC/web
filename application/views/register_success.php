@@ -14,8 +14,8 @@
                     <div class="reg_form">
                         Bienvenue sur <?=anchor(base_url(), 'theknowledgebase.be!', 'class="light"')?>
                         <hr class="light">
-                        <?=anchor('/login', "s'identifier", 'class="btn btn-block formsubmit"')?>
-                    </div><!--<div id="content">-->
+                        <?=anchor('/connexion', "s'identifier", 'class="btn btn-block formsubmit"')?>
+                    </div>
                 </div>
             </div>
         </div>

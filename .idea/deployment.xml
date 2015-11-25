@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="FTP KB ADMIN" overwriteAll="false">
-    <option name="myAutoUpload" value="ALWAYS" />
+  <component name="PublishConfigData" promptOnRemoteOverwrite="CHECK_TIMESTAMP">
+    <serverData>
+      <paths name="theknowledgebase">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/usr/local/www/theknowledgebase" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
   </component>
 </project>
