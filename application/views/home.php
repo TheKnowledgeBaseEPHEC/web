@@ -33,7 +33,6 @@
             </div>
         </div>
     </div>
-    </div>
 </section>
 
 <section id="services">
@@ -135,29 +134,37 @@
             <hr>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-twitter wow bounceIn text-primary"
-                       style="visibility: visible; animation-name: bounceIn;"></i>
+                    <a href="https://twitter.com/KnowledgeBase15"><i
+                            class="fa fa-4x fa-twitter wow bounceIn text-primary"
+                            style="visibility: visible; animation-name: bounceIn;"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-facebook wow bounceIn text-primary" data-wow-delay=".1s"
-                       style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;"></i>
+                    <a href="https://www.facebook.com/theknowledgebase.be/"><i
+                            class="fa fa-4x fa-facebook wow bounceIn text-primary" data-wow-delay=".1s"
+                            style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-linkedin wow bounceIn text-primary" data-wow-delay=".2s"
-                       style="visibility: visible; animation-delay: 0.2s; animation-name: bounceIn;"></i>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-youtube wow bounceIn text-primary" data-wow-delay=".3s"
-                       style="visibility: visible; animation-delay: 0.3s; animation-name: bounceIn;"></i>
-                </div>
+                <a href="https://www.linkedin.com/company/976901">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-linkedin wow bounceIn text-primary" data-wow-delay=".2s"
+                           style="visibility: visible; animation-delay: 0.2s; animation-name: bounceIn;"></i>
+                </a>
             </div>
         </div>
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <a href="https://www.youtube.com/channel/UCk-C4cm1pVOUlTIsolGB80w"><i
+                        class="fa fa-4x fa-youtube wow bounceIn text-primary" data-wow-delay=".3s"
+                        style="visibility: visible; animation-delay: 0.3s; animation-name: bounceIn;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
     </div>
 </section>
 
@@ -216,6 +223,14 @@
         $(".search-button").on('click', function (e) {
             var result = window.location.href + 'cours#' + $('.search').select2('data').slug;
             window.location.href = result;
+        });
+
+        /* Scroll top */
+        $('.scroll-top').on('click', function () {
+            $("html, body").animate(
+                {
+                    scrollTop: 0
+                }, "slow");
         });
     }
 </script>
