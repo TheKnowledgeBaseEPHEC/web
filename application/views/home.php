@@ -130,28 +130,32 @@
 
 <section id="contact">
     <div class="container">
-        <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-                <i class="fa fa-4x fa-twitter wow bounceIn text-primary"
-                   style="visibility: visible; animation-name: bounceIn;"></i>
+        <div class="row">
+            <h2 class="section-heading">Réseaux sociaux</h2>
+            <hr>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-twitter wow bounceIn text-primary"
+                       style="visibility: visible; animation-name: bounceIn;"></i>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-                <i class="fa fa-4x fa-facebook wow bounceIn text-primary" data-wow-delay=".1s"
-                   style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;"></i>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-facebook wow bounceIn text-primary" data-wow-delay=".1s"
+                       style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;"></i>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-                <i class="fa fa-4x fa-linkedin wow bounceIn text-primary" data-wow-delay=".2s"
-                   style="visibility: visible; animation-delay: 0.2s; animation-name: bounceIn;"></i>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-linkedin wow bounceIn text-primary" data-wow-delay=".2s"
+                       style="visibility: visible; animation-delay: 0.2s; animation-name: bounceIn;"></i>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-                <i class="fa fa-4x fa-youtube wow bounceIn text-primary" data-wow-delay=".3s"
-                   style="visibility: visible; animation-delay: 0.3s; animation-name: bounceIn;"></i>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-youtube wow bounceIn text-primary" data-wow-delay=".3s"
+                       style="visibility: visible; animation-delay: 0.3s; animation-name: bounceIn;"></i>
+                </div>
             </div>
         </div>
     </div>
