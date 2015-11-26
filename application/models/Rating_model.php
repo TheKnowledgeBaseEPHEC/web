@@ -22,14 +22,8 @@ class Rating_model extends CI_Model
 
     public function show_ratings($userId)
     {
-        $query = $this->db->get_where('Rating', array('userRatedId' => $userId));
+        $query = $this->db->select ('*') ->where('idDemander', $userId) ->where('status', 'FINIE') ->get('Seance',10);
         return $query->result();
 
     }
-
-    public function add_rating($data)
-    {
-        $this->db->insert('Rating', $data);
-    }
-
 }

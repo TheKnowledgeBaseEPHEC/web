@@ -1,3 +1,19 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        .modal-header, h4, .close {
+            background-color: #f05f40;
+            color:white !important;
+            text-align: center;
+            font-size: 30px;
+        }
+        .modal-footer {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
 <header>
     <div class="header-content">
         <div class="header-content-inner">
@@ -8,49 +24,50 @@
 
 <section class="bg-primary" id="profile">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-                <div id="content">
-                        <table class="table-tuto table-curved">
-                        <thead>
-                        <tr>
-                            <th>Temps écoulé lors de la séance</th>
-                            <th>Professeur choisis</th>
-                            <th>A payer</th>
-                            <th>Cours choisis</th>
-                            <th>Commentaire</th>
-                            <th>Paiement</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        $i = 1;
-                        foreach($seances as $seance) {
-                            echo "</th>
-                                    <td>$seance->temps secondes</td>
-                                    <td>$seance->NomDemander</td>
-                                    <td>$seance->toPay €</td>
-                                    <td>$seance->idCours</td>
-                                    ";
-                            if (($seance->idRating) != 0){
-                                echo "<td>$seance->idRating</td>";
-                            } else {
-                                echo "<td><a>Merci d'ajouter un commentaire</a></td>";
-                            }
+        <div class="row post__article">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="row">
+                    <div>
+                        <div id="content"><table class="table-tuto table-curved">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Professeur choisi</th>
+                                    <th>Date</th>
+                                    <th>Commentaire</th>
+                                    <!--<th>Paiement</th>-->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $i = 1;
+                                foreach($seances as $seance) {
+                                    echo "<tr>
+                                            <td scope=row>";
+                                    echo $i;
+                                    echo "</th>";
+                                    echo "</th>
 
-                            if (($seance->paymentStatus) != 0){
-                                echo "<td>$seance->paymentStatus</td>";
-                            } else {
-                                echo "<td><a>Veuillez effectuer le paiement</a></td>";
-                            }
-                            echo "
-                                   </tr>";
-                            $i = $i + 1;
-                        }
-                        ?>
-                        </tbody>
-                    </table>
+                                            <td>$seance->NomDemander</td>
+                                            <td>$seance->startDate</td>
+
+                                            ";
+                                    if (($seance->rating) != 0){
+                                        echo "<td><b>Note: </b>$seance->rating/5 <b>Avis: </b> $seance->comment</td>";
+                                    } else {
+                                        echo "<td><a class='btn' id=myBtn_rating value=$seance->idSeance href='/profil/soumettre_avis/$seance->idSeance'>Commenter</a></td>";
+                                    }
+                                    $i = $i + 1;
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 </section>
+
+
+
