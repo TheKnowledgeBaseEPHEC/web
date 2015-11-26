@@ -48,23 +48,23 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-5x fa-user-plus wow bounceIn text-primary"></i>
+                    <a href="/chat" class="page-scroll"><i class="fa fa-5x fa-user-plus wow bounceIn text-primary"></i>
 
-                    <p class="text-muted nbusers">Déjà x utilisateurs!</p>
+                    <p class="text-muted nbusers">Déjà x utilisateurs!<br>Cliquez pour chatter</p></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-5x fa-graduation-cap wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                    <a href="/cours" class="page-scroll"><i class="fa fa-5x fa-graduation-cap wow bounceIn text-primary" data-wow-delay=".1s"></i>
 
-                    <p class="text-muted nbcours">x cours dans y facultés disponibles!</p>
+                    <p class="text-muted nbcours">x cours dans y facultés disponibles!<br>Cliquez pour en savoir plus</p></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-5x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                    <a href="#team" class="page-scroll"><i class="fa fa-5x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
 
-                    <p class="text-muted love">Par l'équipe KnowledgeBase de l'EPHEC!</p>
+                    <p class="text-muted love">Par l'équipe KnowledgeBase de l'EPHEC!<br>Cliquez pour la découvrir</p></a>
                 </div>
             </div>
         </div>

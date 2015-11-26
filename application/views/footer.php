@@ -34,6 +34,7 @@
                 <li><a href="/apropos">A propos</a></li>
                 <li><a href="/cours">Cours</a></li>
                 <li><a href="/profil">Profil</a></li>
+                <li><a href="/chat">Chat</a></li>
             </ul>
         </div>
     </div>
