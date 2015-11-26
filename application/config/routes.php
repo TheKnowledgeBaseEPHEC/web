@@ -88,6 +88,8 @@ $route['profil/submit_rating'] = 'Seances_rating/submit_rating';
 $route['profil/mes_seances_termines'] = 'Profil/mes_seances_termines';
 
 
+$route['csv'] = 'Inscription/csv';
+
 $route['thanks_user'] = 'Thanks_user/index';
 
 $route['seance/(:any)'] = 'Voip/view/$1';

@@ -197,4 +197,68 @@ class Inscription extends CI_Controller
         $this->load->view('errors/not_found', $data);
         $this->load->view('footer');
     }
+
+    public function csv() {
+        $this->load->view('header');
+        if (empty($this->session->userdata('user_id'))) {
+            $data['message'] = 'Vous devez être identifié pour uploader un csv.';
+            $this->load->view('errors/not_found', $data);
+        } else if ($this->session->userdata('user_status') !== "admin") {
+            $data['message'] = 'Vous devez être admin pour uploader un csv.';
+            $this->load->view('errors/not_found', $data);
+        } else {
+            if (!empty($this->input->post('csv_submit'))) {
+                $file = $this->upload_csv();
+                $this->load_users_from_csv($file);
+            } else {
+                $this->load->view('csv');
+            }
+        }
+
+        $this->load->view('footer');
+    }
+
+    public function load_users_from_csv($file) {
+        $row = 1;
+        $users = array();
+        if (($handle = fopen($file, "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                $row++;
+                $users[$data[0]] = array (
+                    'slug' => $data[0],
+                    'Prenom' => $data[1],
+                    'Nom' => $data[2],
+                    'AdresseMail' => $data[3],
+                    'Password' => hash('sha512', $data[4])
+                );
+            }
+            fclose($handle);
+
+            $viewdata['users'] = $users;
+            $viewdata['nbusers'] = $row;
+            $this->load->view('csv', $viewdata);
+        }
+    }
+
+    public function upload_csv()
+    {
+        $content_dir = './uploads/';
+        $config['upload_path'] = $content_dir;
+        $config['allowed_types'] = "csv";
+        $config['max_size'] = "2048000";
+        $config['overwrite'] = true;
+        $config['file_name'] = 'upload_' . time();
+
+        $this->load->library('upload', $config);
+
+        /*if (!$this->upload->do_upload()) {
+            $this->session->set_flashdata('upload_error', $this->upload->display_errors());
+            return false;
+        } else {*/
+        $this->upload->do_upload();
+            $file_info = $this->upload->data();
+            $csvfilepath = "uploads/" . $file_info['file_name'];
+            return $csvfilepath;
+        }
+    }
 }
