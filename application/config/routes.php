@@ -84,7 +84,6 @@ $route['mesDemSc/(:any)'] = 'MesDemSc/viewSI/$1';
 
 $route['rating'] = 'Rating';
 $route['profil/soumettre_avis/(:any)'] = 'Seances_rating/view/$1';
-$route['profil/mes_ratings'] = 'Profil/mes_ratings';
 $route['profil/submit_rating'] = 'Seances_rating/submit_rating';
 $route['profil/mes_seances_termines'] = 'Profil/mes_seances_termines';
 
