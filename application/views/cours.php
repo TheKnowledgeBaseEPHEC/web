@@ -15,6 +15,13 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
                 <?php
+                echo ($this->session->flashdata('newProp'));
+                echo ($this->session->flashdata('newInt'));
+                echo ($this->session->flashdata('confirmA'));
+                echo ($this->session->flashdata('confirmD'));
+                echo ($this->session->flashdata('errorInt'));
+                ?>
+                <?php
                 /* Group array by ecoleId and sort. */
                 $arr = array();
                 foreach ($cours_data as $key => $item) {
@@ -27,7 +34,7 @@
                 print '<ul class="list-group">';
                 foreach ($arr as $item) {
                     print '<li class="list-group-item">';
-                    print '<a class="scroll-link white-link" href="#' . $item[$i]->slug . '">'. $item[$i]->NomEcole . '</a>';
+                    print '<a class="scroll-link white-link" href="#' . $item[$i]->eslug . '">'. $item[$i]->NomEcole . '</a>';
                     print '</li>';
                     foreach ($item as $subitem) {
                         $i++;
@@ -40,7 +47,7 @@
                 $i = 0;
                 $c = count($arr);
                 foreach ($arr as $facs) {
-                    print '<div id="' . $facs[$i]->slug . '" class="page-section">';
+                    print '<div id="' . $facs[$i]->eslug . '" class="page-section">';
                     print '<h2><i class="fa fa-graduation-cap"></i> ' . $facs[$i]->NomEcole . '</h2>';
                     print '<ul class="list-group">';
                     foreach ($facs as $cours) {
@@ -72,7 +79,7 @@
             var $target = $(target);
 
             $('html, body').stop().animate({
-                'scroll-top': $target.offset().top - '60'
+                'scroll-top': $target.offset().top
             }, 900, 'swing', function () {
                 window.location.hash = target;
             });

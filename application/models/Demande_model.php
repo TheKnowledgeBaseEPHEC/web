@@ -63,13 +63,25 @@ class Demande_model extends CI_Model
 
     public function getInfoTutore($slug)
     {
-        $request = $this->db->select ('*')->where('idInteret', $slug) ->get('Interet', 10);
+        $request = $this->db->select('*')->where('idInteret', $slug)->join('User', 'User.idUser = Interet.idUser')->get('Interet', 10);
+        return $request->result();
+    }
+
+    public function getInteret($id)
+    {
+        $request = $this->db->select('*')->where('idUser', $id)->get('Interet', 10);
+        return $request->result();
+    }
+
+    public function getProposition($id)
+    {
+        $request = $this->db->select('*')->where('idUser', $id)->get('Proposition', 10);
         return $request->result();
     }
 
     public function getInfoTuteur($slug)
     {
-        $request = $this->db->select ('*')->where('idProposition', $slug) ->get('Proposition', 10);
+        $request = $this->db->select('*')->where('idProposition', $slug)->join('User', 'User.idUser = Proposition.idUser')->get('Proposition', 10);
         return $request->result();
     }
 
@@ -139,7 +151,7 @@ class Demande_model extends CI_Model
 
     public function getMySeances($id)
     {
-        $request = $this->db->select ('*') ->where('idDemandeur', $id) ->get('Seance',10);
+        $request = $this->db->select('*')->where ('idDemandeur', $id)->join('Cours', 'Cours.idCours = Seance.idCours')->get('Seance', 10);
         return $request->result();
     }
 
@@ -157,7 +169,13 @@ class Demande_model extends CI_Model
 
     public function getOtherSeances($id)
     {
-        $request = $this->db->select ('*') ->where('idDemander', $id) ->get('Seance',10);
+        $request = $this->db->select('*')->where('idDemander', $id)->join('Cours', 'Cours.idCours = Seance.idCours')->get('Seance', 10);
+        return $request->result();
+    }
+
+    public function getMyScDP($id)
+    {
+        $request = $this->db->select('*')->where('idSeance', $id)->join('Cours', 'Cours.idCours = Seance.idCours')->get('Seance', 10);
         return $request->result();
     }
 
@@ -168,7 +186,6 @@ class Demande_model extends CI_Model
 
     public function DeletePA($idPA)
     {
-        echo "salut";
         $this->db->delete('Proposition', array('idProposition' => $idPA));
     }
 
@@ -177,6 +194,12 @@ class Demande_model extends CI_Model
         $request = $this->db->select ('*') ->where('idCours', $idCours) ->get('Cours',10);
         return $request->result();
     }
+
+    public function DeleteSc($idSc)
+    {
+        $this->db->delete('Seance', array('idSeance' => $idSc));
+    }
+
 
     public function confirmDemSc($idSeance)
     {

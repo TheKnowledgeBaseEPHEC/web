@@ -11,25 +11,24 @@
             <div class="col-md-6 col-md-offset-3">
 
                 <p><table class="table-tuto table-curved">
-                    <p><h2>Vous confirmez?</h2></p>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Description</th>
-                    <th>Disponibilités</th>
-                    <th>Date</th>
-                </tr>
-                <?php
-                foreach ($Personneaidee as $item) {?>
                     <tr>
-                        <td><?php print $item->Nom;?></td>
-                        <td><?php print $item->Prenom;?></td>
-                        <td><?php print $item->DescriptionI;?></td>
-                        <td><?php print $item->DisponibilitesI;?></td>
-                        <td><?php print $item->Date;?></td>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Description</th>
+                        <th>Disponibilités</th>
+                        <th>Date</th>
                     </tr>
-                <?php  }
-                ?>
+                    <?php
+                    foreach ($Personneaidee as $item) {?>
+                        <tr>
+                            <td><?php print $item->Nom;?></td>
+                            <td><?php print $item->Prenom;?></td>
+                            <td><?php print $item->DescriptionI;?></td>
+                            <td><?php print $item->DisponibilitesI;?></td>
+                            <td><?php print $item->Date;?></td>
+                        </tr>
+                    <?php  }
+                    ?>
                 </table></p>
                 <?php
                 if ($this->session->userdata('user_id') == $item->idUser)
@@ -45,6 +44,16 @@
                     print  '</p>' . form_submit($button);
                     form_close();
                 }
+                ?>
+                <?php
+                print '<p>' . form_open('');
+                $button = array(
+                    'name' => 'consProfil',
+                    'value' => 'consulter le profil de ' . $item->Prenom . '',
+                    'class' => 'formsubmit',
+                );
+                print  '</p>' . form_submit($button);
+                form_close();
                 ?>
             </div>
         </div>

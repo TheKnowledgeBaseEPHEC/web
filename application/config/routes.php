@@ -73,6 +73,15 @@ $route['confirmDemande'] = 'ConfirmDemande';
 $route['confirmDemande/(:any)'] = 'ConfirmDemande/view/$1';
 $route['ajouter_cour'] = 'Fac/ajouter_cour';
 $route['submit'] = 'Inscription/registration';
+$route['mesDemandesAide'] = 'MesDemandesAide';
+$route['mesDemandesAide/(:any)'] = 'MesDemandesAide/viewSI/$1';
+$route['mesPropAide'] = 'MesPropAide';
+$route['mesPropAide/(:any)'] = 'MesPropAide/viewSI/$1';
+$route['maSeance'] = 'MaSeance';
+$route['maSeance/(:any)'] = 'MaSeance/viewSI/$1';
+$route['mesDemSc'] = 'MesDemSc';
+$route['mesDemSc/(:any)'] = 'MesDemSc/viewSI/$1';
+
 
 $route['thanks_user'] = 'Thanks_user/index';
 

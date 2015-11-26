@@ -26,6 +26,14 @@
                 }
                 ?>
                 <p>
+                    <?php
+                    echo ($this->session->flashdata('deleteSc'));
+                    echo ($this->session->flashdata('deleteDA'));
+                    echo ($this->session->flashdata('deletePA'));
+                    echo ($this->session->flashdata('confirmSc'));
+                    echo ($this->session->flashdata('errorInt'));
+                    echo ($this->session->flashdata('errorProp'));
+                    ?>
                 <h2>Profil</h2>
                 <table class="table-curved">
                     <tr>
@@ -61,7 +69,16 @@
                 </table>
                 </p>
                 <p>
-                <?php print anchor(base_url("editionprofil"), "Éditez votre profil", 'class="btn btn-block formsubmit"'); ?>
+                    <?php
+                    if ($userslug == null)
+                    {
+                        print anchor(base_url("editionprofil"), "Éditez votre profil", 'class="btn btn-block formsubmit"');
+                    }
+                    if ($userslug == $this->session->userdata('user_slug'))
+                    {
+                        print anchor(base_url("editionprofil"), "Éditez votre profil", 'class="btn btn-block formsubmit"');
+                    } ?>
+
                 </p>
 
                 <hr class="light">
@@ -69,8 +86,7 @@
                 <p><table class="table-tuto table-curved">
                     <p><h2>Mes demandes d'aide</h2></p>
                 <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
+                    <th>Cours</th>
                     <th>Description</th>
                     <th>Disponibilités</th>
                     <th>Date</th>
@@ -78,8 +94,7 @@
                 <?php
                 foreach ($mesDemandes as $item) {?>
                     <tr>
-                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a><?php print $item->Nom;?></a></td>
-                        <td><?php print $item->Prenom;?></td>
+                        <td><a href ='<?php echo base_url("/mesDemandesAide/$item->idInteret");?>'></a><?php print $item->NomCours;?></a></td>
                         <td><?php print $item->DescriptionI;?></td>
                         <td><?php print $item->DisponibilitesI;?></td>
                         <td><?php print $item->Date;?></td>
@@ -92,8 +107,7 @@
                 <p><table class="table-tuto table-curved">
                     <p><h2>Mes propositions d'aide</h2></p>
                 <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
+                    <th>Cours</th>
                     <th>Description</th>
                     <th>Rémunération</th>
                     <th>Disponibilités</th>
@@ -102,8 +116,7 @@
                 <?php
                 foreach ($mesPropositions as $item) {?>
                     <tr>
-                        <td><a href ='<?php echo base_url("/confirmAide/$item->idInteret");?>'></a><?php print $item->Nom;?></a></td>
-                        <td><?php print $item->Prenom;?></td>
+                        <td><a href ='<?php echo base_url("/mesPropAide/$item->idProposition");?>'></a><?php print $item->NomCours;?></a></td>
                         <td><?php print $item->DescriptionP;?></td>
                         <td><?php print $item->Remuneration;?></td>
                         <td><?php print $item->DisponibilitesP;?></td>
@@ -113,52 +126,30 @@
                 ?>
                 </table></p>
                 <hr class="light">
-
                 <p><table class="table-tuto table-curved">
-                    <p><h2>Mes scéances </h2></p>
+                    <p><h2>Mes séances </h2></p>
                 <tr>
+                    <th>De</th>
                     <th>Avec</th>
                     <th>Cours</th>
-                    <th>Pour être aidé</th>
-                    <th>Pour aider</th>
-                    <th>Votre confirmation</th>
-                    <th>Sa confirmation</th>
+                    <th>Statut</th>
                     <th>Date</th>
                 </tr>
                 <?php
                 foreach ($mesSeances as $item) { ?>
-                <tr>
-                    <td><a href='<?php echo base_url("/confirmAide/$item->idInteret"); ?>'><?php print $item->NomDemander; ?></a></td>
-                    <td><?php print $item->idCours; ?></td>
-                    <td><?php
-                        if ($item->isDemandeAide == 0) {
-                            print "Oui";
-                        } else {
-                            print "Non";
-                        }
-                            ?></td>
-                        <td><?php
-                            if ($item->isDemandeAide == 1){
-                                print "Oui";
-                            } else {
-                                print "Non";
-                            }
-                            ?></td>
-                        <td><?php
-                            if ($item->confirmDemandeur == 1) {
-                                print "OK";
-                            } else {
-                                print "NOK";
-                            }
-                            ?></td>
+                    <tr>
+                        <td><a href ='<?php echo base_url("/maSeance/$item->idSeance");?>'></a><?php print $item->NomDemandeur;?></a></td>
+                        <td><?php print $item->NomDemander; ?></td>
+                        <td><?php print $item->IntituleCours; ?></td>
                         <td><?php
                             if ($item->confirmDemander == 1) {
                                 print "OK";
                             } else {
-                                print "NOK";
+                                print "En cours de confirmation";
                             }
-                            ?></td>
-                        <td></td>
+                            ?>
+                        </td>
+                        <td><?php print $item->startDate; ?></td>
                     </tr>
                 <?php  }
                 ?>
@@ -170,46 +161,14 @@
                 <tr>
                     <th>De</th>
                     <th>Cours</th>
-                    <th>Je dois l'aider</th>
-                    <th>Il veut m'aider</th>
-                    <th>Sa confirmation</th>
-                    <th>Votre confirmation</th>
                     <th>Date</th>
                 </tr>
                 <?php
                 foreach ($otherSeances as $item) { ?>
                     <tr>
-                        <td><a href='<?php echo base_url("/confirmAide/$item->idInteret"); ?>'><?php echo $item->NomDemander ?></a></td>
-                        <td><?php print $item->idCours; ?></td>
-                        <td><?php
-                            if ($item->isDemandeAide == 0) {
-                                print "Oui";
-                            } else {
-                                print "Non";
-                            }
-                            ?></td>
-                        <td><?php
-                            if ($item->isDemandeAide == 1){
-                                print "Oui";
-                            } else {
-                                print "Non";
-                            }
-                            ?></td>
-                        <td><?php
-                            if ($item->confirmDemandeur == 1) {
-                                print "OK";
-                            } else {
-                                print "NOK";
-                            }
-                            ?></td>
-                        <td><?php
-                            if ($item->confirmDemander == 1) {
-                                print "OK";
-                            } else {
-                                print "NOK";
-                            }
-                            ?></td>
-                        <td></td>
+                        <td><a href ='<?php echo base_url("/mesDemSc/$item->idSeance");?>'></a><?php print $item->NomDemandeur;?></a></td>
+                        <td><?php print $item->IntituleCours; ?></td>
+                        <td><?php print $item->startDate; ?></td>
                     </tr>
                 <?php  }
                 ?>
@@ -234,6 +193,11 @@
         $.each($item, function(){
             $text = $(this).find('a').html().toLowerCase();
             $(this).addClass($text);
+        });
+        $('tr').click(function () {
+            window.location = $(this).find('a').attr('href');
+        }).hover(function () {
+            $(this).toggleClass('hover');
         });
     }
 </script>
