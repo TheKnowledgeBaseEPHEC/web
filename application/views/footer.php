@@ -42,6 +42,8 @@
         <a href="/deconnexion">Se déconnecter</a>
         <br>
         <a href="/connexion">Se connecter</a>
+        <br>
+        <a class="scroll-top">Remonter</a>
     </div>
     <hr>
     <div class="container text-center">

@@ -76,6 +76,8 @@ $route['submit'] = 'Inscription/registration';
 
 $route['thanks_user'] = 'Thanks_user/index';
 
+$route['seance/(:any)'] = 'Voip/view/$1';
+
 $route['fac'] = 'Fac';
 $route['fac/(:any)'] = 'Fac/view/$1';
 $route['facdata'] = 'Fac/get';

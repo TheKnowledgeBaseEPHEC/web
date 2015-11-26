@@ -143,6 +143,18 @@ class Demande_model extends CI_Model
         return $request->result();
     }
 
+    public function getMySeancesFromId($sId) {
+        return $this->db->select('idSeance, idDemandeur, idDemander')
+            ->where('idSeance', $sId)
+            ->where('status', "EN_COURS")
+            ->group_start()
+            ->where('idDemandeur', $this->session->userdata('user_id'))
+            ->or_where('idDemander', $this->session->userdata('user_id'))
+            ->group_end()
+            ->get('Seance')
+            ->row();
+    }
+
     public function getOtherSeances($id)
     {
         $request = $this->db->select ('*') ->where('idDemander', $id) ->get('Seance',10);
