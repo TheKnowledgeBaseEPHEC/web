@@ -13,7 +13,7 @@ class Chat extends CI_Controller
         $this->load->view('header');
 
         if (!$this->logged_in()) {
-            $data['message'] = "Le chat non accessible aux utilisateurs non identifiés.";
+            $data['message'] = "Le chat est non accessible aux utilisateurs non identifiés.";
             $this->load->view('errors/not_found', $data);
         } else {
             $data['user'] = $this->session->userdata('user_slug');

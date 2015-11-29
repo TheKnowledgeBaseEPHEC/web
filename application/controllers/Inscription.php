@@ -198,8 +198,7 @@ class Inscription extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function csv()
-    {
+    public function csv() {
         $this->load->view('header');
         if (empty($this->session->userdata('user_id'))) {
             $data['message'] = 'Vous devez être identifié pour uploader un csv.';
@@ -219,29 +218,36 @@ class Inscription extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function load_users_from_csv($file)
-    {
+    /* Charge de nouveaux utilisateurs en BDD depuis un fichier CSV. */
+    public function load_users_from_csv($file) {
         $row = 1;
         $users = array();
         if (($handle = fopen($file, "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
                 $row++;
-                $users[$data[0]] = array(
+                $users[$data[0]] = array (
                     'slug' => $data[0],
                     'Prenom' => $data[1],
                     'Nom' => $data[2],
                     'AdresseMail' => $data[3],
                     'Password' => hash('sha512', $data[4])
                 );
+
             }
             fclose($handle);
 
+
+            $this->db->insert_batch('User', $users);
+
+
             $viewdata['users'] = $users;
             $viewdata['nbusers'] = $row;
+
             $this->load->view('csv', $viewdata);
         }
     }
 
+    /* Enregistrer un .csv sur le serveur */
     public function upload_csv()
     {
         $content_dir = './uploads/';
@@ -249,16 +255,13 @@ class Inscription extends CI_Controller
         $config['allowed_types'] = "csv";
         $config['max_size'] = "2048000";
         $config['overwrite'] = true;
-        $config['file_name'] = 'upload_' . time();
+        $config['file_name'] = 'upload' . time();
 
         $this->load->library('upload', $config);
 
-        /*if (!$this->upload->do_upload()) {
-            $this->session->set_flashdata('upload_error', $this->upload->display_errors());
-            return false;
-        } else {*/
         $this->upload->do_upload();
         $file_info = $this->upload->data();
+
         $csvfilepath = "uploads/" . $file_info['file_name'];
         return $csvfilepath;
     }
