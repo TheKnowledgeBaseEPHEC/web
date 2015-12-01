@@ -61,6 +61,10 @@ class Profil extends CI_Controller
                 $this->show_profil_all($data, $slug);
             } else {
                 $this->show_profil_visit($data);
+                $idUserRated = $this->rating_model->getIdFromSlug($slug);
+                $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
+                $this->load->view('profil_ratings', $data);
+                $this->load->view('footer');
             }
         }
         else{

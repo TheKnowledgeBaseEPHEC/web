@@ -232,6 +232,10 @@ class Inscription extends CI_Controller
                     'AdresseMail' => $data[3],
                     'Password' => hash('sha512', $data[4])
                 );
+                // XXX if count($data != 5); skip
+                // XXX verify data elements
+                // XXX allow comments
+                // show invalid entries in csv page
 
             }
             fclose($handle);

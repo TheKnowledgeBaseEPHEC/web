@@ -15,12 +15,24 @@ class Seances extends CI_Controller
         $this->load->model('Profil_seances_model','seance');
     }
     public function index(){
-        $this->load->view("header");
-        $idUserRated = $this->session->userdata('user_id');
-        $data['seances'] = $this->Demande_model->show_seances($idUserRated);
-        $this->load->view("list_my_seances", $data);
-        $this->load->view("footer");
 
+        if (!empty($this->session->userdata('logged_in'))) {
+            $this->load->view("header");
+            $idUserRated = $this->session->userdata('user_id');
+            $data['seances'] = $this->Demande_model->show_seances($idUserRated);
+            $this->load->view("list_my_seances", $data);
+            $this->load->view("footer");
+        } else {
+            $this->session->set_flashdata('login_error', $this->lang->line('access_not_authorized_please_login'));
+            $this->login();
+        }
+    }
+
+    public function login()
+    {
+        $this->load->view('header');
+        $this->load->view("login");
+        $this->load->view('footer');
     }
 
     public function mes_ratings()
