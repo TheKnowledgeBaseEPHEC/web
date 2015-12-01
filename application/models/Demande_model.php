@@ -213,7 +213,7 @@ class Demande_model extends CI_Model
 
     public function show_seances($id)
     {
-        $request = $this->db->select ('*') ->where('idDemander', $id) ->where('status', 'FINIE') ->get('Seance',10);
+        $request = $this->db->select ('*') ->where('idDemandeur', $id) ->where('status', 'FINIE') ->get('Seance',10);
         return $request->result();
     }
 }

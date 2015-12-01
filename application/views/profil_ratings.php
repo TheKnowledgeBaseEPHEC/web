@@ -29,7 +29,7 @@
                             echo "<td><b>non soumis</b></td>";
                         }
                         if (($rating->rating) != 0){
-                            echo "<td><b>Note: </b> $rating->rating</td>";
+                            echo "<td><b>Note: </b> $rating->rating/5</td>";
                         } else {
                             echo "<td><b>non soumis</b></td>";
                         }
