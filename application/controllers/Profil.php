@@ -76,7 +76,6 @@ class Profil extends CI_Controller
     {
         $this->load->view('profil_header', $data);
         $this->load->view("showProfil", $data);
-        $this->load->view('footer');
     }
 
     public function show_profil_all($data, $slug)
@@ -86,6 +85,7 @@ class Profil extends CI_Controller
             $this->load->view("profil", $data);
             $idUserRated = $this->session->userdata('user_id');
             $data['ratings'] = $this->rating_model->show_ratings($idUserRated);
+            $this->load->view('profil_ratings', $data);
         } else if ($this->logged_in()) {
             $this->load->view("profil_header", $data);
             $this->load->view("profil", $data);
