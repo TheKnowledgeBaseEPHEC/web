@@ -10,6 +10,9 @@ class Rating extends CI_Controller {
         $this->load->view('footer');
     }
 
+    /*
+     * Récupère JSON
+     */
     public function data() {
         $this->load->database();
         $this->load->model('Home_model', 'home');
@@ -19,6 +22,9 @@ class Rating extends CI_Controller {
         print json_encode($data, JSON_PRETTY_PRINT);
     }
 
+    /*
+     * Ajout d'un rating
+     */
     public function add_rating(){
         $this->load->model('rating_model');
         $this->load->library('form_validation');

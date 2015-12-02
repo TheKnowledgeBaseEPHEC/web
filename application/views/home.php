@@ -177,6 +177,7 @@
             allowClear: true,
             multiple: false,
             theme: "classic",
+            maximumSelectionLength: 2,
             ajax: {
                 url: window.location.href + 'facdata',
                 dataType: 'json',

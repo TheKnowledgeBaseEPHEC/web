@@ -9,6 +9,9 @@ class Voip extends CI_Controller {
         $this->load->database();
     }
 
+    /*
+     * Index voip
+     */
     public function view($seanceId = null) {
         if (!$this->logged_in()) {
             redirect(base_url('connexion'));
@@ -30,6 +33,9 @@ class Voip extends CI_Controller {
         $this->load->view('footer');
     }
 
+    /*
+     * return: utilisateur identifié
+     */
     public function logged_in()
     {
         return !empty($this->session->userdata('user_id'));

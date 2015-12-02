@@ -15,6 +15,9 @@ class MesDemandesAide extends CI_Controller
         $this->load->model('Demande_model');
     }
 
+    /*
+     * Index demande aides
+     */
     public function index($slug = null)
     {
         if ($this->logged_in())
@@ -36,6 +39,9 @@ class MesDemandesAide extends CI_Controller
         return;
     }
 
+    /*
+     * Affiche un interet
+     */
     public function viewSI($idInteret = null) {
         if ($idInteret != null) {
             $this->index($idInteret);
@@ -44,6 +50,9 @@ class MesDemandesAide extends CI_Controller
 
     }
 
+    /*
+     * return : utilisateur identifie
+     */
     public function logged_in() {
         return !empty($this->session->userdata('user_id'));
     }

@@ -13,6 +13,9 @@ class Home_model extends CI_Model
         $this->load->database();
     }
 
+    /*
+     * Récupère des données utilisées sur la page d'index
+     */
     public function get_data() {
         $this->db->select('COUNT(distinct User.idUser) AS nbusers, COUNT(distinct Cours.idCours) AS nbcours, COUNT(distinct Ecole.idEcole) AS nbfacs');
         $this->db->from('User, Cours, Ecole');

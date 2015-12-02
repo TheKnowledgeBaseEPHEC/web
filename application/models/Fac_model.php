@@ -13,6 +13,9 @@ class Fac_model extends CI_Model
         $this->load->database();
     }
 
+    /*
+     * Récupère une fac sur base de son slug
+     */
     public function get_fac($slug = null)
     {
         if ($slug != null) {
@@ -24,14 +27,21 @@ class Fac_model extends CI_Model
         }
     }
 
+    /*
+     * Recherche d'une fac
+     */
     public function search_fac($term = null) {
         if ($term != null) {
             $this->db->like('NomEcole', $term);
             $query = $this->db->get('Ecole');
             return $query->result();
         }
+        return false;
     }
 
+    /*
+     * Récupère un cours sur base de son slug
+     */
     public function get_cours($slug = null)
     {
         if ($slug != null) {
@@ -46,26 +56,25 @@ class Fac_model extends CI_Model
         }
     }
 
-    public function interet()
-    {
-        $data = array(
-            'cle' => $key,
-            'User_idUser' => $user->id
-        );
-        $this->db->set('expiration', 'now() + interval 1 week', FALSE);
-        $this->db->insert('Activation', $data);
-    }
-
+    /*
+     * Génère un slug basé sur le nom du cours de la fac
+     */
     public function gen_slug($IntituleCours,$Fac_Ecole_idEcole)
     {
         return substr(strtolower($IntituleCours.$Fac_Ecole_idEcole), 0, 20);
     }
 
+    /*
+     * Ajout d'un cours
+     */
     public function add_cour($data)
     {
         $this->db->insert('Cours', $data);
     }
 
+    /*
+     * Récupère l'id d'une école
+     */
     public function get_ecole_name($Fac_Ecole_idEcole)
     {
         $query = $this->db->get_where('Ecole', array('idEcole' => $Fac_Ecole_idEcole));

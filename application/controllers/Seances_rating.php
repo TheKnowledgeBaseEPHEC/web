@@ -17,6 +17,9 @@ class Seances_rating extends CI_Controller {
         $this->load->model('Seances_model', 'rate');
     }
 
+    /*
+     * Index ratings
+     */
     public function index($slug = null)
     {
         $slug = intval($slug);
@@ -41,7 +44,9 @@ class Seances_rating extends CI_Controller {
         }
     }
 
-
+    /*
+     * Ratings d'un utilisateur
+     */
     public function view($slug = null)
     {
         if ($slug != null) {
@@ -49,11 +54,17 @@ class Seances_rating extends CI_Controller {
         }
     }
 
+    /*
+     * Vérifie si un rating existe
+     */
     public function check_if_rating_exits($slug)
     {
         $this->rate->check_seances_rating_exists($slug);
     }
 
+    /*
+     * Ajout d'un rating
+     */
     public function submit_rating()
     {
         $idSeance = $this->input->post('idSeance');

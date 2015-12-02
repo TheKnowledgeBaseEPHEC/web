@@ -15,6 +15,9 @@ class MesDemSc extends CI_Controller
         $this->load->model('Demande_model');
     }
 
+    /*
+     * Index demandes
+     */
     public function index($slug = null)
     {
         $this->load->view('header');
@@ -65,6 +68,10 @@ class MesDemSc extends CI_Controller
             return;
         }
     }
+
+    /*
+     * afficher une demande
+     */
     public function viewSI($idInteret = null) {
         if ($idInteret != null) {
             $this->index($idInteret);
@@ -73,6 +80,9 @@ class MesDemSc extends CI_Controller
 
     }
 
+    /*
+     * return: utilisateur identifie
+     */
     public function logged_in() {
         return !empty($this->session->userdata('user_id'));
     }

@@ -9,6 +9,9 @@ class Profil_model extends CI_Model
         $this->load->helpers('common');
     }
 
+    /*
+     * Modification du nom user
+     */
     public function modifyName($idUser, $newName)
     {
         $data = array(
@@ -19,6 +22,9 @@ class Profil_model extends CI_Model
         $this->session->set_userdata('user_nom', $newName);
     }
 
+    /*
+     * Modification du prénom user
+     */
     public function modifyFirstName($idUser, $newFirstName)
     {
         $data = array(
@@ -29,6 +35,9 @@ class Profil_model extends CI_Model
         $this->session->set_userdata('user_prenom', $newFirstName);
     }
 
+    /*
+     * Modification de l'email de l'utilisateur
+     */
     public function modifyEmail($idUser, $newEmail)
     {
         /* Maj en BDD */
@@ -89,6 +98,9 @@ class Profil_model extends CI_Model
         logout();
     }
 
+    /*
+     * Récupère le pwd d'un user par son id
+     */
     public function recupPwd($idUser)
     {
         $request = $this->db->select("Password")
@@ -99,6 +111,9 @@ class Profil_model extends CI_Model
         return $passwordDb;
     }
 
+    /*
+     * Modification du mdp user
+     */
     public function modifyPwd($idUser, $newPassword)
     {
         $data = array(
@@ -108,17 +123,9 @@ class Profil_model extends CI_Model
         $this->db->update('User', $data);
     }
 
-    public function modifyQstSecr($idUser, $secretQst, $repscr)
-    {
-        $data = array(
-            'SecretQ' => $secretQst,
-            'SecretR' => $repscr,
-        );
-        $this->db->where('idUser', $idUser);
-        $this->db->update('User', $data);
-        $this->session->set_userdata('user_SQuestion', $secretQst);
-    }
-
+    /*
+     * Màj avatar user
+     */
     public function addImage($avatarUser, $idUser)
     {
         $data = array(
@@ -128,6 +135,9 @@ class Profil_model extends CI_Model
         $this->db->update('User', $data);
     }
 
+    /*
+     * Récupère les infos user en BDD depuis le slug
+     */
     public function getUserData($slug)
     {
         return $this->db->select('idUser, Nom, Prenom, AdresseMail, slug, ImagePath')
@@ -136,6 +146,9 @@ class Profil_model extends CI_Model
             ->row();
     }
 
+    /*
+     * Récupère les infos user depuis l'email
+     */
     public function getUserDataFromEmail($email)
     {
         return $this->db->select('idUser, Nom, Prenom, AdresseMail')
@@ -144,6 +157,9 @@ class Profil_model extends CI_Model
             ->row();
     }
 
+    /*
+     * Màj status user
+     */
     public function updateStatus($user, $status) {
         $this->db->where('idUser', $user->id)
             ->update('User', array('status' => $status));

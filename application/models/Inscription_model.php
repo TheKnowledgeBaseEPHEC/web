@@ -13,21 +13,26 @@ class Inscription_model extends CI_Model
         $this->load->database();
     }
 
-    /* Génère un slug de 20 caractères max en utilisant le prénom et le nom de famille */
+    /*
+     * Génère un slug de 20 caractères max en utilisant le prénom et le nom de famille
+     */
     public function gen_slug($user)
     {
         return substr(strtolower($user->prenom . "." . $user->nom), 0, 20);
     }
 
-    /* Vérifie si une adresse email existe déjà en DB */
+    /*
+     * Vérifie si une adresse email existe déjà en DB
+     */
     public function check_mail($user)
     {
         $count = $this->db->where('AdresseMail', $user->email)->count_all_results('User');
         return ($count > 0);
     }
 
-    /* Vérifie si un slug existe, si oui on y ajoute un chiffre random,
-       On imagine que pas plus de 10 personnes on le même nom/prénom
+    /*
+     * Vérifie si un slug existe, si oui on y ajoute un chiffre random,
+     * On imagine que pas plus de 10 personnes on le même nom/prénom
      */
     public function check_and_update_slug(&$user)
     {
@@ -38,7 +43,9 @@ class Inscription_model extends CI_Model
         }
     }
 
-    /* Ajout d'un nouvel utilisateur en BDD */
+    /*
+     * Ajout d'un nouvel utilisateur en BDD
+     */
     public function add_user($user)
     {
         $data = array(
@@ -55,7 +62,9 @@ class Inscription_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    /* Ajout d'une entrée activation en BDD, l'utilisateur a une semaine pour activer. */
+    /*
+     * Ajout d'une entrée activation en BDD, l'utilisateur a une semaine pour activer.
+     */
     public function create_activation_key($user)
     {
         $key = uniqid();

@@ -3,6 +3,9 @@
 class Thanks_user extends CI_Controller
 {
 
+    /*
+     * Index thanks_user
+     */
     public function index()
     {
         $this->load->view('header');

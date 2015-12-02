@@ -14,6 +14,10 @@ class Seances extends CI_Controller
         $this->load->model('Demande_model');
         $this->load->model('Profil_seances_model','seance');
     }
+
+    /*
+     * Index Seances
+     */
     public function index(){
 
         if (!empty($this->session->userdata('logged_in'))) {
@@ -28,6 +32,9 @@ class Seances extends CI_Controller
         }
     }
 
+    /*
+     * page login
+     */
     public function login()
     {
         $this->load->view('header');
@@ -35,6 +42,9 @@ class Seances extends CI_Controller
         $this->load->view('footer');
     }
 
+    /*
+     * affichage ratings utilisateur
+     */
     public function mes_ratings()
     {
         $this->load->model('rating_model');

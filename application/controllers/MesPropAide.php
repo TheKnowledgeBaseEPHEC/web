@@ -15,6 +15,9 @@ class MesPropAide extends CI_Controller
         $this->load->model('Demande_model');
     }
 
+    /*
+     * index propositions
+     */
     public function index($slug = null)
     {
         if ($this->logged_in())
@@ -39,6 +42,9 @@ class MesPropAide extends CI_Controller
         return;
     }
 
+    /*
+     * afficher un interet
+     */
     public function viewSI($idInteret = null) {
         if ($idInteret != null) {
             $this->index($idInteret);
@@ -47,6 +53,9 @@ class MesPropAide extends CI_Controller
 
     }
 
+    /*
+     * return: utilisateur identifié
+     */
     public function logged_in() {
         return !empty($this->session->userdata('user_id'));
     }

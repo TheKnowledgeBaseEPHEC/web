@@ -10,6 +10,9 @@ class Profil_seances_model extends CI_Model {
         $this->load->database();
     }
 
+    /*
+     * Requêtes pour la datatable
+     */
     private function _get_datatables_query()
     {
         $this->db->from($this->table);
@@ -42,6 +45,9 @@ class Profil_seances_model extends CI_Model {
         return $query->result();
     }
 
+    /*
+     * Récupère le compte de la datatable
+     */
     function count_filtered()
     {
         $this->_get_datatables_query();
@@ -49,12 +55,18 @@ class Profil_seances_model extends CI_Model {
         return $query->num_rows();
     }
 
+    /*
+     * Récupère le nombre d'éléments dans la table
+     */
     public function count_all()
     {
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
+    /*
+     * Récupère un cours par l'id
+     */
     public function get_by_id($id)
     {
         $this->db->from($this->table);
@@ -64,24 +76,36 @@ class Profil_seances_model extends CI_Model {
         return $query->row();
     }
 
+    /*
+     * Enregistre un élément en BDD
+     */
     public function save($data)
     {
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
 
+    /*
+     * Màj élément en BDD
+     */
     public function update($where, $data)
     {
         $this->db->update($this->table, $data, $where);
         return $this->db->affected_rows();
     }
 
+    /*
+     * Suppression d'un élément par l'id de cours
+     */
     public function delete_by_id($id)
     {
         $this->db->where('idCours', $id);
         $this->db->delete($this->table);
     }
 
+    /*
+     * Ajout d'un rating pour une séance
+     */
     public function add_seance_rating($id, $rating, $comment)
     {
         $data = array(

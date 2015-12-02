@@ -49,7 +49,7 @@ class Profil extends CI_Controller
         if ($this->logged_in()) {
             $data['userslug'] = $slug;
             $data['user'] = $userinfo;
-            $data['mesDemandes'] = $this->Demande_model->getMyDemandes($this->session->userdata('user_id'));
+            $data['mesDemandes'] = $this->Demande_model->getCours($this->session->userdata('user_id'));
             $data['mesPropositions'] = $this->Demande_model->getMyPropositions($this->session->userdata('user_id'));
             $data['mesSeances'] = $this->Demande_model->getMySeances($this->session->userdata('user_id'));
             $data['otherSeances'] = $this->Demande_model->getOtherSeances($this->session->userdata('user_id'));

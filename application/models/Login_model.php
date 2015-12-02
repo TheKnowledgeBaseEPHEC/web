@@ -9,6 +9,11 @@ class Login_model extends CI_Model
         $this->load->database();
     }
 
+    /*
+     * Fonction de login
+     * param: $email, $password
+     * return: true si login ok
+     */
     public function login($email, $password)
     {
         $request = $this->db->select()
